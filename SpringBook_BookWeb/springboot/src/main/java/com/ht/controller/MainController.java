@@ -45,4 +45,18 @@ public class MainController {
 		return mav;
 	}
 
+	@RequestMapping("/admin")
+	public ModelAndView admin(ModelMap model) {
+		ModelAndView mav = new ModelAndView("admin/index");
+
+		return mav;
+	}
+
+	@RequestMapping("/admin/add")
+	public ModelAndView adminAdd(ModelMap model) {
+		ModelAndView mav = new ModelAndView("admin/product-edit");
+
+		return mav;
+	}
+
 }

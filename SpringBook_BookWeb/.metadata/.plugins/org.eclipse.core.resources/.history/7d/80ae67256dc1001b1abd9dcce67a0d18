@@ -1,0 +1,5 @@
+package com.ht.entities;
+
+public class Comment {
+
+}

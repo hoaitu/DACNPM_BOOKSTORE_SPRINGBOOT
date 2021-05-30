@@ -1,0 +1,9 @@
+package com.ht.entities;
+
+import org.springframework.boot.autoconfigure.domain.EntityScan;
+
+@EntityScan
+@Table(name = "user", catalog = "book_dacnpm")
+public class User {
+
+}
