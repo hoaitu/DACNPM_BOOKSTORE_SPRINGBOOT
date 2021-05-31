@@ -25,8 +25,8 @@ import javax.persistence.TemporalType;
 public class Bill implements java.io.Serializable {
 
 	private Integer idBill;
-//	private Payment payment;
-//	private Tinhtrangbill tinhtrangbill;
+	private Payment payment;
+	private Tinhtrangbill tinhtrangbill;
 	private User user;
 	private String detail;
 	private Integer total;
@@ -34,14 +34,15 @@ public class Bill implements java.io.Serializable {
 	private Date date;
 	private String name;
 	private String phoneNumber;
-//	private Set<Billcontainsach> billcontainsaches = new HashSet<Billcontainsach>(0);
+	private Set<Billcontainsach> billcontainsaches = new HashSet<Billcontainsach>(0);
 
 	public Bill() {
 	}
 
-	public Bill(User user, String detail, Integer total, String address, Date date, String name, String phoneNumber) {
-//		this.payment = payment;
-//		this.tinhtrangbill = tinhtrangbill;
+	public Bill(Payment payment, Tinhtrangbill tinhtrangbill, User user, String detail, Integer total, String address,
+			Date date, String name, String phoneNumber, Set<Billcontainsach> billcontainsaches) {
+		this.payment = payment;
+		this.tinhtrangbill = tinhtrangbill;
 		this.user = user;
 		this.detail = detail;
 		this.total = total;
@@ -49,7 +50,7 @@ public class Bill implements java.io.Serializable {
 		this.date = date;
 		this.name = name;
 		this.phoneNumber = phoneNumber;
-//		this.billcontainsaches = billcontainsaches;
+		this.billcontainsaches = billcontainsaches;
 	}
 
 	@Id
@@ -62,6 +63,26 @@ public class Bill implements java.io.Serializable {
 
 	public void setIdBill(Integer idBill) {
 		this.idBill = idBill;
+	}
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "payment")
+	public Payment getPayment() {
+		return this.payment;
+	}
+
+	public void setPayment(Payment payment) {
+		this.payment = payment;
+	}
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "tinhTrangDonHang")
+	public Tinhtrangbill getTinhtrangbill() {
+		return this.tinhtrangbill;
+	}
+
+	public void setTinhtrangbill(Tinhtrangbill tinhtrangbill) {
+		this.tinhtrangbill = tinhtrangbill;
 	}
 
 	@ManyToOne(fetch = FetchType.LAZY)
@@ -127,6 +148,15 @@ public class Bill implements java.io.Serializable {
 
 	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
+	}
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "bill")
+	public Set<Billcontainsach> getBillcontainsaches() {
+		return this.billcontainsaches;
+	}
+
+	public void setBillcontainsaches(Set<Billcontainsach> billcontainsaches) {
+		this.billcontainsaches = billcontainsaches;
 	}
 
 }

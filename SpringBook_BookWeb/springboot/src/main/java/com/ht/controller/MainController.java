@@ -22,9 +22,16 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.ht.service.BookService;
+import com.ht.service.CategoryService;
+
 @RestController
 public class MainController {
 
+	@Autowired
+	private BookService book;
+	@Autowired
+	private CategoryService category;
 //	@GetMapping(value = { "/", "/index" })
 //	public String homePage(Model model) {
 //		return "index2";
@@ -45,6 +52,76 @@ public class MainController {
 		return mav;
 	}
 
+	@RequestMapping("/shop")
+	public ModelAndView shop(ModelMap model) {
+		ModelAndView mav = new ModelAndView("shop");
+
+		model.addAttribute("listbook", book.findAll());
+		model.addAttribute("listcategory", category.findAll());
+
+		return mav;
+	}
+
+	@RequestMapping(value = "/shop/{id}", method = RequestMethod.GET)
+	public ModelAndView shop(Model model, @PathVariable(value = "id") int id) {
+		ModelAndView mav = new ModelAndView("shop");
+		model.addAttribute("listbook", book.findByCategory(id));
+		model.addAttribute("listcategory", category.findAll());
+
+		return mav;
+	}
+
+	@RequestMapping("/login")
+	public ModelAndView login(ModelMap model) {
+		ModelAndView mav = new ModelAndView("login");
+
+		return mav;
+	}
+
+	@RequestMapping("/signup")
+	public ModelAndView signup(ModelMap model) {
+		ModelAndView mav = new ModelAndView("signup");
+
+		return mav;
+	}
+
+	@RequestMapping("/single-product")
+	public ModelAndView single(ModelMap model) {
+		ModelAndView mav = new ModelAndView("single-product");
+
+		return mav;
+	}
+
+	@RequestMapping("/wishlist")
+	public ModelAndView wishlist(ModelMap model) {
+		ModelAndView mav = new ModelAndView("wishlist");
+
+		return mav;
+	}
+
+	@RequestMapping("/my-account")
+	public ModelAndView account(ModelMap model) {
+		ModelAndView mav = new ModelAndView("my-account");
+
+		return mav;
+	}
+
+	@RequestMapping("/cart")
+	public ModelAndView cart(ModelMap model) {
+		ModelAndView mav = new ModelAndView("cart");
+
+		return mav;
+	}
+
+	@RequestMapping("/checkout")
+	public ModelAndView checkout(ModelMap model) {
+		ModelAndView mav = new ModelAndView("checkout");
+
+		return mav;
+	}
+
+//	-----------------------------------------------------------------------
+
 	@RequestMapping("/admin")
 	public ModelAndView admin(ModelMap model) {
 		ModelAndView mav = new ModelAndView("admin/index");
@@ -54,7 +131,37 @@ public class MainController {
 
 	@RequestMapping("/admin/add")
 	public ModelAndView adminAdd(ModelMap model) {
+		ModelAndView mav = new ModelAndView("admin/product-add");
+
+		return mav;
+	}
+
+	@RequestMapping("/admin/edit")
+	public ModelAndView adminEdit(ModelMap model) {
 		ModelAndView mav = new ModelAndView("admin/product-edit");
+
+		return mav;
+	}
+
+	@RequestMapping("/admin/productDetail")
+	public ModelAndView adminProductDetail(ModelMap model) {
+		ModelAndView mav = new ModelAndView("admin/product-detail");
+
+		return mav;
+	}
+
+	@RequestMapping("/admin/productPay")
+	public ModelAndView adminProductPay(ModelMap model) {
+		ModelAndView mav = new ModelAndView("admin/product-payment");
+
+		return mav;
+	}
+
+	///////////////////
+
+	@RequestMapping("/admin/manaUser")
+	public ModelAndView adminUser(ModelMap model) {
+		ModelAndView mav = new ModelAndView("admin/list-user");
 
 		return mav;
 	}

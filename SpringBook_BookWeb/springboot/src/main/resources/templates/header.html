@@ -12,8 +12,8 @@
 			<div class="row header-header">
 				<div class="col-md-2 col-sm-6 col-xs-6">
 					<div class="header-logo">
-						<a href="index.html"> <img
-							th:src="@{/resource/user/img/logo.png}" alt="" />
+						<a href="/"> <img th:src="@{/resource/user/img/logo.png}"
+							alt="" />
 						</a>
 					</div>
 				</div>
@@ -26,18 +26,17 @@
 								<div class="sub-user">
 									<div class="user-item">
 										<div class="sign-in">
-											<i class="fas fa-user-plus"></i> <a href="signup.html">Đăng
-												kí</a>
+											<i class="fas fa-user-plus"></i> <a th:href="@{/signup}">Đăng ký</a>
 										</div>
 									</div>
 									<div class="user-item">
 										<div class="sign-in">
-											<i class="fas fa-sign-in-alt"></i> <a href="login.html">Đăng
+											<i class="fas fa-sign-in-alt"></i> <a th:href="@{/login}">Đăng
 												nhập</a>
 										</div>
 									</div>
 								</div></li>
-							<li class="shoping-cart"><a href="#"> <i
+							<li class="shoping-cart"><a href="cart"> <i
 									class="flaticon-shop"></i>
 							</a></li>
 						</ul>
@@ -47,9 +46,9 @@
 					<div class="mainmenu text-center">
 						<nav>
 							<ul id="nav">
-								<li><a href="shop.html">Sách</a></li>
-								<li><a href="shop.html">Khuyến mãi</a></li>
-								<li><a href="#footer">Liên Hệ</a></li>
+								<li><a th:href="@{/shop/}" >SÁCH</a></li>
+								<li><a th:href="@{/shop/}">KHUYẾN MÃI</a></li>
+								<li><a href="#footer">LIÊN HỆ</a></li>
 							</ul>
 						</nav>
 					</div>
@@ -62,19 +61,18 @@
 								<div class="sub-user">
 									<div class="user-item">
 										<div class="sign-in">
-											<i class="fas fa-user-plus"></i> <a href="signup.html">Đăng
-												kí</a>
+											<i class="fas fa-user-plus"></i> <a th:href="@{/signup}">Đăng ký</a>
 										</div>
 									</div>
 									<div class="user-item">
 										<div class="sign-in">
-											<i class="fas fa-sign-in-alt"></i> <a href="login.html">Đăng
+											<i class="fas fa-sign-in-alt"></i> <a th:href="@{/login}">Đăng
 												nhập</a>
 										</div>
 									</div>
 								</div></li>
 
-							<li class="shoping-cart"><a href="#"> <i
+							<li class="shoping-cart"><a href="cart"> <i
 									class="flaticon-shop"></i>
 							</a></li>
 						</ul>
@@ -96,9 +94,9 @@
 					<div class="mobile-menu">
 						<nav id="dropdown">
 							<ul>
-								<li><a href="shop.html">Sách</a></li>
-								<li><a href="shop.html">Khuyến mãi</a></li>
-								<li><a href="#footer">Liên Hệ</a></li>
+								<li><a th:href="@{/shop/}">SÁCH</a></li>
+								<li><a th:href="@{/shop/} ">KHUYẾN MÃI</a></li>
+								<li><a href="#footer">LIÊN HỆ</a></li>
 							</ul>
 						</nav>
 					</div>
@@ -107,7 +105,6 @@
 		</div>
 	</div>
 	<!-- Mobile Menu End -->
-
-
+	
 </body>
 </html>

@@ -19,18 +19,14 @@ import javax.persistence.Table;
 public class Wishlist implements java.io.Serializable {
 
 	private Integer id;
-//	private Sach sach;
+	private Sach sach;
 	private User user;
 
 	public Wishlist() {
 	}
 
-//	public Wishlist(Sach sach, User user) {
-//		this.sach = sach;
-//		this.user = user;
-//	}
-	public Wishlist(User user) {
-//		this.sach = sach;
+	public Wishlist(Sach sach, User user) {
+		this.sach = sach;
 		this.user = user;
 	}
 
@@ -46,15 +42,15 @@ public class Wishlist implements java.io.Serializable {
 		this.id = id;
 	}
 
-//	@ManyToOne(fetch = FetchType.LAZY)
-//	@JoinColumn(name = "idSach")
-//	public Sach getSach() {
-//		return this.sach;
-//	}
-//
-//	public void setSach(Sach sach) {
-//		this.sach = sach;
-//	}
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "idSach")
+	public Sach getSach() {
+		return this.sach;
+	}
+
+	public void setSach(Sach sach) {
+		this.sach = sach;
+	}
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "idUser")
