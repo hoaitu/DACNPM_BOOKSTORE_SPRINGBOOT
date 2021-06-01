@@ -14,4 +14,6 @@ public interface BookRepository extends JpaRepository<Sach, Long> {
 	@Query(value = "select b from Sach b  where b.theloaisach =:catId")
 	public abstract List<Sach> findByCategory(@Param("catId") long id);
 
+	@Query(value = "SELECT c FROM Sach c WHERE c.maSach =:ids")
+	public abstract Sach findByName(@Param("ids") long ids);
 }

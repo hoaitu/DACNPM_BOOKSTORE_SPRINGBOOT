@@ -85,10 +85,11 @@ public class MainController {
 		return mav;
 	}
 
-	@RequestMapping("/single-product")
-	public ModelAndView single(ModelMap model) {
+	@RequestMapping("/single-product/{ids}")
+	public ModelAndView single_product(Model model, @PathVariable(value = "ids") int ids) {
 		ModelAndView mav = new ModelAndView("single-product");
-
+		mav.addObject("books", book.findById(ids));
+//		model.addAttribute("listBook", bookService.findSameCategory());
 		return mav;
 	}
 
@@ -116,6 +117,17 @@ public class MainController {
 	@RequestMapping("/checkout")
 	public ModelAndView checkout(ModelMap model) {
 		ModelAndView mav = new ModelAndView("checkout");
+
+		return mav;
+	}
+
+	/**
+	 * 2/06/2021 : thêm trang 404
+	 */
+
+	@RequestMapping("/404")
+	public ModelAndView err404(ModelMap model) {
+		ModelAndView mav = new ModelAndView("404");
 
 		return mav;
 	}

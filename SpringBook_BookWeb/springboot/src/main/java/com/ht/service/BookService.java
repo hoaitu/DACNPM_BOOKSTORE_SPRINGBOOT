@@ -24,4 +24,8 @@ public class BookService {
 
 	}
 
+	public Sach findById(long ids) {
+		return bookRepository.findByName(ids);
+	}
+
 }

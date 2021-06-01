@@ -17,7 +17,7 @@
 	<!--Header Area Start-->
 	<!-- NƠI GẮN HEADER -->
 	<div th:insert="~{header :: header_in}"></div>
-<!-- Breadcrumbs Area Start -->
+	<!-- Breadcrumbs Area Start -->
 	<div class="breadcrumbs-area">
 		<div class="container">
 			<div class="row">
@@ -39,75 +39,82 @@
 	<!-- Single Product Area Start -->
 	<div class="single-product-area section-padding">
 		<div class="container">
-			<div class="row">
-				<div class="col-md-6 col-sm-7">
-					<div class="single-product-image-inner">
-						<!-- Tab panes -->
-						<div class="tab-content">
-							<!-- <% Sach sach = (Sach) request.getAttribute("sach");%> -->
-							<div role="tabpanel" class="tab-pane active" id="one"
-								style="width: 90%; margin-bottom: 30px; position: relative;">
-								<a class="venobox" href="img/single-product/bg-1.jpg"
-									data-gall="gallery" title=""> <img
-									th:src="@{/resource/user/img/shop/tt12.jpg}" alt="" />
-								</a>
-								<!-- <% if (sach.getKhuyenMai() > 0) { %> -->
-								<div
-									style="width: 15%; z-index: 999; position: absolute; top: 0; right: 0;">
-									<img src="img/sale.png" alt="" />
-									<p
-										style="font-size: 20px; position: absolute; left: 50%; top: 55%; transform: translate(-50%, -50%); color: white;">
-										30%</p>
+			<div th:each="book : ${books}">
+				<div class="row">
+
+					<div class="col-md-6 col-sm-7">
+						<div class="single-product-image-inner">
+							<!-- Tab panes -->
+							<div class="tab-content">
+								<!-- <% Sach sach = (Sach) request.getAttribute("sach");%> -->
+								<div role="tabpanel" class="tab-pane active" id="one"
+									style="width: 90%; margin-bottom: 30px; position: relative;">
+									<a class="venobox" href="img/single-product/bg-1.jpg"
+										data-gall="gallery" title=""> <img
+										th:src="@{${book.hinhAnh}}" alt="" />
+									</a>
+									<!-- <% if (sach.getKhuyenMai() > 0) { %> -->
+									<div
+										style="width: 15%; z-index: 999; position: absolute; top: 0; right: 0;">
+										<img th:src="@{/resource/user/img/sale.png}" alt="" />
+										<p
+											style="font-size: 20px; position: absolute; left: 50%; top: 55%; transform: translate(-50%, -50%); color: white;">
+											30%</p>
+									</div>
+									<!-- <%}%> -->
 								</div>
-								<!-- <%}%> -->
+								<div role="tabpanel" class="tab-pane" id="two">
+									<a class="venobox" href="img/single-product/bg-2.jpg"
+										data-gall="gallery" title=""> <img
+										th:src="@{/resource/user/img/shop/tt12.jpg}" alt="" />
+									</a>
+								</div>
+								<div role="tabpanel" class="tab-pane" id="three">
+									<a class="venobox" href="img/single-product/bg-3.jpg"
+										data-gall="gallery" title=""> <img
+										th:src="@{/resource/user/img/shop/tt12.jpg}" alt="" />
+									</a>
+								</div>
 							</div>
-							<div role="tabpanel" class="tab-pane" id="two">
-								<a class="venobox" href="img/single-product/bg-2.jpg"
-									data-gall="gallery" title=""> <img
-									th:src="@{/resource/user/img/shop/tt12.jpg}" alt="" />
-								</a>
-							</div>
-							<div role="tabpanel" class="tab-pane" id="three">
-								<a class="venobox" href="img/single-product/bg-3.jpg"
-									data-gall="gallery" title=""> <img
-									th:src="@{/resource/user/img/shop/tt12.jpg}" alt="" />
-								</a>
-							</div>
+							<!-- Nav tabs -->
 						</div>
-						<!-- Nav tabs -->
 					</div>
-				</div>
-				<div class="col-md-6 col-sm-5">
-					<div class="single-product-details">
-						<h2>Book Name</h2>
-						<div class="single-product-price">
-							<!-- <% if (sach.getKhuyenMai() > 0) { %> -->
-							<h2>250.000đ</h2>
-							<span style="color: black; font-size: 18px;" class="old-price">500.000đ</span>
-							<!-- <%} else {%>
+
+
+					<div class="col-md-6 col-sm-5">
+						<div class="single-product-details">
+							<h2 th:text="${book.tenSach}"></h2>
+							<div class="single-product-price">
+								<!-- <% if (sach.getKhuyenMai() > 0) { %> -->
+								<h2 th:text="${book.gia}">.000đ</h2>
+								<h2>.000 VNĐ</h2>
+								<span style="color: black; font-size: 18px;" class="old-price">500.000đ</span>
+								<!-- <%} else {%>
                         <h2><%= sach.getGia()%>.000đ</h2>
                         <%}%> -->
-						</div>
-						<form action="" method="get">
-							<input style="visibility: hidden;" name="maSach" type="text"
-								value="1" />
-							<div class="product-attributes clearfix">
-								<span class="pull-left" id="quantity-wanted-p"> <span
-									class="dec qtybutton">-</span> <input id="soLuongMua"
-									type="text" name="soLuongMua" value="1"
-									class="cart-plus-minus-box" /> <span class="inc qtybutton">+</span>
-								</span> <span> <input type="submit" class="cart-btn btn-default"
-									value="Thêm vào giỏ hàng" />
-								</span>
 							</div>
-						</form>
-						<div class="add-to-wishlist">
-							<a class="wish-btn" href="#"> <i class="far fa-heart"></i>
-								Thêm vào danh sách yêu thích
-							</a>
+							<form action="" method="get">
+								<input style="visibility: hidden;" name="maSach" type="text"
+									value="1" />
+								<div class="product-attributes clearfix">
+									<span class="pull-left" id="quantity-wanted-p"> <span
+										class="dec qtybutton">-</span> <input id="soLuongMua"
+										type="text" name="soLuongMua" value="1"
+										class="cart-plus-minus-box" /> <span class="inc qtybutton">+</span>
+									</span> <span> <input type="submit"
+										class="cart-btn btn-default" value="Thêm vào giỏ hàng" />
+									</span>
+								</div>
+							</form>
+							<div class="add-to-wishlist">
+								<a class="wish-btn" href="#"> <i class="far fa-heart"></i>
+									Thêm vào danh sách yêu thích
+								</a>
+							</div>
 						</div>
 					</div>
 				</div>
+
 			</div>
 			<div class="row">
 				<div class="col-md-12">
