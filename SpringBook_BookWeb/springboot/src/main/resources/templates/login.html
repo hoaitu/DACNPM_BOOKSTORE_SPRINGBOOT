@@ -35,31 +35,57 @@
 		</div>
 	</div>
 	<!-- Breadcrumbs Area Start -->
-	
+
 	<!-- Loging Area Start -->
 	<div class="login-account section-padding">
 		<div class="container">
 			<div class="row"
 				style="display: flex; align-items: center; justify-content: center;">
 				<div class="col-md-6 col-sm-6">
-					<form action="" class="create-account-form" method="post">
+
+					<!-- /login?error=true -->
+					<div th:if="${#request.getParameter('error') == 'true'}"
+						style="color: red; margin: 10px 0px;">
+						Login Failed!!!<br /> Reason : <span
+							th:if="${#session!= null and #session.getAttribute('SPRING_SECURITY_LAST_EXCEPTION') != null}"
+							th:utext="${#session.getAttribute('SPRING_SECURITY_LAST_EXCEPTION').message}">
+							Static summary </span>
+
+					</div>
+
+					<!-- <form action="" class="create-account-form" method="post"> -->
+
+
+					<form name='f' th:action="@{/j_spring_security_check}"
+						method='POST'>
+
+						<input type="hidden" name="${_csrf.parameterName}"
+							value="${_csrf.token}" />
+
+
 						<h2 class="heading-title">Bạn đã có tài khoản ?</h2>
 						<!-- <p style="color:red;"><%=request.getAttribute("msgLogin") != null ? request.getAttribute("msgLogin") : ""%>
                     </p> -->
 						<p class="form-row">
-							<input style="outline: none;" type="email" name="email"
+							<input style="outline: none;" type="email" name="username"
 								placeholder="Địa chỉ email" />
+							<!-- value="hoaitugl123@gmail.com" -->
 						</p>
 						<p class="form-row">
 							<input style="outline: none;" type="password" name="password"
 								placeholder="Mật khẩu" />
+
+							<!-- value="123456789" -->
 						</p>
 						<p class="lost-password form-group">
 							<a href="#" rel="nofollow">Quên mật khẩu ?</a>
 						</p>
 						<div class="submit">
-							<button name="submitcreate" id="submitcreate" type="submit"
-								class="btn-default">
+							<button name="submit" id="submitcreate" type="submit"
+								value="submit" class="btn-default">
+
+								<!-- <input name="submit" type="submit" value="submit" /> -->
+
 								<span> <i class="fa fa-user left"></i> Đăng nhập
 								</span>
 							</button>

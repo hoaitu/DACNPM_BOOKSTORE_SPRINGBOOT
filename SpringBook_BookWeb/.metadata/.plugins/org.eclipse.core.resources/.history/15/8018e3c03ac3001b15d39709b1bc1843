@@ -1,0 +1,5 @@
+package com.ht.config;
+
+public class EncrytedPasswordUtils {
+
+}

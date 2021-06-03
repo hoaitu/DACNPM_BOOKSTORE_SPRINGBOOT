@@ -1,0 +1,8 @@
+package com.ht.service;
+
+public class UserDetailsService {
+	public static void main(String[] args) {
+		UserDetailsService
+	}
+}
+

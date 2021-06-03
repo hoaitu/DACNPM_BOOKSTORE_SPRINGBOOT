@@ -1,1 +1,8 @@
 1622570958512	Move '404.html' to 'templates'
+1622573856919	Rename type 'CustomerRepository'
+1622573941823	Rename type 'CustomerService'
+1622574351598	Rename type 'CustomerDetail'
+1622577677938	Rename compilation unit 'Snippet.java'
+1622579221245	Rename compilation unit 'UserDetailsService.java'
+1622639493436	Move 'logoutSuccessfulPage.html' to 'admin'
+1622639507630	Move 'logoutSuccessfulPage.html' to 'templates'
