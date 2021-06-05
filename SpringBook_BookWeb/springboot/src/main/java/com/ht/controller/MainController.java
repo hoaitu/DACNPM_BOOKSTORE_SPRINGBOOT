@@ -2,6 +2,8 @@ package com.ht.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +25,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.ht.WebUtils;
+import com.ht.entities.Sach;
 import com.ht.service.BookService;
 import com.ht.service.CategoryService;
 
@@ -43,6 +46,7 @@ public class MainController {
 	private BookService book;
 	@Autowired
 	private CategoryService category;
+
 //	@GetMapping(value = { "/", "/index" })
 //	public String homePage(Model model) {
 //		return "index2";
@@ -81,6 +85,28 @@ public class MainController {
 
 		return mav;
 	}
+
+//	
+
+	@RequestMapping(value = "/search")
+	public @ResponseBody List<Sach> ajaxSearch(HttpServletRequest req, HttpServletResponse res) {
+		List<Sach> getSach = book.findBookByTitle(req.getParameter("tenSach"));
+		for (Sach sach : getSach) {
+			System.out.println(sach + "\n");
+		}
+		return getSach;
+	}
+
+	@RequestMapping(value = "/ajaxSearch", method = RequestMethod.GET)
+	public List<String> getSach(String tenSach) {
+		List<String> getSach = book.findBook(tenSach);
+		for (String sach : getSach) {
+			System.out.println(sach + "\n");
+		}
+		return getSach;
+	}
+
+//	
 
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public ModelAndView login(ModelMap model) {
@@ -253,6 +279,15 @@ public class MainController {
 	@RequestMapping("/admin/manaUser")
 	public ModelAndView adminUser(ModelMap model) {
 		ModelAndView mav = new ModelAndView("admin/list-user");
+
+		return mav;
+	}
+
+//	[[[[[[[[[[ơ
+
+	@RequestMapping("/test")
+	public ModelAndView testPG(ModelMap model) {
+		ModelAndView mav = new ModelAndView("test");
 
 		return mav;
 	}

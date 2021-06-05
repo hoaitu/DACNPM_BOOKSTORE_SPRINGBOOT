@@ -2,8 +2,6 @@ package com.ht.config;
 
 import javax.sql.DataSource;
 
-import javax.sql.DataSource;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -82,11 +80,22 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	}
 
+	// Token stored in Table (Persistent_Logins)
 	@Bean
 	public PersistentTokenRepository persistentTokenRepository() {
 		JdbcTokenRepositoryImpl db = new JdbcTokenRepositoryImpl();
 		db.setDataSource(dataSource);
 		return db;
 	}
+	
+	
+	
+	 
+	// Token stored in Memory (Of Web Server).
+	/*
+	 * @Bean public PersistentTokenRepository persistentTokenRepository() {
+	 * InMemoryTokenRepositoryImpl memory = new InMemoryTokenRepositoryImpl();
+	 * return memory; }
+	 */
 
 }

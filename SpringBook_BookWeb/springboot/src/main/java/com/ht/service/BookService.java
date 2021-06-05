@@ -27,5 +27,27 @@ public class BookService {
 	public Sach findById(long ids) {
 		return bookRepository.findByName(ids);
 	}
+//	Tìm kím
+
+//	public List<String> findBook(String name) {
+//		return bookRepository.findBookName(name);
+//	}
+//
+////	choose
+//	public List<Sach> findBookByTitle(String tenSach) {
+//		return bookRepository.findBookByTitle(tenSach);
+//	}
+
+	public List<Sach> findBookByTitle(String tenSach) {
+		return bookRepository.findBookByTitle(tenSach);
+	}
+
+	public List<String> findBook(String name) {
+		return bookRepository.findBookName(name);
+	}
+
+//	public Sach detailByName(String name) {
+//		return bookRepository.DetailByName(name);
+//	}
 
 }

@@ -1,7 +1,0 @@
-package com.ht.entities;
-
-
-@Entity
-public class User {
-
-}
