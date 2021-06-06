@@ -87,10 +87,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		db.setDataSource(dataSource);
 		return db;
 	}
-	
-	
-	
-	 
+
 	// Token stored in Memory (Of Web Server).
 	/*
 	 * @Bean public PersistentTokenRepository persistentTokenRepository() {

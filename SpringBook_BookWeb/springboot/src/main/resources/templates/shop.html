@@ -119,51 +119,53 @@
 						</div>
 						<div class="tab-content">
 							<div class="row tab-pane fade in active" id="home">
-								<div th:each="book : ${listbook}">
-									<!-- <%ArrayList<Sach> listSach = (ArrayList<Sach>) request.getAttribute("listSach");%>
+								<div id="resuilts">
+									<div th:each="book : ${listbook}">
+										<!-- <%ArrayList<Sach> listSach = (ArrayList<Sach>) request.getAttribute("listSach");%>
                                 <%
                                     for (int i = 0; i < listSach.size(); i++) {
                                 %> -->
-									<div class="shop-single-product-area">
-										<div class="col-md-4 col-sm-6">
-											<div class="single-banner">
-												<div class="product-wrapper">
-													<a th:href="@{/single-product/} + ${book.maSach}"
-														class="single-banner-image-wrapper"> <img alt=""
-														th:src="@{${book.hinhAnh}}" />
-													</a>
-													<div class="product-description">
-														<div class="functional-buttons">
-															<a title="ThÃªm vÃ o giá» hÃ ng" href="#"> <i
-																class="fa fa-shopping-cart"></i>
-															</a> <a href="#" title="ThÃªm vÃ o danh sÃ¡ch yÃªu thÃ­ch">
-																<i class="far fa-heart"></i>
-															</a> <a href="#" title="Xem nhanh" data-toggle="modal"
-																data-target="#productModal1"> <i
-																class="fas fa-compress-alt"></i>
-															</a>
+										<div class="shop-single-product-area">
+											<div class="col-md-4 col-sm-6">
+												<div class="single-banner">
+													<div class="product-wrapper">
+														<a th:href="@{/single-product/} + ${book.maSach}"
+															class="single-banner-image-wrapper"> <img alt=""
+															th:src="@{${book.hinhAnh}}" />
+														</a>
+														<div class="product-description">
+															<div class="functional-buttons">
+																<a title="ThÃªm vÃ o giá» hÃ ng" href="#"> <i
+																	class="fa fa-shopping-cart"></i>
+																</a> <a href="#" title="ThÃªm vÃ o danh sÃ¡ch yÃªu thÃ­ch">
+																	<i class="far fa-heart"></i>
+																</a> <a href="#" title="Xem nhanh" data-toggle="modal"
+																	data-target="#productModal1"> <i
+																	class="fas fa-compress-alt"></i>
+																</a>
+															</div>
 														</div>
 													</div>
-												</div>
-												<!-- <% if (listSach.get(i).getKhuyenMai() > 0) { %> -->
-												<div
-													style="width: 15%; z-index: 999; position: absolute; top: 0; right: 0;">
-													<img th:src="@{/resource/user/img/sale.png}" alt="" />
-													<p
-														style="font-size: 14px; position: absolute; left: 15%; top: 55%; transform: translate(0, -50%); color: white;">
-														30%</p>
-												</div>
-												<div class="banner-bottom text-center">
-													<div class="banner-bottom-title" style="height: 40px;">
-														<a href="#"> <span th:text="${book.tenSach}"> </span>
-														</a>
+													<!-- <% if (listSach.get(i).getKhuyenMai() > 0) { %> -->
+													<div
+														style="width: 15%; z-index: 999; position: absolute; top: 0; right: 0;">
+														<img th:src="@{/resource/user/img/sale.png}" alt="" />
+														<p
+															style="font-size: 14px; position: absolute; left: 15%; top: 55%; transform: translate(0, -50%); color: white;">
+															30%</p>
 													</div>
-													<div style="color: #32b5f3;" class="price-2">
-														<span th:text="${book.gia}"><span>.000 VNÄ</span>
-														</span> <span style="color: black;" class="old-price">500.000Ä</span>
+													<div class="banner-bottom text-center">
+														<div class="banner-bottom-title" style="height: 40px;">
+															<a href="#"> <span th:text="${book.tenSach}">
+															</span>
+															</a>
+														</div>
+														<div style="color: #32b5f3;" class="price-2">
+															<span th:text="${book.gia}"><span>.000 VNÄ</span>
+															</span> <span style="color: black;" class="old-price">500.000Ä</span>
+														</div>
 													</div>
-												</div>
-												<!-- <% } else {%>
+													<!-- <% } else {%>
                                             <div class="banner-bottom text-center">
                                                 <div class="banner-bottom-title" style="height: 40px">
                                                     <a href=<%= Util.fullPath("singleProductController?idProduct=") + listSach.get(i).getMaSach()%>><%=listSach.get(i).getTenSach()%>
@@ -173,12 +175,13 @@
                                                 </div>
                                             </div>
                                             <% }%> -->
+												</div>
 											</div>
 										</div>
+
 									</div>
 
 								</div>
-
 							</div>
 
 
@@ -355,31 +358,65 @@
 
 
 
-							<nav aria-label="Page navigation example">
-								<div id="pagination">
-									<th:block th:each="loop , iter : ${totalPage}">
-										<td th:utext="${iter.count}">No</td>
+							<!-- Phân trang -->
 
-										<div th:switch="${loop}">
-											<div th:case="1">
+							<!-- <nav aria-label="Page navigation example">
+								<div id="pagination">
+									<th:block th:each="loop , 1: ${totalPage}">
+										<c:choose>
+											<c:when test="${loop == 1}">
 												<button class="paging-item active" type="button"
 													name="currentPage">
-													<span th:text="${loop}">cc</span> aa </span>
+													<span th:text="${loop}">az</span>
 												</button>
-											</div>
-
-											<div th:case="*">
+											</c:when>
+											<c:otherwise>
 												<button class="paging-item" type="button" id="phantrangid"
 													name="currentPage">
-													<span th:text="${loop}">cc</span> cc </span>
+													<span th:text="${loop}">cc</span>
 												</button>
-											</div>
+											</c:otherwise>
 
-										</div>
+										</c:choose>
+									</th:block>
+								</div>
+							</nav> -->
+
+
+							<!-- ////////////////////////////// -->
+
+
+							<!-- <nav aria-label="Page navigation example">
+								<div id="pagination">
+
+									<div class="col-sm-1">
+										<span th:each="i: ${#numbers.sequence(1, totalPage )}">
+											<a th:if="${i != 1}" th:href="@{'/topic/page/' + ${i}}">[[${i}]]</a>
+
+
+											<span th:unless="${i != 1}">[[${i}]] </span> &nbsp; &nbsp;
+										</span>
+									</div>
+
+								</div>
+							</nav> -->
+
+							<!-- //////////////// test -->
+
+							<nav aria-label="Page navigation example">
+								<div id="pagination">
+									<th:block th:each="i: ${#numbers.sequence(1, totalPage )}">
+										<button th:if="${i != 1}" class="paging-item active"
+											type="button" name="currentPage">[[${i}]]</button>
+
+										<button th:unless="${i != 1}" class="paging-item"
+											type="button" id="phantrangid" name="currentPage">[[${i}]]</button>
 
 									</th:block>
 								</div>
 							</nav>
+
+
 
 
 						</div>
@@ -444,6 +481,68 @@
 					});
 		}
 	</script>
+
+	<!-- Phân trang Ajx -->
+
+
+
+	<script type="text/javascript">
+		$(document)
+				.ready(
+						function() {
+							$(".paging-item")
+									.click(
+											function() {
+												/* 	var value = $(this).val(); */
+												var sotrang = $(this).text();
+												var spbatdau = (sotrang - 1) * 12;
+												var result = "";
+												console.log(sotrang);
+
+												$
+														.ajax({
+															type : "GET",
+															url : "shops",
+															data : {
+																'currentPage' : sotrang
+															},
+															dataType : "json",
+
+															success : function(
+																	msg) {
+																for (var i = 0; i < msg.length; i++) {
+																	result += '<div class="col-md-4 col-sm-6" >'
+																	result += '<a href="/single_product/'
+																			+ msg[i].maSach
+																			+ '"class="single-banner-image-wrapper"><img alt="" src = "'+msg[i].hinhAnh+'"/></a>'
+																	result += '<div class="banner-bottom text-center"'
+																			+ '<div class="banner-bottom-title" style="height: 40px">'
+																			+ '<a href="">'
+																			+ msg[i].tenSach
+																			+ ' </a>'
+																			+ '</div>'
+																			+ '</div>'
+																			+ '</div>'
+
+																}
+																console
+																		.log("Mess laf: "
+																				+ result);
+																/*	$("#search").html(result);*/
+																/* Tên trùng vs id chỗ để hiển thị ra dao diện: resuilts  */
+																$("#resuilts")
+																		.html(
+																				result);
+															}
+														});
+											});
+						});
+	</script>
+
+
+
+
+
 
 
 

@@ -8,6 +8,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -28,6 +29,7 @@ import com.ht.WebUtils;
 import com.ht.entities.Sach;
 import com.ht.service.BookService;
 import com.ht.service.CategoryService;
+import com.ht.service.PageService;
 
 //
 
@@ -46,6 +48,8 @@ public class MainController {
 	private BookService book;
 	@Autowired
 	private CategoryService category;
+	@Autowired
+	private PageService pageService;
 
 //	@GetMapping(value = { "/", "/index" })
 //	public String homePage(Model model) {
@@ -67,24 +71,75 @@ public class MainController {
 		return mav;
 	}
 
-	@RequestMapping("/shop")
-	public ModelAndView shop(ModelMap model) {
-		ModelAndView mav = new ModelAndView("shop");
+//	@RequestMapping("/shop")
+//	public ModelAndView shop(ModelMap model) {
+//		ModelAndView mav = new ModelAndView("shop");
+//
+//		model.addAttribute("listbook", book.findAll());
+//		model.addAttribute("listcategory", category.findAll());
+//
+//		return mav;
+//	}
+//	------------------------------------------------------------
 
-		model.addAttribute("listbook", book.findAll());
-		model.addAttribute("listcategory", category.findAll());
+//	@RequestMapping("/shops")
+////	@ResponseBody
+//	public ModelAndView viewPhanTrang2(Model model, @RequestParam int currentPage) {
+//		ModelAndView mav = new ModelAndView("shop");
+//
+//		Page<Sach> page = pageService.listAll(currentPage);
+////		long totalItems = page.getTotalElements();
+////		int totalPage = page.getTotalPages();
+//		List<Sach> listSach = page.getContent();
+//		model.addAttribute("listbook", listSach);
+////		model.addAttribute("totalItems", totalItems);
+////		model.addAttribute("currentPage", currentPage);
+////		model.addAttribute("totalPage", totalPage);
+////		model.addAttribute("listAllBooks", listSach);
+////		model.addAttribute("listcategory", category.findAll());
+//		return mav;
+//	}
 
-		return mav;
-	}
+//	@RequestMapping("/shop")
+//	public String viewPhanTrang(ModelMap model) {
+//		int currentPage = 1;
+//		Page<Sach> page = pageService.listAll(currentPage);
+//		List<Sach> listSach = page.getContent();
+//		int totalPage = page.getTotalPages();
+//		model.addAttribute("totalPage", totalPage);
+////		model.addAttribute("listbook", bookService.findAll());
+////		model.addAttribute("listSach", listSach);
+//		model.addAttribute("listbook", listSach);
+////		model.addAttribute("listcategory", category.findAll());
+//		return "shop";
+//	}
 
-	@RequestMapping(value = "/shop/{id}", method = RequestMethod.GET)
-	public ModelAndView shop(Model model, @PathVariable(value = "id") int id) {
-		ModelAndView mav = new ModelAndView("shop");
-		model.addAttribute("listbook", book.findByCategory(id));
-		model.addAttribute("listcategory", category.findAll());
+//	@RequestMapping("/shop")
+//	public ModelAndView viewPhanTrang(ModelMap model) {
+//		ModelAndView mav = new ModelAndView("shop");
+//		int currentPage = 1;
+//		Page<Sach> page = pageService.listAll(currentPage);
+//		List<Sach> listSach = page.getContent();
+//		int totalPage = page.getTotalPages();
+//		model.addAttribute("totalPage", totalPage);
+////		model.addAttribute("listbook", bookService.findAll());
+////		model.addAttribute("listSach", listSach);
+//		model.addAttribute("listbook", listSach);
+////		model.addAttribute("listcategory", category.findAll());
+//		return mav;
+//	}
 
-		return mav;
-	}
+//	------------------------------------------------------------
+
+//	Tú mới cmment 06/06
+//	@RequestMapping(value = "/shop/{id}", method = RequestMethod.GET)
+//	public ModelAndView shop(Model model, @PathVariable(value = "id") int id) {
+//		ModelAndView mav = new ModelAndView("shop");
+//		model.addAttribute("listbook", book.findByCategory(id));
+//		model.addAttribute("listcategory", category.findAll());
+//
+//		return mav;
+//	}
 
 //	
 
