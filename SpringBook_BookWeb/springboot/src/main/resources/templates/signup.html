@@ -5,26 +5,26 @@
 <title>Insert title here</title>
 </head>
 <body>
-	
-	<!-- NƠI GẮN LINK VÀO -->
+
+	<!-- NÆ I Gáº®N LINK VÃO -->
 	<div th:insert="~{link :: links}"></div>
 	<!-- Add your site or application content here -->
 	<!--Header Area Start-->
-	<!-- NƠI GẮN HEADER -->
+	<!-- NÆ I Gáº®N HEADER -->
 	<div th:insert="~{header :: header_in}"></div>
 	<!-- Mobile Menu End -->
-   
-  
-<!-- Breadcrumbs Area Start -->
+
+
+	<!-- Breadcrumbs Area Start -->
 	<div class="breadcrumbs-area">
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12">
 					<div class="breadcrumbs">
-						<h2>Đăng kí</h2>
+						<h2>ÄÄng kÃ­</h2>
 						<ul class="breadcrumbs-list">
-							<li><a title="Return to Home" href="/">Trang chủ</a></li>
-							<li>Đăng kí</li>
+							<li><a title="Return to Home" href="/">Trang chá»§</a></li>
+							<li>ÄÄng kÃ­</li>
 						</ul>
 					</div>
 				</div>
@@ -34,22 +34,17 @@
 	<!-- Breadcrumbs Area Start -->
 
 
-    
-    <!-- Loging Area Start -->
-    <div class="login-account section-padding">
-      <div class="container">
-        <div
-          class="row"
-          style="display: flex; align-items: center; justify-content: center;"
-        >
-          <div class="col-md-6 col-sm-6">
-            <form
-              name="signupForm"
-              action=""
-              class="create-account-form"
-              method="post"
-            >
-              <!-- <% ArrayList<String> listMsg = null;
+
+	<!-- Loging Area Start -->
+	<div class="login-account section-padding">
+		<div class="container">
+			<div class="row"
+				style="display: flex; align-items: center; justify-content: center;">
+				<div class="col-md-6 col-sm-6">
+					<form name="form1" id="form1" th:action="@{/signup}"
+						th:object="${user}" class="create-account-form" method="post"
+						onsubmit="matchpass()">
+						<!-- <% ArrayList<String> listMsg = null;
                             if((listMsg = (ArrayList<String>) request.getAttribute("listMsg"))!=null){
                             for (int i = 0; i < listMsg.size(); i++) {%>
                           <h3 style="color: red"><%=listMsg.get(i)%></h3>
@@ -58,59 +53,118 @@
                             }
                         %> -->
 
-              <h2 class="heading-title">
-                Tạo tài khoản mới
-              </h2>
-              <p id="result"></p>
-              <p class="form-row">
-                <input
-                  style="outline: none;"
-                  onfocusout="display()"
-                  type="email"
-                  name="email"
-                  placeholder="Địa chỉ email"
-                />
-              </p>
-              <p class="form-row">
-                <input
-                  style="outline: none;"
-                  type="password"
-                  name="password"
-                  placeholder="Mật khẩu"
-                />
-              </p>
-              <p class="form-row">
-                <input
-                  style="outline: none;"
-                  type="password"
-                  name="cfpassword"
-                  placeholder="Nhập lại mật khẩu"
-                />
-              </p>
-              <div class="submit">
-                <button
-                  name="submitcreate"
-                  id="submitcreate"
-                  type="submit"
-                  class="btn-default"
-                >
-                  <span>
-                    <i class="fa fa-user left"></i>
-                    Đăng kí
-                  </span>
-                </button>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- Loging Area End -->
-    <!-- Footer Area Start -->
- <!-- Footer Area Start -->
-	
-		<!-- Footer Area Start -->
-	<!-- NƠI GẮN FOOTER -->
+						<h2 class="heading-title">Táº¡o tÃ i khoáº£n má»i</h2>
+						<p id="result"></p>
+						<p class="form-row">
+							*User Name: <input style="outline: none;" type="email"
+								name="email" id="email" size="40"
+								placeholder="Äá»a chá» email" th:field="*{username}" required>
+						<div id="error-name" class="error"></div>
+						<p th:if="${#fields.hasErrors('username')}"
+							th:errors="*{username}"></p>
+
+						</p>
+
+						<p class="form-row">
+							*Email: <input style="outline: none;" type="text"
+								placeholder="UserName" th:field="*{email}" required>
+						</p>
+
+						<p class="form-row">
+							*Password: <input style="outline: none;" type="password"
+								name="password" placeholder="Máº­t kháº©u" id="txtPassword"
+								th:field="*{password}" pattern=".{6,}"
+								title="8 characters minimum" required />
+						</p>
+
+						<p class="form-row">
+							*RePassword: <input style="outline: none;" type="password"
+								name="cfpassword" placeholder="Nháº­p láº¡i máº­t kháº©u"
+								id="txtConfirmPassword" required />
+						</p>
+
+
+						Gender: <select name="gender" class="form-control">
+							<option value="Nam">Nam</option>
+							<option value="Nữ">Nu</option>
+							<option value="Khác">Khac</option>
+
+						</select></br>
+						<p class="form-row">
+							Date Of Birtth: <input name="dateOfBirth" type="datetime"
+								class="form-control" />
+						</p>
+						<p class="form-row">
+							Phone: <input th:field="*{phone}" Class="form-control" />
+						</p>
+						<p class="form-row">
+							Address: <input th:field="*{address}" Class="form-control" />
+						<div id="error-address" class="error"></div>
+						<p th:if="${#fields.hasErrors('address')}" th:errors="*{address}"></p>
+						</p>
+
+
+
+						<div class="submit">
+							<button name="submitcreate" id="submitcreate" type="submit"
+								class="btn-default" value="Submit" onclick="return Validate()" />
+							<span> <i class="fa fa-user left"></i> Lưu
+							</span>
+							</button>
+
+							<button name="submitcreate" id="submitcreate" type="submit"
+								class="btn-default" style="color: red;">
+								<span> <i class="fa fa-user left"></i> Hủy
+								</span>
+							</button>
+
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<!-- 	/**Chức năng nhập lại pass  + nhập đúng form email dùng Java Script*/ -->
+
+	<script type="text/javascript">
+		function Validate() {
+			var password = document.getElementById("txtPassword").value;
+			var confirmPassword = document.getElementById("txtConfirmPassword").value;
+
+			var email = document.getElementById('email');
+			var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+
+			if (!filter.test(email.value)) {
+				alert('Hay nhap dia chi email hop le.\nExample@gmail.com');
+				email.focus;
+				return false;
+			}
+			if (password != confirmPassword) {
+				alert("Passwords do not match.");
+				return false;
+			}
+
+			return true;
+			alert('OK roi day, Email nay hop le.');
+			alert('OK roi day, Email nay hop le.');
+		}
+	</script>
+
+
+
+
+
+
+
+
+	<!-- Loging Area End -->
+	<!-- Footer Area Start -->
+	<!-- Footer Area Start -->
+
+	<!-- Footer Area Start -->
+	<!-- NÆ I Gáº®N FOOTER -->
 	<div th:insert="~{footer :: footer_in}"></div>
-  </body>
+</body>
 </html>

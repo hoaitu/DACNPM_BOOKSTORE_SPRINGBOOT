@@ -28,14 +28,6 @@ public class PagingController {
 	@Autowired
 	private BookService bookService;
 
-	@RequestMapping(value = "/shop/{id}", method = RequestMethod.GET)
-	public ModelAndView shop(Model model, @PathVariable(value = "id") int id) {
-		ModelAndView mav = new ModelAndView("home/shop");
-		model.addAttribute("listcategory", category.findAll());
-		model.addAttribute("listSach", bookService.findByCategory(id));
-		return mav;
-	}
-
 	@RequestMapping("/shops")
 	@ResponseBody
 	public List<Sach> viewPhanTrang2(Model model, @RequestParam int currentPage) {

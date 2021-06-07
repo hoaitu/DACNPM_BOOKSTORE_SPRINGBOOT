@@ -94,7 +94,7 @@ public class User implements java.io.Serializable {
 		this.idUser = idUser;
 	}
 
-	@NotBlank(message = "must not be null")
+//	@NotBlank(message = "must not be null")
 	@Column(name = "email", nullable = false)
 	public String getEmail() {
 		return this.email;
@@ -134,7 +134,7 @@ public class User implements java.io.Serializable {
 		this.phone = phone;
 	}
 
-	@NotBlank(message = "must not be null")
+//	@NotBlank(message = "must not be null")
 	@Column(name = "gender")
 	public String getGender() {
 		return gender;
@@ -153,7 +153,7 @@ public class User implements java.io.Serializable {
 		this.dateOfBirth = dateOfBirth;
 	}
 
-	@NotBlank(message = "must not be null")
+//	@NotBlank(message = "must not be null")
 	@Column(name = "address")
 	public String getAddress() {
 		return address;
@@ -190,7 +190,7 @@ public class User implements java.io.Serializable {
 		this.code = code;
 	}
 
-	@NotBlank(message = "must not be null")
+//	@NotBlank(message = "must not be null")
 	@Column(name = "request")
 	public String getRequest() {
 		return request;
