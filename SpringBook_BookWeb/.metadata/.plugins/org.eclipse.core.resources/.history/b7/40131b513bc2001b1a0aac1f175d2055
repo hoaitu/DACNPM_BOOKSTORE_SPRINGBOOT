@@ -1,8 +1,0 @@
-package com.ht.repository;
-
-import org.springframework.stereotype.Repository;
-
-@Repository
-public class BookRepository extends JpaRepository <Sa> {
-
-}

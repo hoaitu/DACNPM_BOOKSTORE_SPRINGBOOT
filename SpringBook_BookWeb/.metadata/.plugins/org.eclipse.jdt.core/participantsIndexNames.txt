@@ -1,5 +1,0 @@
-INDEX VERSION 1.131
-F:\HoaiTu\Downloads\PRJ_FINAL_CNPM\SpringBook_BookWeb\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3269773193.index
-\springboot\src\main\java
-F:\HoaiTu\Downloads\PRJ_FINAL_CNPM\SpringBook_BookWeb\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\4110848974.index
-\springboot\src\main\java

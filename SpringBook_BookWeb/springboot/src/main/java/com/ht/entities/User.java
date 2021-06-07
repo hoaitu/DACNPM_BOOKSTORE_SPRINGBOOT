@@ -19,8 +19,8 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
 import org.springframework.format.annotation.DateTimeFormat;
-//import org.springframework.security.core.GrantedAuthority;
-//import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
 //import com.bookstore.validator.Emails;
 //import com.bookstore.validator.Phone;
@@ -94,7 +94,7 @@ public class User implements java.io.Serializable {
 		this.idUser = idUser;
 	}
 
-	@NotBlank(message = "must not be null")
+//	@NotBlank(message = "must not be null")
 	@Column(name = "email", nullable = false)
 	public String getEmail() {
 		return this.email;
@@ -134,7 +134,7 @@ public class User implements java.io.Serializable {
 		this.phone = phone;
 	}
 
-	@NotBlank(message = "must not be null")
+//	@NotBlank(message = "must not be null")
 	@Column(name = "gender")
 	public String getGender() {
 		return gender;
@@ -153,7 +153,7 @@ public class User implements java.io.Serializable {
 		this.dateOfBirth = dateOfBirth;
 	}
 
-	@NotBlank(message = "must not be null")
+//	@NotBlank(message = "must not be null")
 	@Column(name = "address")
 	public String getAddress() {
 		return address;
@@ -190,7 +190,7 @@ public class User implements java.io.Serializable {
 		this.code = code;
 	}
 
-	@NotBlank(message = "must not be null")
+//	@NotBlank(message = "must not be null")
 	@Column(name = "request")
 	public String getRequest() {
 		return request;
@@ -245,16 +245,16 @@ public class User implements java.io.Serializable {
 		this.usersRoleses = usersRoleses;
 	}
 
-//	@Transient
-//	public List<GrantedAuthority> getAuthorities() {
-//		List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
-//		for (UsersRoles usersRoles : this.usersRoleses) {
-//			authorities.add(new SimpleGrantedAuthority(usersRoles.getRole().getName()));
-//		}
-//		return authorities;
-//	}
+	@Transient
+	public List<GrantedAuthority> getAuthorities() {
+		List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
+		for (UsersRoles usersRoles : this.usersRoleses) {
+			authorities.add(new SimpleGrantedAuthority(usersRoles.getRole().getName()));
+		}
+		return authorities;
+	}
 
-//	@Transient
+//	@appUserTransient
 //	public List<GrantedAuthority> getAuthorities() {
 //		List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
 ////		getRole ==getCode
