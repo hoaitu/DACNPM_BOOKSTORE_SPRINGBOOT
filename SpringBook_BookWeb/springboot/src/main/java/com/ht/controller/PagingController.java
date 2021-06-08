@@ -28,6 +28,7 @@ public class PagingController {
 	@Autowired
 	private BookService bookService;
 
+<<<<<<< HEAD
 //	@RequestMapping(value = "/shop/{id}", method = RequestMethod.GET)
 //	public ModelAndView shop(Model model, @PathVariable(value = "id") int id) {
 //		ModelAndView mav = new ModelAndView("home/shop");
@@ -36,6 +37,8 @@ public class PagingController {
 //		return mav;
 //	}
 
+=======
+>>>>>>> origin/htu
 	@RequestMapping("/shops")
 	@ResponseBody
 	public List<Sach> viewPhanTrang2(Model model, @RequestParam int currentPage) {

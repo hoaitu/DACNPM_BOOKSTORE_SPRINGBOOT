@@ -20,8 +20,12 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
 	User findByUsernameAndPassword(String username, String password);
 
+<<<<<<< HEAD
 //	User findByUsername(String username);
 	@Query(value = "Select u From User u where u.idUser =:ids")
 	public abstract User findByUser(@Param("ids") long id);
+=======
+	User findByUsername(String username);
+>>>>>>> origin/htu
 
 }
