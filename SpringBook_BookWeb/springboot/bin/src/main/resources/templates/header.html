@@ -47,8 +47,8 @@
 					<div class="mainmenu text-center">
 						<nav>
 							<ul id="nav">
-								<li><a th:href="@{/shop/}">SÁCH</a></li>
-								<li><a th:href="@{/shop/}">KHUYẾN MÃI</a></li>
+								<li><a th:href="@{/shop}">SÁCH</a></li>
+								<li><a th:href="@{/shop}">KHUYẾN MÃI</a></li>
 								<li><a href="#footer">LIÊN HỆ</a></li>
 							</ul>
 						</nav>
@@ -105,10 +105,28 @@
 
 
 										<div class="user-item">
+
+
+
+
+
 											<div class="sign-in"
 												th:if="${#request.userPrincipal != null}">
 												<i class="fas fa-user-plus"></i> <a th:href="@{/logout}">Logout
 												</a>
+
+
+												<!-- <form name='logout' th:action="@{/logout}" method='POST'>
+													<input type="hidden" name="${_csrf.parameterName}"
+														value="${_csrf.token}" /> 
+														
+														<input id="submitcreate"
+														type="submit" value="Logout" name="submit" />
+												</form> -->
+
+
+												<!-- <a th:href="@{/logout}">Logout
+												</a> -->
 												<!-- th:if="${#request.userPrincipal != null}" -->
 											</div>
 										</div>

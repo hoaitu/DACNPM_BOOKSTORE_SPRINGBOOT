@@ -26,14 +26,14 @@
 								<div class="sub-user">
 									<div class="user-item">
 										<div class="sign-in">
-											<i class="fas fa-user-plus"></i> <a th:href="@{/signup}">ÄÄng
-												kÃ½</a>
+											<i class="fas fa-user-plus"></i> <a th:href="@{/signup}">Đăng
+												ký</a>
 										</div>
 									</div>
 									<div class="user-item">
 										<div class="sign-in">
-											<i class="fas fa-sign-in-alt"></i> <a th:href="@{/login}">ÄÄng
-												nháº­p</a>
+											<i class="fas fa-sign-in-alt"></i> <a th:href="@{/login}">Đăng
+												nhập</a>
 										</div>
 									</div>
 								</div></li>
@@ -49,7 +49,7 @@
 							<ul id="nav">
 								<li><a th:href="@{/shop}">SÁCH</a></li>
 								<li><a th:href="@{/shop}">KHUYẾN MÃI</a></li>
-								<li><a href="#footer">LIÊN HỆ</a></li>
+								<li><a href="#footer">LIÊN HỆ</a></li>
 							</ul>
 						</nav>
 					</div>
@@ -62,7 +62,7 @@
 							</a> <!-- ============================================ -->
 
 								<div class="sub-user">
-									<!-- KHI CHƯA ĐĂNG NHẬP VÀO -->
+									<!-- KHI CHÆ¯A ÄÄNG NHáº¬P VÃO -->
 									<div th:if="${#request.userPrincipal==null}">
 
 										<div class="user-item">
@@ -86,7 +86,7 @@
 
 									<!-- <div class="sub-user"> -->
 
-									<!-- KHI ĐÃ ĐĂNG NHẬP VÀO NHẬN ĐC USERNAME -->
+									<!-- KHI ÄÃ ÄÄNG NHáº¬P VÃO NHáº¬N ÄC USERNAME -->
 									<div th:if="${#request.userPrincipal !=null}">
 
 										<div class="user-item">
@@ -135,8 +135,10 @@
 
 							</li>
 
-							<li class="shoping-cart"><a href="cart"> <i
-									class="flaticon-shop"></i>
+							<li class="shoping-cart"><a th:href="@{shopping_cart}">
+									<span style="color: white-space;"></span> <i
+									class="flaticon-shop" th:text="${session.myCartNum}"></i>
+
 							</a></li>
 						</ul>
 					</div>
@@ -157,9 +159,9 @@
 					<div class="mobile-menu">
 						<nav id="dropdown">
 							<ul>
-								<li><a th:href="@{/shop/}">SÃCH</a></li>
-								<li><a th:href="@{/shop/} ">KHUYáº¾N MÃI</a></li>
-								<li><a href="#footer">LIÃN Há»Â</a></li>
+								<li><a th:href="@{/shop/}">SÁCH</a></li>
+								<li><a th:href="@{/shop/} ">KHUYẾN MÃI</a></li>
+								<li><a href="#footer">LIÊN HỆ</a></li>
 							</ul>
 						</nav>
 					</div>

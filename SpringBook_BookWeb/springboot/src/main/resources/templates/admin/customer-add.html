@@ -1,0 +1,121 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="utf-8">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<title>Dashboard V.1 | Nalika - Material Admin Template</title>
+<meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- favicon
+		============================================ -->
+
+</head>
+<style>
+h3 {
+	color: white;
+}
+</style>
+<body>
+	<!-- NƠI GẮN LINK VÀO -->
+	<div th:insert="~{admin/linkAdm :: links_admin}"></div>
+	<!--[if lt IE 8]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+
+
+
+	<div th:insert="~{admin/header :: header_admin}"></div>
+
+	<div class="all-content-wrapper">
+
+		<!-- Single pro tab start-->
+		<div class="single-product-tab-area mg-b-30">
+			<!-- Single pro tab review Start-->
+			<div class="single-pro-review-area">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+							<div class="review-tab-pro-inner">
+								<ul id="myTab3" class="tab-review-design">
+									<li class="active"><a href="#description"><i
+											class="icon nalika-edit" aria-hidden="true"></i> Thêm người
+											dùng</a></li>
+								</ul>
+								<div id="myTabContent" class="tab-content custom-product-edit">
+									<div class="product-tab-list tab-pane fade active in"
+										id="description">
+										<div class="row">
+
+											<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+												<!-- <form:form action="addUser" method="POST"
+													modelAttribute="user" onsubmit="return matchpass()"> -->
+												<form action="" method="POST" th:object="${user}">
+													* Username: <input th:field="*{email}" class="form-control" />
+													<!-- <form:errors path="email" cssClass="error" /> -->
+													<br /> * Địa chỉ Email: <input th:field="*{username}"
+														class="form-control" />
+													<!-- 	<form:errors path="username" cssClass="error" /> -->
+													<br /> * Mật khẩu: <input type="password"
+														th:field="*{password}" class="form-control" />
+													<!-- <form:errors path="password" cssClass="error" /> -->
+													<br /> * Nhập lại mật khẩu: <input type="password"
+														th:field="*{request}" class="form-control" />
+													<!-- <form:errors path="request" cssClass="error" /> -->
+													<span id="sessages" style="color: red;"></span> <br /> *
+													Giới tính: <select th:field="*{gender}"
+														class="form-control">
+														<option value="Nam">Nam</option>
+														<option value="Nữ">Nu</option>
+														<option value="Khác">Khac</option>
+
+													</select>
+													<!-- <form:errors path="gender" cssClass="error" /> -->
+													<br /> * Ngày sinh: <input th:field="*{dateOfBirth}"
+														type="datetime" class="form-control" />
+													<!-- <form:errors path="dateOfBirth" cssClass="error" /> -->
+													<br /> * Số điện thoại: <input th:field="*{phone}"
+														class="form-control" />
+													<!-- 	<form:errors path="phone" cssClass="error" /> -->
+													<br /> * Địa chỉ: <input th:field="*{address}"
+														class="form-control" />
+													<!-- 	<form:errors path="address" cssClass="error" /> -->
+													<br />
+
+													<button type="submit">Lưu</button>
+													<button type="reset">Huỷ bỏ</button>
+												</form>
+											</div>
+										</div>
+									</div>
+
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--FOOTER -->
+	<script type="text/javascript">
+		function matchpass() {
+			var firstpassword = document.form1.password.value;
+			var secondpassword = document.form1.request.value;
+
+			if (firstpassword == secondpassword) {
+				return true;
+			} else {
+				document.getElementById("sessages").innerHTML = "password must be same!";
+
+				return false;
+			}
+		}
+	</script>
+
+	<!-- END FOOTER -->
+	<div th:insert="~{admin/footer :: footer_admin}"></div>
+
+</body>
+</html>

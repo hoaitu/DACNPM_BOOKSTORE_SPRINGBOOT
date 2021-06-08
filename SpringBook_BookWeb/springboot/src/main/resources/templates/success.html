@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="x-ua-compatible" content="ie=edge" />
+<title>Home One || Witter Multipage Responsive Template</title>
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<!-- Mọi link bootrap.... -->
+
+</head>
+<body>
+	<!-- NƠI GẮN LINK VÀO -->
+	<div th:insert="~{link :: links}"></div>
+	<!-- Add your site or application content here -->
+	<!--Header Area Start-->
+	<!-- NƠI GẮN HEADER -->
+	<div th:insert="~{header :: header_in}"></div>
+	<!-- Mobile Menu End -->
+	<!-- Mobile Menu Start -->
+
+	<!-- Start Welcome area -->
+	<div class="all-content-wrapper">
+
+
+
+		<h2 style="color: red;">THANH TOÁN THÀNH CÔNG</h2>
+		<a th:href="@{/shop}"><button>Tiếp tục mua hàng</button></a>
+		<!-- Footer Area Start -->
+		<!-- NƠI GẮN FOOTER -->
+		<div th:insert="~{footer :: footer_in}"></div>
+</body>
+
+</html>

@@ -23,121 +23,109 @@
 	<div th:insert="~{admin/header :: header_admin}"></div>
 
 
-	<!-- Start Welcome area -->
-	<div class="all-content-wrapper">
-		<div class="container-fluid">
-			<div class="row">
-				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-					<div class="logo-pro">
-						<a href="index.html"><img class="main-logo"
-							th:src="@{resource/admin/img/logo/logo.png}" alt="" /></a>
+
+	<!-- Mobile Menu start -->
+
+	<div class="all-content-wrapper product-status mg-b-30">
+		<div class="row">
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+				<div class="product-status-wrap">
+					<h4>Products List</h4>
+
+					<div class="add-product">
+						<a th:href="@{/admin/productAdd/}">Thêm sản phẩm </a>
 					</div>
-				</div>
-			</div>
-		</div>
-		<div class="header-advance-area">
+					<table>
+						<tbody>
 
-			<div class="header-top-area">
-				<div class="container-fluid">
-					<div class="row">
-						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-							<div class="header-top-wraper">
-								<div class="row">
-									<div class="col-lg-1 col-md-0 col-sm-1 col-xs-12">
-										<div class="menu-switcher-pro">
-											<button type="button" id="sidebarCollapse"
-												class="btn bar-button-pro header-drl-controller-btn btn-info navbar-btn">
-												<i class="icon nalika-menu-task"></i>
-											</button>
-										</div>
-									</div>
-									<div class="col-lg-6 col-md-7 col-sm-6 col-xs-12">
-										<div class="header-top-menu tabl-d-n hd-search-rp">
-											<div class="breadcome-heading">
-												<form role="search" class="">
-													<input type="text" placeholder="Search..."
-														class="form-control"> <a href=""><i
-														class="fa fa-search"></i></a>
-												</form>
-											</div>
-										</div>
-									</div>
+							<tr>
+								<th>Hình ảnh</th>
+								<th>Tên</th>
+								<!-- <th>Trạng thái</th> -->
+								<th>Tác giả</th>
+								<th>Giá giảm</th>
+								<th>Ngày xuất bản</th>
+								<th>Loại</th>
+								<th>Thao tác</th>
+							</tr>
+							<div th:each="book : ${listbook}">
+								<!-- <c:forEach items="${listAllBooks }" var="books"> -->
+								<tr>
+									<td><a th:href="@{/single_product}"
+										class="single-banner-image-wrapper"> <img alt=""
+											th:src="@{${book.hinhAnh}}" />
+									</a></td>
+									<td><p th:text="${book.tenSach}"></p></td>
+									<!-- <td>
+										<button class="pd-setting"
+											style="background-color: red; color: white">hết</button>
 
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<!-- Mobile Menu start -->
-
-			<div class="product-status mg-b-30">
-				<div class="container-fluid">
-					<div class="row">
-						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-							<div class="product-status-wrap">
-								<h4>Danh sách sản phẩm</h4>
-								<div class="add-product">
-									<a th:href="@{/admin/add}">Thêm</a>
-								</div>
-								<table>
-									<tr>
-										<th>Image</th>
-										<th>Product Title</th>
-										<th>Status</th>
-										<th>Purchases</th>
-										<th>Product sales</th>
-										<th>Stock</th>
-										<th>Price</th>
-										<th>Setting</th>
-									</tr>
-									<tr>
-										<td><img
-											th:src="@{/resource/admin/img/new-product/5-small.jpg}"
-											alt="" /></td>
-										<td>Product Title 1</td>
-										<td>
-											<button class="pd-setting">Active</button>
-										</td>
-										<td>50</td>
-										<td>$750</td>
-										<td>Out Of Stock</td>
-										<td>$15</td>
-										<td>
-											<button data-toggle="tooltip" title="Edit"
-												class="pd-setting-ed">
+									</td> -->
+									<td><p th:text="${book.tenTacGia }"></p></td>
+									<td><p th:text="${book.gia }"></p> <span>.000 VNĐ</span></td>
+									<td><p th:text="${book.ngayXuatBan }"></p></td>
+									<td><p th:text="${book.theloaisach }">
+											<!-- <c:if test="${books.theloaisach == 1}">
+											<p>Tiểu Thuyết</p>
+										</c:if> <c:if test="${books.theloaisach == 2}">
+											<p>Truyện Dài</p>
+										</c:if> <c:if test="${books.theloaisach == 3}">
+											<p>Truyện Ngắn</p>
+										</c:if> <c:if test="${books.theloaisach == 4}">
+											<p>Truyện Thiếu Nhi</p>
+										</c:if> --></td>
+									<td><a th:href="@{/admin/productEdit/}+${book.maSach}"><button
+												data-toggle="tooltip" title="Edit" class="pd-setting-ed">
 												<i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-											</button>
-											<button data-toggle="tooltip" title="Trash"
-												class="pd-setting-ed">
+											</button> </a> <a onclick="return confirm('Bạn có chắc muốn xóa')"
+										th:href="@{/admin/productDelete/}+${book.maSach}"><button
+												data-toggle="tooltip" title="Trash" class="pd-setting-ed">
 												<i class="fa fa-trash-o" aria-hidden="true"></i>
-											</button>
-										</td>
-									</tr>
-
-
-								</table>
-								<div class="custom-pagination">
-									<ul class="pagination">
-										<li class="page-item"><a class="page-link" href="#">Previous</a></li>
-										<li class="page-item"><a class="page-link" href="#">1</a></li>
-										<li class="page-item"><a class="page-link" href="#">2</a></li>
-										<li class="page-item"><a class="page-link" href="#">3</a></li>
-										<li class="page-item"><a class="page-link" href="#">Next</a></li>
-									</ul>
-								</div>
+											</button> </a></td>
+								</tr>
 							</div>
-						</div>
-					</div>
+							<!-- </c:forEach> -->
+						</tbody>
+
+					</table>
+
+
+
+					<!-- <div>&nbsp</div> -->
+					<!-- 	<!-- Phân trang -->
+					<!-- <nav aria-label="Page navigation example">
+						<ul class="pagination">
+							<li class="page-item"><a class="page-link"
+								if="${currentPage >1}"
+								href="<%=request.getContextPath()%>/admin/listProducts/1">First</a></li>
+							<li class="page-item"><a class="page-link"
+								if="${currentPage >1}"
+								href="<%=request.getContextPath()%>/admin/listProducts/${currentPage -1}">Previous</a></li>
+							<c:forEach var="loop" begin="1" end="${totalPage}">
+								<li class="page-item"><a class="page-link"
+									href="<%=request.getContextPath()%>/admin/listProducts/${loop}">
+										<c:out value="${loop}" />
+								</a></li>
+							</c:forEach>
+							<li class="page-item"><a class="page-link"
+								if="${currentPage < totalPage }"
+								href="<%=request.getContextPath()%>/admin/listProducts/${currentPage +1}">Next</a></li>
+							<li class="page-item"><a class="page-link"
+								if="${currentPage < totalPage }"
+								href="<%=request.getContextPath()%>/admin/listProducts/${totalPage}">Last</a></li>
+						</ul>
+					</nav> -->
+
 				</div>
 			</div>
 
-
 		</div>
+	</div>
+
+	</div>
 
 
-
-		<div th:insert="~{admin/footer :: footer_admin}"></div>
+	<div th:insert="~{admin/footer :: footer_admin}"></div>
 </body>
 
 </html>

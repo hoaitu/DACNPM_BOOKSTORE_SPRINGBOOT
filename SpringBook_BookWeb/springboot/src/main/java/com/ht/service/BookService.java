@@ -46,8 +46,31 @@ public class BookService {
 		return bookRepository.findBookName(name);
 	}
 
-//	public Sach detailByName(String name) {
-//		return bookRepository.DetailByName(name);
-//	}
+	/// THEM MOI SACH
+	public void createBook(Sach sach) {
+		bookRepository.saveAndFlush(sach);
+	}
 
+	/// CHINH SUA SACH
+	public void update(Sach sach) {
+		Sach book = bookRepository.findByName(sach.getMaSach());
+		book.setHinhAnh(sach.getHinhAnh());
+		book.setGia(sach.getGia());
+		book.setMoTa(sach.getMoTa());
+		book.setNgayXuatBan(sach.getNgayXuatBan());
+		book.setTenSach(sach.getTenSach());
+		book.setTenTacGia(sach.getTenTacGia());
+		book.setTheloaisach(sach.getTheloaisach());
+		book.setKhuyenMai(sach.getKhuyenMai());
+		book.setSoLuong(sach.getSoLuong());
+		bookRepository.saveAndFlush(book);
+	}
+
+	///// XOA SACH
+	public void delete(long id) {
+		Sach sach = bookRepository.findByName(id);
+		if (sach != null) {
+			bookRepository.delete(sach);
+		}
+	}
 }
