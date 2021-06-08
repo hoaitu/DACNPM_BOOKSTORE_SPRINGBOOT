@@ -7,11 +7,11 @@
 </head>
 <body>
 
-	<!-- NÆ I Gáº®N LINK VÃO -->
+	<!-- NÃÂ I GÃ¡ÂºÂ®N LINK VÃÂO -->
 	<div th:insert="~{link :: links}"></div>
 	<!-- Add your site or application content here -->
 	<!--Header Area Start-->
-	<!-- NÆ I Gáº®N HEADER -->
+	<!-- NÃÂ I GÃ¡ÂºÂ®N HEADER -->
 	<div th:insert="~{header :: header_in}"></div>
 	<!-- Mobile Menu End -->
 
@@ -22,10 +22,10 @@
 			<div class="row">
 				<div class="col-md-12">
 					<div class="breadcrumbs">
-						<h2>SÃ¡ch</h2>
+						<h2>Sách</h2>
 						<ul class="breadcrumbs-list">
-							<li><a title="Return to Home" href="/">Trang chá»§</a></li>
-							<li>SÃ¡ch</li>
+							<li><a title="Return to Home" href="/">Trang chủ</a></li>
+							<li>Sách</li>
 						</ul>
 					</div>
 				</div>
@@ -43,7 +43,7 @@
 					<div class="shop-widget">
 						<div class="shop-widget-top">
 							<aside class="widget widget-categories">
-								<h2 class="sidebar-title text-center">Danh má»¥c</h2>
+								<h2 class="sidebar-title text-center">Danh mục</h2>
 								<div th:each="category : ${listcategory}">
 									<ul class="sidebar-menu">
 
@@ -56,7 +56,7 @@
 								</div>
 							</aside>
 							<aside class="widget shop-filter">
-								<h2 class="sidebar-title text-center">GiÃ¡</h2>
+								<h2 class="sidebar-title text-center">Giá</h2>
 								<div class="info-widget">
 									<div class="price-filter">
 										<div id="slider-range"></div>
@@ -64,7 +64,7 @@
 											<input type="text" id="amount" name="price"
 												placeholder="Add Your Price" />
 											<div class="widget-buttom">
-												<input type="submit" value="TÃ¬m Kiáº¿m" />
+												<input type="submit" value="TÃÂ¬m KiÃ¡ÂºÂ¿m" />
 											</div>
 										</div>
 									</div>
@@ -95,7 +95,7 @@
 
 
 
-							<!-- Tìm kiếm  -->
+							<!-- TÃ¬m kiáº¿m  -->
 							<div class="search-book">
 								<form name="" class="form-inline">
 									<input class="form-control mr-sm-2" type="text" name="tenSach"
@@ -110,7 +110,7 @@
 							</div>
 
 
-							<!-- Final tìm kiếm   -->
+							<!-- Final tÃ¬m kiáº¿m   -->
 
 
 
@@ -135,10 +135,11 @@
 														</a>
 														<div class="product-description">
 															<div class="functional-buttons">
-																<a title="ThÃªm vÃ o giá» hÃ ng" href="#"> <i
-																	class="fa fa-shopping-cart"></i>
-																</a> <a href="#" title="ThÃªm vÃ o danh sÃ¡ch yÃªu thÃ­ch">
-																	<i class="far fa-heart"></i>
+																<a title="Thêm vào giỏ hàng"
+																	th:href="@{/cart/add/}+${book.maSach}"><i
+																	class="fa fa-shopping-cart"></i> </a> <a href="#"
+																	title="Thêm vào danh sách yêu thích"> <i
+																	class="far fa-heart"></i>
 																</a> <a href="#" title="Xem nhanh" data-toggle="modal"
 																	data-target="#productModal1"> <i
 																	class="fas fa-compress-alt"></i>
@@ -161,8 +162,8 @@
 															</a>
 														</div>
 														<div style="color: #32b5f3;" class="price-2">
-															<span th:text="${book.gia}"><span>.000 VNÄ</span>
-															</span> <span style="color: black;" class="old-price">500.000Ä</span>
+															<span th:text="${book.gia}"><span>.000
+																	VNÃÂ</span> </span> <span style="color: black;" class="old-price">500.000ÃÂ</span>
 														</div>
 													</div>
 													<!-- <% } else {%>
@@ -171,7 +172,7 @@
                                                     <a href=<%= Util.fullPath("singleProductController?idProduct=") + listSach.get(i).getMaSach()%>><%=listSach.get(i).getTenSach()%>
                                                     </a>
                                                 </div>
-                                                <div style="color: #32b5f3" class="price-2"><%=listSach.get(i).getGia()%>.000<span>Ä</span>
+                                                <div style="color: #32b5f3" class="price-2"><%=listSach.get(i).getGia()%>.000<span>ÃÂ</span>
                                                 </div>
                                             </div>
                                             <% }%> -->
@@ -213,20 +214,21 @@
 											<div class="col-xs-12 col-sm-7 col-md-8">
 												<div class="deal-product-content">
 													<h4>
-														<a href="single-product.html" title="Book Name"><span
-															th:text="${book.tenSach}"></span></a>
+														<a th:href="@{/single-product/} + ${book.maSach}"
+															title="Book Name"><span th:text="${book.tenSach}"></span></a>
 													</h4>
 													<div class="product-price">
 														<!-- <% if (listSach.get(i).getKhuyenMai() > 0) { %> -->
 														<span class="new-price" th:text="${book.gia}"><span>.000
-																VNÄ</span></span> <span class="old-price">500.000Ä</span>
+														</span></span> <span class="old-price">500.000</span>
 														<!-- <%} else {%>
-                                                <span class="new-price"><%=listSach.get(i).getGia()%>.000Ä</span>
+                                                <span class="new-price"><%=listSach.get(i).getGia()%>.000ÃÂ</span>
                                                 <%}%> -->
 													</div>
-													<p>Hay cá»±c ká»³</p>
+													<p>Hay cÃ¡Â»Â±c kÃ¡Â»Â³</p>
 													<div class="availability">
-														<span><a href="#">Mua Ngay</a></span>
+														<span><a th:href="@{/cart/add/}+${book.maSach}">Mua
+																Ngay</a></span>
 													</div>
 												</div>
 											</div>
@@ -241,7 +243,7 @@
 
 							<div>&nbsp</div>
 
-							<!-- Phân trang -->
+							<!-- PhÃ¢n trang -->
 
 							<!-- <nav aria-label="Page navigation example">
 								<div id="pagination">
@@ -358,7 +360,7 @@
 
 
 
-							<!-- Phân trang -->
+							<!-- PhÃ¢n trang -->
 
 							<!-- <nav aria-label="Page navigation example">
 								<div id="pagination">
@@ -482,7 +484,7 @@
 		}
 	</script>
 
-	<!-- Phân trang Ajx -->
+	<!-- PhÃ¢n trang Ajx -->
 
 
 
@@ -529,7 +531,7 @@
 																		.log("Mess laf: "
 																				+ result);
 																/*	$("#search").html(result);*/
-																/* Tên trùng vs id chỗ để hiển thị ra dao diện: resuilts  */
+																/* TÃªn trÃ¹ng vs id chá» Äá» hiá»n thá» ra dao diá»n: resuilts  */
 																$("#resuilts")
 																		.html(
 																				result);
@@ -546,7 +548,7 @@
 
 
 
-	<!-- NÆ I Gáº®N FOOTER -->
+	<!-- NÃÂ I GÃ¡ÂºÂ®N FOOTER -->
 	<div th:insert="~{footer :: footer_in}"></div>
 </body>
 </html>

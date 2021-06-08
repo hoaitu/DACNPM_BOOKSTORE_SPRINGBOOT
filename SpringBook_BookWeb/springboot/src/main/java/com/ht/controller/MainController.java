@@ -57,26 +57,12 @@ public class MainController {
 	@Autowired
 	private UserService userService;
 
-//	@GetMapping(value = { "/", "/index" })
-//	public String homePage(Model model) {
-//		return "index2";
-//	}
-
-//	@RequestMapping(value = { "/", "/index" }, method = RequestMethod.GET)
-//	public String index(Model model) {
-//
-////        model.addAttribute("message", message);
-//
-//		return "index";
-//	}
-
 	@RequestMapping("/")
 	public ModelAndView home(ModelMap model) {
 		ModelAndView mav = new ModelAndView("index");
 
 		return mav;
 	}
-
 
 //	------------------------------------------------------------
 
@@ -86,7 +72,6 @@ public class MainController {
 		ModelAndView mav = new ModelAndView("shop");
 		model.addAttribute("listbook", book.findByCategory(id));
 		model.addAttribute("listcategory", category.findAll());
-
 		return mav;
 	}
 
@@ -118,25 +103,12 @@ public class MainController {
 		return mav;
 	}
 
-//	@RequestMapping(value = "/logout", method = RequestMethod.GET)
-//	public ModelAndView logout(ModelMap model) {
-//		ModelAndView mav = new ModelAndView("index");
-//
-//		return mav;
-//	}
+	@RequestMapping("/signup")
+	public ModelAndView signup(ModelMap model) {
+		ModelAndView mav = new ModelAndView("signup");
 
-//	@RequestMapping(value = "/login", method = RequestMethod.GET)
-//    public String loginPage(Model model) {
-// 
-//        return "login";
-//    }
-
-//	@RequestMapping("/signup")
-//	public ModelAndView signup(ModelMap model) {
-//		ModelAndView mav = new ModelAndView("signup");
-//
-//		return mav;
-//	}
+		return mav;
+	}
 
 	@RequestMapping("/single-product/{ids}")
 	public ModelAndView single_product(Model model, @PathVariable(value = "ids") int ids) {
@@ -160,16 +132,9 @@ public class MainController {
 		return mav;
 	}
 
-	@RequestMapping(value = "/cart", method = RequestMethod.GET)
+	@RequestMapping("/shopping_cart")
 	public ModelAndView cart(ModelMap model) {
 		ModelAndView mav = new ModelAndView("cart");
-
-		return mav;
-	}
-
-	@RequestMapping("/checkout")
-	public ModelAndView checkout(ModelMap model) {
-		ModelAndView mav = new ModelAndView("checkout");
 
 		return mav;
 	}
@@ -178,12 +143,6 @@ public class MainController {
 	 * 2/06/2021 : thêm trang 404
 	 */
 
-//	@RequestMapping("/403")
-//	public ModelAndView err404(ModelMap model) {
-//		ModelAndView mav = new ModelAndView("404");
-//
-//		return mav;
-//	}
 //để test
 	@RequestMapping(value = "/userInfo", method = RequestMethod.GET)
 	public ModelAndView userInfo(Model model, Principal principal) {
@@ -227,64 +186,55 @@ public class MainController {
 		return mav;
 	}
 
-//	-----------------------------------------------------------------------
-
-//	@RequestMapping("/admin")
-//	public ModelAndView admin(ModelMap model) {
+//	@RequestMapping(value = "/admin", method = RequestMethod.GET)
+//	public ModelAndView adminPage(Model model, Principal principal) {
 //		ModelAndView mav = new ModelAndView("admin/index");
+////		User loginedUser = (User) ((Authentication) principal).getPrincipal();
+////
+////		String userInfo = WebUtils.toString(loginedUser);
+////		model.addAttribute("userInfo", userInfo);
 //
 //		return mav;
 //	}
-
-	@RequestMapping(value = "/admin", method = RequestMethod.GET)
-	public ModelAndView adminPage(Model model, Principal principal) {
-		ModelAndView mav = new ModelAndView("admin/index");
-//		User loginedUser = (User) ((Authentication) principal).getPrincipal();
 //
-//		String userInfo = WebUtils.toString(loginedUser);
-//		model.addAttribute("userInfo", userInfo);
-
-		return mav;
-	}
-
-//	-------------------------------------------
-
-	@RequestMapping("/admin/add")
-	public ModelAndView adminAdd(ModelMap model) {
-		ModelAndView mav = new ModelAndView("admin/product-add");
-
-		return mav;
-	}
-
-	@RequestMapping("/admin/edit")
-	public ModelAndView adminEdit(ModelMap model) {
-		ModelAndView mav = new ModelAndView("admin/product-edit");
-
-		return mav;
-	}
-
-	@RequestMapping("/admin/productDetail")
-	public ModelAndView adminProductDetail(ModelMap model) {
-		ModelAndView mav = new ModelAndView("admin/product-detail");
-
-		return mav;
-	}
-
-	@RequestMapping("/admin/productPay")
-	public ModelAndView adminProductPay(ModelMap model) {
-		ModelAndView mav = new ModelAndView("admin/product-payment");
-
-		return mav;
-	}
-
-	///////////////////
-
-	@RequestMapping("/admin/manaUser")
-	public ModelAndView adminUser(ModelMap model) {
-		ModelAndView mav = new ModelAndView("admin/list-user");
-
-		return mav;
-	}
+////	-------------------------------------------
+//
+//	@RequestMapping("/admin/add")
+//	public ModelAndView adminAdd(ModelMap model) {
+//		ModelAndView mav = new ModelAndView("admin/product-add");
+//
+//		return mav;
+//	}
+//
+//	@RequestMapping("/admin/edit")
+//	public ModelAndView adminEdit(ModelMap model) {
+//		ModelAndView mav = new ModelAndView("admin/product-edit");
+//
+//		return mav;
+//	}
+//
+//	@RequestMapping("/admin/productDetail")
+//	public ModelAndView adminProductDetail(ModelMap model) {
+//		ModelAndView mav = new ModelAndView("admin/product-detail");
+//
+//		return mav;
+//	}
+//
+//	@RequestMapping("/admin/productPay")
+//	public ModelAndView adminProductPay(ModelMap model) {
+//		ModelAndView mav = new ModelAndView("admin/product-payment");
+//
+//		return mav;
+//	}
+//
+//	///////////////////
+//
+//	@RequestMapping("/admin/manaUser")
+//	public ModelAndView adminUser(ModelMap model) {
+//		ModelAndView mav = new ModelAndView("admin/list-user");
+//
+//		return mav;
+//	}
 
 //	[[[[[[[[[[ơ
 

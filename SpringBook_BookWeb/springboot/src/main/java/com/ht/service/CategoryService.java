@@ -13,7 +13,35 @@ public class CategoryService {
 	@Autowired
 	private CategoryRepository categoryRepository;
 
+////HIEN THI DANH SACH TAT CA THE LOAI
 	public List<Theloaisach> findAll() {
 		return categoryRepository.findAll();
 	}
+
+//////TIM VA XOA THE LOAI THEO ID
+	public void delete(Long maTheLoai) {
+		Theloaisach tl = categoryRepository.findByCategory(maTheLoai);
+		if (tl != null) {
+			categoryRepository.delete(tl);
+		}
+	}
+
+/////THEM MOI MOT THE LOAI
+	public void create(Theloaisach theloaisach) {
+		categoryRepository.saveAndFlush(theloaisach);
+
+	}
+
+////////TIM THE LOAI THEO ID
+	public Theloaisach findById(Long id) {
+		return categoryRepository.findByCategory(id);
+	}
+
+//////CHINH SUA THE LOAI THEO ID
+	public void update(Theloaisach theloaisach) {
+		Theloaisach t = categoryRepository.findByCategory(theloaisach.getMaTheLoai());
+		t.setTenTheLoai(theloaisach.getTenTheLoai());
+		categoryRepository.saveAndFlush(t);
+	}
+
 }
