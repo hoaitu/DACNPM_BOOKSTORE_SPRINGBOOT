@@ -16,10 +16,20 @@ public interface UserRepository extends JpaRepository<User, Long> {
 	public User findByUserName(@Param("username") String username);
 
 	@Query(value = "SELECT u FROM User u WHERE u.email = :email")
-	public abstract List<User> findByEmail(@Param("email") String email);
+//	public abstract List<User> findByEmail(@Param("email") String email);
+//	Tu moi them 09/06
+	public User findByEmail(String email);
+// User findByEmailResetPass(String email);
+	
+
+	public User findByResetPasswordToken(String token);
+//	------------------
 
 	User findByUsernameAndPassword(String username, String password);
 
+//	User findByEmail(String email);
+
+//User name : là email
 	User findByUsername(String username);
 
 //	User findByUsername(String username);

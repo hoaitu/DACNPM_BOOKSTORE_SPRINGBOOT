@@ -42,6 +42,10 @@
 			<div class="row"
 				style="display: flex; align-items: center; justify-content: center;">
 				<div class="col-md-6 col-sm-6">
+					<div th:if="${message != null}">
+						<p class="text-warning">[[${message}]]</p>
+					</div>
+
 
 					<!-- /login?error=true -->
 					<div th:if="${#request.getParameter('error') == 'true'}"
@@ -78,7 +82,12 @@
 							<!-- value="123456789" -->
 						</p>
 						<p class="lost-password form-group">
-							<a href="#" rel="nofollow">Quên mật khẩu ?</a>
+
+							<a th:href="@{/forgot_password}" rel="nofollow">Quên mật khẩu
+								?</a>
+
+
+
 						</p>
 						<div class="submit">
 							<button name="submit" id="submitcreate" type="submit"

@@ -9,14 +9,15 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 //import org.springframework.security.crypto.password.Pbkdf2PasswordEncoder;
 import org.springframework.stereotype.Service;
 //import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.transaction.annotation.Transactional;
 
 //import com.ht.config.EncrytedPasswordUtils;
-import org.springframework.stereotype.Service;
 
 import com.ht.entities.User;
 import com.ht.repository.UserRepository;
 
 @Service
+@Transactional
 public class UserService {
 	@Autowired
 	private UserRepository uRepository;
@@ -46,10 +47,10 @@ public class UserService {
 //		return uRepository.save(user) != null;
 //	}
 
-	private UserRepository userRepository;
+//	private UserRepository userRepository;
 
 	public List<User> findAll() {
-		return userRepository.findAll();
+		return uRepository.findAll();
 	}
 
 //	public void create(User user) {
@@ -57,7 +58,7 @@ public class UserService {
 //	}
 
 	public void update(User user) {
-		User u = userRepository.findByUser((user.getIdUser()));
+		User u = uRepository.findByUser((user.getIdUser()));
 		u.setUsername(user.getUsername());
 		u.setEmail(user.getEmail());
 		u.setPassword(user.getPassword());
@@ -66,17 +67,20 @@ public class UserService {
 		u.setDateOfBirth(user.getDateOfBirth());
 		u.setGender(user.getGender());
 		u.setPhone(user.getPhone());
-		userRepository.saveAndFlush(u);
+		uRepository.saveAndFlush(u);
 	}
 
 	public void delete(Long idUser) {
-		User u = userRepository.findByUser(idUser);
+		User u = uRepository.findByUser(idUser);
 		if (u != null) {
-			userRepository.delete(u);
+			uRepository.delete(u);
 		}
 	}
 
 	public User findById(Long id) {
-		return userRepository.findByUser(id);
+		return uRepository.findByUser(id);
 	}
+
+//	-----------------Phần tú mơi s thêm reset Pass
+
 }

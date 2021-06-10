@@ -44,6 +44,7 @@ public class User implements java.io.Serializable {
 	private String gender;
 	private Date dateOfBirth;
 	private String address;
+	private String resetPasswordToken;
 	private Set<Bill> bills = new HashSet<Bill>(0);
 	private Set<Bill> bills_1 = new HashSet<Bill>(0);
 	private Set<Comment> comments = new HashSet<Comment>(0);
@@ -198,6 +199,15 @@ public class User implements java.io.Serializable {
 
 	public void setRequest(String request) {
 		this.request = request;
+	}
+
+	@Column(name = "reset_password_token")
+	public String getResetPasswordToken() {
+		return resetPasswordToken;
+	}
+
+	public void setResetPasswordToken(String resetPasswordToken) {
+		this.resetPasswordToken = resetPasswordToken;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "user")

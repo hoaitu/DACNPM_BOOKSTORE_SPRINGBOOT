@@ -133,8 +133,35 @@
 															class="single-banner-image-wrapper"> <img alt=""
 															th:src="@{${book.hinhAnh}}" />
 														</a>
+
+														<!-- Nếu chưa nhận đc User nào login thì add card sẽ bị đảy qua trang login -->
+														<div th:if="${#request.userPrincipal==null}">
+															<div class="product-description">
+																<div class="functional-buttons">
+
+																	<a title="Thêm vào giỏ hàng" th:href="@{/login}"><i
+																		class="fa fa-shopping-cart"></i> </a> <a href="#"
+																		title="Thêm vào danh sách yêu thích"> <i
+																		class="far fa-heart"></i>
+																	</a> <a href="#" title="Xem nhanh" data-toggle="modal"
+																		data-target="#productModal1"> <i
+																		class="fas fa-compress-alt"></i>
+																	</a>
+
+																</div>
+																-->
+
+															</div>
+														</div>
+													</div>
+
+													<!--  -->
+													<!-- Nếu đã nhận đc User nào rồi thì add sẽ đc số trong giỏ hàng sẻ tăng lên  -->
+
+													<div th:if="${#request.userPrincipal !=null}">
 														<div class="product-description">
 															<div class="functional-buttons">
+
 																<a title="Thêm vào giỏ hàng"
 																	th:href="@{/cart/add/}+${book.maSach}"><i
 																	class="fa fa-shopping-cart"></i> </a> <a href="#"
@@ -144,62 +171,14 @@
 																	data-target="#productModal1"> <i
 																	class="fas fa-compress-alt"></i>
 																</a>
+
 															</div>
 														</div>
 													</div>
-													<!-- <% if (listSach.get(i).getKhuyenMai() > 0) { %> -->
-													<div
-														style="width: 15%; z-index: 999; position: absolute; top: 0; right: 0;">
-														<img th:src="@{/resource/user/img/sale.png}" alt="" />
-														<p
-															style="font-size: 14px; position: absolute; left: 15%; top: 55%; transform: translate(0, -50%); color: white;">
-															30%</p>
-													</div>
-													<div class="banner-bottom text-center">
-														<div class="banner-bottom-title" style="height: 40px;">
-															<a href="#"> <span th:text="${book.tenSach}">
-															</span>
-															</a>
-														</div>
-														<div style="color: #32b5f3;" class="price-2">
-															<span th:text="${book.gia}"><span>.000
-																	VNÃÂ</span> </span> <span style="color: black;" class="old-price">500.000ÃÂ</span>
-														</div>
-													</div>
-													<!-- <% } else {%>
-                                            <div class="banner-bottom text-center">
-                                                <div class="banner-bottom-title" style="height: 40px">
-                                                    <a href=<%= Util.fullPath("singleProductController?idProduct=") + listSach.get(i).getMaSach()%>><%=listSach.get(i).getTenSach()%>
-                                                    </a>
-                                                </div>
-                                                <div style="color: #32b5f3" class="price-2"><%=listSach.get(i).getGia()%>.000<span>ÃÂ</span>
-                                                </div>
-                                            </div>
-                                            <% }%> -->
-												</div>
-											</div>
-										</div>
 
-									</div>
-
-								</div>
-							</div>
+													<!--  -->
 
 
-							<!-- ////////////////////////////////////////////////////////////////////// -->
-
-
-							<div id="menu1" class="tab-pane fade">
-
-								<div id="single-product" class="row">
-									<div th:each="book : ${listbook}">
-										<div class="single-shop-product">
-											<div class="col-xs-12 col-sm-5 col-md-4">
-												<div class="left-item">
-													<a th:href="@{/single-product/} + ${book.maSach}"
-														title="Book Name"> <img th:src="@{${book.hinhAnh}}"
-														alt="" />
-													</a>
 												</div>
 												<!-- <% if (listSach.get(i).getKhuyenMai() > 0) { %> -->
 												<div
@@ -209,186 +188,104 @@
 														style="font-size: 14px; position: absolute; left: 15%; top: 55%; transform: translate(0, -50%); color: white;">
 														30%</p>
 												</div>
-												<!-- <%}%> -->
-											</div>
-											<div class="col-xs-12 col-sm-7 col-md-8">
-												<div class="deal-product-content">
-													<h4>
-														<a th:href="@{/single-product/} + ${book.maSach}"
-															title="Book Name"><span th:text="${book.tenSach}"></span></a>
-													</h4>
-													<div class="product-price">
-														<!-- <% if (listSach.get(i).getKhuyenMai() > 0) { %> -->
-														<span class="new-price" th:text="${book.gia}"><span>.000
-														</span></span> <span class="old-price">500.000</span>
-														<!-- <%} else {%>
-                                                <span class="new-price"><%=listSach.get(i).getGia()%>.000ÃÂ</span>
-                                                <%}%> -->
+												<div class="banner-bottom text-center">
+													<div class="banner-bottom-title" style="height: 40px;">
+														<a href="#"> <span th:text="${book.tenSach}"> </span>
+														</a>
 													</div>
-													<p>Hay cÃ¡Â»Â±c kÃ¡Â»Â³</p>
-													<div class="availability">
-														<span><a th:href="@{/cart/add/}+${book.maSach}">Mua
-																Ngay</a></span>
+													<div style="color: #32b5f3;" class="price-2">
+														<span th:text="${book.gia}"><span>.000
+																VNÃÂ</span> </span> <span style="color: black;" class="old-price">500.000ÃÂ</span>
 													</div>
 												</div>
+												<!-- <% } else {%>
+                                            <div class="banner-bottom text-center">
+                                                <div class="banner-bottom-title" style="height: 40px">
+                                                    <a href=<%= Util.fullPath("singleProductController?idProduct=") + listSach.get(i).getMaSach()%>><%=listSach.get(i).getTenSach()%>
+                                                    </a>
+                                                </div>
+                                                <div style="color: #32b5f3" class="price-2"><%=listSach.get(i).getGia()%>.000<span>ÃÂ</span>
+                                                </div>
+                                            </div>
+                                            <% }%> -->
 											</div>
 										</div>
 									</div>
 
 								</div>
+
 							</div>
-
-							<!-- ///////////////////////////////////////// -->
-
-
-							<div>&nbsp</div>
-
-							<!-- PhÃ¢n trang -->
-
-							<!-- <nav aria-label="Page navigation example">
-								<div id="pagination">
-									<th:block th:forEach var="loop" begin="1" end="${totalPage}">
-									<th:block th:forEach="loop, 1 : ${totalPage}">
-										<div th:switch>
-											<th:case test="${loop == 1}">
-											<th:case th:test="${loop == 1}">
-												<button class="paging-item active" type="button"
-													name="currentPage">
-
-													${loop}
-
-													<span th:text="${loop}"><span>
-												</button>
-												</th:when>
-												<th:otherwise>
-													<button class="paging-item" type="button" id="phantrangid"
-														name="currentPage">
-
-														${loop}
-														<span th:text="${loop}"><span>
-													</button>
-												</th:otherwise>
-									</th:block>
-
-
-									</c:forEach>
-								</div>
 						</div>
-						</nav> -->
 
 
+						<!-- ////////////////////////////////////////////////////////////////////// -->
 
-							<!-- 	<nav aria-label="Page navigation example">
-								<div id="pagination">
-									<div th:each="book : ${listbook}">
-								
-									<th:block c:forEach var="loop" begin="1" end="${totalPage}">
-									<th:block th:each="loop, 1 : ${totalPage}">
-										<div th:switch>
-												<div th:case th:test="${loop == 1}">
-											<div th:case>
-												<button class="paging-item active" type="button"
-													name="currentPage">
-													<span th:text="${loop}"></span>
-												</button>
+
+						<!-- Tú đã comment dòng này ngày : 09/06/2021 : cách hiển thị khác của Sphaamr -->
+						<!-- 		<div id="menu1" class="tab-pane fade">
+
+							<div id="single-product" class="row">
+								<div th:each="book : ${listbook}">
+									<div class="single-shop-product">
+										<div class="col-xs-12 col-sm-5 col-md-4">
+											<div class="left-item">
+												<a th:href="@{/single-product/} + ${book.maSach}"
+													title="Book Name"> <img th:src="@{${book.hinhAnh}}"
+													alt="" />
+												</a>
 											</div>
-											<div th:case>
-												<button class="paging-item" type="button" id="phantrangid"
-													name="currentPage">
-													<span th:text="${loop}"></span>
-												</button>
+											<% if (listSach.get(i).getKhuyenMai() > 0) { %>
+											<div
+												style="width: 15%; z-index: 999; position: absolute; top: 0; right: 0;">
+												<img th:src="@{/resource/user/img/sale.png}" alt="" />
+												<p
+													style="font-size: 14px; position: absolute; left: 15%; top: 55%; transform: translate(0, -50%); color: white;">
+													30%</p>
 											</div>
-
+											<%}%>
 										</div>
-
-
+										<div class="col-xs-12 col-sm-7 col-md-8">
+											<div class="deal-product-content">
+												<h4>
+													<a th:href="@{/single-product/} + ${book.maSach}"
+														title="Book Name"><span th:text="${book.tenSach}"></span></a>
+												</h4>
+												<div class="product-price">
+													<% if (listSach.get(i).getKhuyenMai() > 0) { %>
+													<span class="new-price" th:text="${book.gia}"><span>.000
+													</span></span> <span class="old-price">500.000</span>
+													<%} else {%>
+                                                <span class="new-price"><%=listSach.get(i).getGia()%>.000ÃÂ</span>
+                                                <%}%>
+												</div>
+												<p>Hay cÃ¡Â»Â±c kÃ¡Â»Â³</p>
+												<div class="availability">
+													<span><a th:href="@{/cart/add/}+${book.maSach}">Mua
+															Ngay</a></span>
+												</div>
+											</div>
 										</div>
-									</th:block>
+									</div>
 								</div>
-							</nav> -->
+
+							</div>
+						</div>
+ -->
+
+						<!-- ///////////////////////////////////////// -->
 
 
-							<!-- <nav aria-label="Page navigation example">
-								<div id="pagination">
-									<th:block th:each="loop , iterStat : ${totalPage}">
+						<div>&nbsp</div>
 
-											<th:block
-										th:each="i: ${#{numbers.sequence(1, ${totalPage}, 12)}}">
-
-										<div c:choose>
-										<c:when test="${loop == 1}">
-										iterStat.index = 0
-
-
-										<span th:text="${loop}" />
-										This will print the index value
-										<span th:text="${iterStat.index+1}" />
-										This will print the Index
-
-
-										<button class="paging-item active" type="button"
-											name="currentPage">
-											<span th:text="${loop}">aa</span>
-
-											<span th:if="${loop == iterStat.index+1 }"> <span
-												th:text="${loop}">cc</span> aa0994884
-											</span>
-										</button>
-										</c:when>
-										<c:otherwise>
-										<button class="paging-item" type="button" id="phantrangid"
-											name="currentPage">
-											<span th:unless="${loop == iterStat.index+1}"> <span
-												th:text="${loop}">cc</span> cc
-											</span>
-										</button>
-											</c:otherwise>
-
-										</c:choose>
-									</th:block>
-								</div>
-							</nav> -->
+						<!-- PhÃ¢n trang -->
 
 
 
 
+						<!-- ////////////////////////////// -->
 
 
-							<!--  -->
-
-
-
-
-
-							<!-- PhÃ¢n trang -->
-
-							<!-- <nav aria-label="Page navigation example">
-								<div id="pagination">
-									<th:block th:each="loop , 1: ${totalPage}">
-										<c:choose>
-											<c:when test="${loop == 1}">
-												<button class="paging-item active" type="button"
-													name="currentPage">
-													<span th:text="${loop}">az</span>
-												</button>
-											</c:when>
-											<c:otherwise>
-												<button class="paging-item" type="button" id="phantrangid"
-													name="currentPage">
-													<span th:text="${loop}">cc</span>
-												</button>
-											</c:otherwise>
-
-										</c:choose>
-									</th:block>
-								</div>
-							</nav> -->
-
-
-							<!-- ////////////////////////////// -->
-
-
-							<!-- <nav aria-label="Page navigation example">
+						<!-- <nav aria-label="Page navigation example">
 								<div id="pagination">
 
 									<div class="col-sm-1">
@@ -403,33 +300,33 @@
 								</div>
 							</nav> -->
 
-							<!-- //////////////// test -->
+						<!-- //////////////// test -->
 
-							<nav aria-label="Page navigation example">
-								<div id="pagination">
-									<th:block th:each="i: ${#numbers.sequence(1, totalPage )}">
-										<button th:if="${i != 1}" class="paging-item active"
-											type="button" name="currentPage">[[${i}]]</button>
+						<nav aria-label="Page navigation example">
+							<div id="pagination">
+								<th:block th:each="i: ${#numbers.sequence(1, totalPage )}">
+									<button th:if="${i != 1}" class="paging-item active"
+										type="button" name="currentPage">[[${i}]]</button>
 
-										<button th:unless="${i != 1}" class="paging-item"
-											type="button" id="phantrangid" name="currentPage">[[${i}]]</button>
+									<button th:unless="${i != 1}" class="paging-item" type="button"
+										id="phantrangid" name="currentPage">[[${i}]]</button>
 
-									</th:block>
-								</div>
-							</nav>
-
-
+								</th:block>
+							</div>
+						</nav>
 
 
-						</div>
+
 
 					</div>
+
 				</div>
 			</div>
-			<!-- /**
+		</div>
+		<!-- /**
 			03/06/2021
 		*/ -->
-		</div>
+	</div>
 	</div>
 	<!-- Shop Area End -->
 
