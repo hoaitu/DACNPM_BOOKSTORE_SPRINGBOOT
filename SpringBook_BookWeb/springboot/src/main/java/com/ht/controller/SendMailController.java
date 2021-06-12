@@ -33,7 +33,7 @@ public class SendMailController {
 		MimeMessage message = mailSender.createMimeMessage();
 		MimeMessageHelper helper = new MimeMessageHelper(message, true);
 
-		String mailSubject = "Thông tin đơn hàng";
+		String mailSubject = "Thông tin giao hàng";
 		String mailContent = "<p><b>Người nhận: </b>" + name + "</p>";
 		mailContent += "<p><b>Email: </b>" + mail + "</p>";
 		mailContent += "<p><b>Số điện thoại: </b>" + phone + "</p>";
