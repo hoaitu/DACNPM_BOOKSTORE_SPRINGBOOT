@@ -58,16 +58,14 @@
 						<p class="form-row">
 							*User Name: <input style="outline: none;" type="email"
 								name="email" id="email" size="40"
-								placeholder="Äá»a chá» email" th:field="*{username}"
-								required>
-								
-								<!-- 
+								placeholder="Äá»a chá» email" th:field="*{username}" required>
+
+							<!-- 
 								onblur="checkExist()">
 								<span id="isE"></span> -->
-								
+
 							<!-- 	<button id="id_check_avail">Check Availability</button>
 							<div id="id_res_div"class="error"></div> -->
-								
 						<div id="error-name" class="error"></div>
 						<p th:if="${#fields.hasErrors('username')}"
 							th:errors="*{username}"></p>
@@ -81,15 +79,14 @@
 
 						<p class="form-row">
 							*Password: <input style="outline: none;" type="password"
-								name="password" placeholder="Máº­t kháº©u"
-								id="txtPassword" th:field="*{password}" pattern=".{6,}"
+								name="password" placeholder="Máº­t kháº©u" id="txtPassword"
+								th:field="*{password}" pattern=".{6,}"
 								title="8 characters minimum" required />
 						</p>
 
 						<p class="form-row">
 							*RePassword: <input style="outline: none;" type="password"
-								name="cfpassword"
-								placeholder="Nháº­p láº¡i máº­t kháº©u"
+								name="cfpassword" placeholder="Nháº­p láº¡i máº­t kháº©u"
 								id="txtConfirmPassword" required />
 						</p>
 
@@ -105,7 +102,8 @@
 							Date Of Birtth: <input name="dateOfBirth" type="datetime"
 								class="form-control" placeholder="DD/MM/YYYY" value=""
 								min="1997-01-01" max="2030-12-31"
-								pattern="[0-9]{2}/[0-9]{2}/[0-9]{4}\b" />
+								pattern="((0[1-9]|[12]\d|3[01])/(0[1-9]|1[0-2])/[12]\d{3})" />
+							<!-- pattern="[0-9]{2}/[0-9]{2}/[0-9]{4}\b" /> -->
 						</p>
 						<p class="form-row">
 							Phone: <input th:field="*{phone}" Class="form-control"
