@@ -39,7 +39,7 @@
 	</div>
 	<!-- Breadcrumbs Area Start -->
 	<!-- Check Out Area Start -->
-	<form action="" method="POST" th:object="${receipt}">
+	<form th:action="@{/checkout}" method="POST" th:object="${receipt}">
 		<!-- 	<input type="hidden" name="${_csrf.parameterName}"
 			value="${_csrf.token}" /> -->
 		<div class="check-out-area section-padding">
@@ -134,7 +134,7 @@
 											</div>
 											<div class="order-notes">
 												<label>Ghi chú đặt hàng</label>
-												<textarea rows="10" cols="30" id="checkout-mess"></textarea>
+												<textarea name="note" rows="10" cols="30" id="checkout-mess"></textarea>
 											</div>
 										</div>
 									</div>
@@ -199,25 +199,25 @@
 													</thead>
 													<!-- <c:forEach var="map" items="${sessionScope.myCartItems}"> -->
 													<div th:each="map : ${session.myCartItems}">
-													<tbody>
+														<tbody>
 
-														<tr>
-															<td><a href="#"><span
-																	th:text="${map.value.product.tenSach }"></span></a></td>
+															<tr>
+																<td><a href="#"><span
+																		th:text="${map.value.product.tenSach }"></span></a></td>
 
-															<td><span class="cart-price"><span
-																	class="check-price"><span
-																		th:text="${map.value.product.gia }"></span></span></span></td>
+																<td><span class="cart-price"><span
+																		class="check-price"><span
+																			th:text="${map.value.product.gia }"></span></span></span></td>
 
-															<td><span id="1"><span
-																	th:text="${map.value.quantity }"></span> </span></td>
+																<td><span id="1"><span
+																		th:text="${map.value.quantity }"></span> </span></td>
 
-															<!-- sub total starts here -->
-															<td><span class="cart-price"><span
-																	class="check-price"><span
-																		th:text="${map.value.product.gia}"></span></span></span></td>
-														</tr>
-													</tbody>
+																<!-- sub total starts here -->
+																<td><span class="cart-price"><span
+																		class="check-price"><span
+																			th:text="${map.value.product.gia}"></span></span></span></td>
+															</tr>
+														</tbody>
 													</div>
 													<tfoot>
 														<tr>
@@ -235,7 +235,7 @@
 															<td colspan="3"><strong>Thành tiền</strong></td>
 
 															<td><strong><span class="check-price"><span
-																		th:text="${session.myCartTotal}"></span></span></strong></td>
+																		name="total" th:text="${session.myCartTotal}"></span></span></strong></td>
 													</tfoot>
 												</table>
 											</div>
@@ -248,6 +248,7 @@
 														class="btn btn-default">
 														<span>Đặt Mua</span>
 													</button>
+													<!-- <input type="submit" value="send" /> -->
 												</div>
 											</div>
 										</div>
@@ -259,6 +260,7 @@
 				</div>
 			</div>
 		</div>
+
 	</form>
 
 	<!-- Check Out Area End -->

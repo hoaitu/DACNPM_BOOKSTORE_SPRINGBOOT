@@ -43,21 +43,21 @@
 												<form  method="POST"
 													th:object="${books}">
 													<br /> Hình ảnh: <input th:field="*{hinhAnh}"
-														class="form-control" />
+														class="form-control" required/>
 													<!-- <form:errors path="hinhAnh" cssClass="error" /> -->
 
 													<br /> Tên sách: <input th:field="*{tenSach}"
-														class="form-control" />
+														class="form-control" required />
 													<!-- <form:errors path="tenSach" cssClass="error" /> -->
 													<br /> Thể loại: <input th:field="*{theloaisach}"
-														class="form-control" />
+														class="form-control" required/>
 													<!-- <form:errors path="theloaisach" cssClass="error" /> -->
 
 													<br /> Giá: <input th:field="*{gia}" type="datetime"
-														class="form-control" />
+														class="form-control" required />
 													<!-- <form:errors path="gia" cssClass="error" /> -->
 													<br /> Tác giả: <input th:field="*{tenTacGia}"
-														class="form-control" />
+														class="form-control" required />
 													<!-- <form:errors path="tenTacGia" cssClass="error" /> -->
 													<br /> Mô tả: <input th:field="*{moTa}"
 														class="form-control" />
@@ -66,10 +66,10 @@
 														type="datetime" class="form-control" />
 													<!-- <form:errors path="khuyenMai" cssClass="error" /> -->
 													<br /> Ngày sản xuất: <input th:field="*{ngayXuatBan}"
-														class="form-control" />
+														class="form-control" required />
 													<!-- <form:errors path="ngayXuatBan" cssClass="error" /> -->
 													<br /> Số lượng: <input th:field="*{soLuong}"
-														class="form-control" />
+														class="form-control" required/>
 													<!-- <form:errors path="soLuong" cssClass="error" /> -->
 													<br /> <br />
 													<button type="submit">Lưu</button>

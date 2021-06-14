@@ -8,6 +8,8 @@
 	color: red;
 }
 </style>
+=======
+<title>WRITER SignUp</title>
 </head>
 <body>
 	<!-- Where tag link + header -->
@@ -63,15 +65,17 @@
 
 						</p>
 						<!-- TU: Where show log mess if User extis in DB; Ajax under same Page  -->
+
 						<div id="error-name" class="error"></div>
 
 
 						</p>
 
 						<p class="form-row">
-							*Email: <input style="outline: none;" type="text"
-								placeholder="UserName" name="email" id="idemail"
-								th:field="*{email}" required>
+
+
+							*Email: <input style="outline: none;" type="text" id="email"
+								placeholder="UserName" th:field="*{email}" required>
 						</p>
 
 						<p class="form-row">
@@ -94,13 +98,15 @@
 							<option value="Khác">Khac</option>
 
 						</select></br>
-
+						<!-- kiem tra co dung dinh dang dd/mm/yyyy min:1950-01-01, max:2030-12-31 (tran) -->
 						<p class="form-row">
 							Date Of Birtth: <input name="dateOfBirth" type="datetime"
 								class="form-control" placeholder="DD/MM/YYYY" value=""
 								min="1997-01-01" max="2030-12-31"
 								pattern="[0-9]{2}/[0-9]{2}/[0-9]{4}\b" required />
+
 						</p>
+						<!-- kiem tra dinh dang so dien thoai Viet Nam (tran) -->
 						<p class="form-row">
 							Phone: <input th:field="*{phone}" Class="form-control"
 								pattern="([\+84|84|0]+(3|5|7|8|9|1[2|6|8|9]))+([0-9]{8})\b"
@@ -111,6 +117,8 @@
 							Address: <input th:field="*{address}" Class="form-control"
 								required />
 						<div id="error-address" class="error"></div>
+						<p th:if="${#fields.hasErrors('address')}" th:errors="*{address}"
+							required></p>
 						</p>
 
 
@@ -142,10 +150,11 @@
 
 	<script type="text/javascript">
 		function Validate() {
+			var email = document.getElementById('email'); 
 			var password = document.getElementById("txtPassword").value;
 			var confirmPassword = document.getElementById("txtConfirmPassword").value;
 
-			var email = document.getElementById('idemail');
+		/* 	var email = document.getElementById('idemail'); */
 			var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
 
 			if (!filter.test(email.value)) {
@@ -157,11 +166,13 @@
 				alert("Passwords do not match.");
 				return false;
 			}
-
 			return true;
 			alert('OK roi day, Email nay hop le.');
 			alert('OK roi day, Email nay hop le.');
 		};
+		}
+
+		
 	</script>
 
 	<!--TU: Ajax; Check Email Exits in DB; if have show mess; userName is name in Input + name in funtion checkUserName() in Controller  -->
