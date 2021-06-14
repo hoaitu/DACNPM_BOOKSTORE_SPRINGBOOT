@@ -98,8 +98,9 @@
 
 										<div class="user-item">
 											<div class="sign-in">
-												<i class="fas fa-user-plus"></i> <a href="#">Thông tin
-													tài khoản</a>
+												<i class="fas fa-user-plus"></i> <a
+													th:href="@{/my-account/}+${#request.userPrincipal.name}">Thông
+													tin tài khoản</a>
 											</div>
 										</div>
 

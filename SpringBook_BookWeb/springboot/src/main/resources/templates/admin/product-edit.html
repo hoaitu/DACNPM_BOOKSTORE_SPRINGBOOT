@@ -29,11 +29,13 @@
 									<li class="active"><a href="#description"><i
 											class="icon nalika-edit" aria-hidden="true"></i> Chỉnh sửa
 											sản phẩm</a></li>
-									<li><a href="#reviews"><i class="icon nalika-picture"
-											aria-hidden="true"></i> Hình ảnh</a></li>
-									<li><a href="#INFORMATION"><i class="icon nalika-chat"
-											aria-hidden="true"></i> Xem xét</a></li>
 								</ul>
+								<div style="float: right;">
+									<h4>
+										<a th:href="@{/admin}">Quay lại</a>
+									</h4>
+								</div>
+
 								<div id="myTabContent" class="tab-content custom-product-edit">
 
 
@@ -44,22 +46,31 @@
 											<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 
 												<!-- <form action="" method="POST" modelAttribute="book> -->
-												<form method="POST" th:object="${books}">
+												<form method="POST" th:object="${books}"
+													enctype="multipart/form-data">
 													<input type="hidden" th:field="*{maSach}"> <br />
-													Hình ảnh: <input th:field="*{hinhAnh}" type="text"
-														class="form-control" /> <br /> Tên sách: <input
-														th:field="*{tenSach}" class="form-control" /> <br /> Thể
-													loại: <input type="text" th:field="*{theloaisach}"
-														class="form-control" /> <br /> Giá: <input
-														th:field="*{gia}" type="text" class="form-control" /> <br />
-													Tác giả: <input th:field="*{tenTacGia}"
-														class="form-control" type="text" /> <br /> Mô tả: <input
-														th:field="*{moTa}" class="form-control" type="text" /> <br />
-													Khuyến mãi: <input th:field="*{khuyenMai}" type="text"
-														class="form-control" /> <br /> Ngày sản xuất: <input
-														th:field="*{ngayXuatBan}" class="form-control" type="text" />
-													<br /> Số lượng: <input th:field="*{soLuong}"
-														type="number" class="form-control" /> <br /> <br />
+													Hình ảnh: <input type="file" name="hinhAnh" id="hinhAnh"
+														class="form-control-file"
+														accept="image/png, image/jpeg, image/jpg"
+														onchange="uploadFile()" />
+													<p>
+														<img alt="Logo Preview" id="thumbnail" height="150" />
+													</p>
+													<br /> Tên sách: <input th:field="*{tenSach}"
+														class="form-control" /> <br /> Thể loại: <input
+														type="text" th:field="*{theloaisach}" class="form-control" />
+													<br /> Giá: <input th:field="*{gia}" type="text"
+														class="form-control" /> <br /> Tác giả: <input
+														th:field="*{tenTacGia}" class="form-control" type="text" />
+													<br /> Mô tả:
+													<textarea th:field="*{moTa}" class="form-control"
+														type="text"></textarea>
+													<br /> Khuyến mãi: <input th:field="*{khuyenMai}"
+														type="text" class="form-control" /> <br /> Ngày sản
+													xuất: <input th:field="*{ngayXuatBan}" class="form-control"
+														type="text" /> <br /> Số lượng: <input
+														th:field="*{soLuong}" type="number" class="form-control" />
+													<br /> <br />
 
 													<div class="row">
 														<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -81,239 +92,6 @@
 										</div>
 
 									</div>
-									<div class="product-tab-list tab-pane fade" id="reviews">
-										<div class="row">
-											<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-												<div class="review-content-section">
-													<div class="row">
-														<div class="col-lg-4">
-															<div class="pro-edt-img">
-
-																<img src="../image/chaothit.jpeg" width="130px" />
-															</div>
-														</div>
-														<div class="col-lg-8">
-															<div class="row">
-																<div class="col-lg-12">
-																	<div class="product-edt-pix-wrap">
-																		<div class="input-group">
-																			<span class="input-group-addon">TT</span> <input
-																				type="text" class="form-control"
-																				placeholder="Label Name">
-																		</div>
-																		<div class="row">
-																			<div class="col-lg-6">
-																				<div class="form-radio">
-																					<form>
-																						<div class="radio radiofill">
-																							<label> <input type="radio" name="radio"><i
-																								class="helper"></i>Lớn
-																							</label>
-																						</div>
-																						<div class="radio radiofill">
-																							<label> <input type="radio" name="radio"><i
-																								class="helper"></i>Vừa
-																							</label>
-																						</div>
-																						<div class="radio radiofill">
-																							<label> <input type="radio" name="radio"><i
-																								class="helper"></i>Nhỏ
-																							</label>
-																						</div>
-																					</form>
-																				</div>
-																			</div>
-																			<div class="col-lg-6">
-																				<div class="product-edt-remove">
-																					<button type="button"
-																						class="btn btn-ctl-bt waves-effect waves-light">
-																						Xóa <i class="fa fa-times" aria-hidden="true"></i>
-																					</button>
-																				</div>
-																			</div>
-																		</div>
-																	</div>
-																</div>
-															</div>
-														</div>
-													</div>
-													<div class="row">
-														<div class="col-lg-4">
-															<div class="pro-edt-img">
-
-																<img src="../image/phobo.jpg" width="130px">
-															</div>
-														</div>
-														<div class="col-lg-8">
-															<div class="row">
-																<div class="col-lg-12">
-																	<div class="product-edt-pix-wrap">
-																		<div class="input-group">
-																			<span class="input-group-addon">TT</span> <input
-																				type="text" class="form-control"
-																				placeholder="Label Name">
-																		</div>
-																		<div class="row">
-																			<div class="col-lg-6">
-																				<div class="form-radio">
-
-
-																					<form>
-																						<div class="radio radiofill">
-																							<label> <input type="radio" name="radio"><i
-																								class="helper"></i>Lớn
-																							</label>
-																						</div>
-																						<div class="radio radiofill">
-																							<label> <input type="radio" name="radio"><i
-																								class="helper"></i>Vừa
-																							</label>
-																						</div>
-																						<div class="radio radiofill">
-																							<label> <input type="radio" name="radio"><i
-																								class="helper"></i>Nhỏ
-																							</label>
-																						</div>
-																					</form>
-																				</div>
-																			</div>
-																			<div class="col-lg-6">
-																				<div class="product-edt-remove">
-																					<button type="button"
-																						class="btn btn-ctl-bt waves-effect waves-light">
-																						Xóa <i class="fa fa-times" aria-hidden="true"></i>
-																					</button>
-																				</div>
-																			</div>
-																		</div>
-																	</div>
-																</div>
-															</div>
-														</div>
-													</div>
-													<div class="row">
-														<div class="col-lg-4">
-															<div class="pro-edt-img mg-b-0">
-
-																<img src="../image/comtam.jpg" width="130px">
-															</div>
-														</div>
-														<div class="col-lg-8">
-															<div class="row">
-																<div class="col-lg-12">
-																	<div class="product-edt-pix-wrap">
-																		<div class="input-group">
-																			<span class="input-group-addon">TT</span> <input
-																				type="text" class="form-control"
-																				placeholder="Label Name">
-																		</div>
-																		<div class="row">
-																			<div class="col-lg-6">
-																				<div class="form-radio">
-																					<form>
-																						<div class="radio radiofill">
-																							<label> <input type="radio" name="radio"><i
-																								class="helper"></i>Lớn
-																							</label>
-																						</div>
-																						<div class="radio radiofill">
-																							<label> <input type="radio" name="radio"><i
-																								class="helper"></i>Vừa
-																							</label>
-																						</div>
-																						<div class="radio radiofill">
-																							<label> <input type="radio" name="radio"><i
-																								class="helper"></i>Nhỏ
-																							</label>
-																						</div>
-																					</form>
-																				</div>
-																			</div>
-																			<div class="col-lg-6">
-																				<div class="product-edt-remove">
-																					<button type="button"
-																						class="btn btn-ctl-bt waves-effect waves-light">
-																						Xóa <i class="fa fa-times" aria-hidden="true"></i>
-																					</button>
-																				</div>
-																			</div>
-																		</div>
-																	</div>
-																</div>
-															</div>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="product-tab-list tab-pane fade" id="INFORMATION">
-										<div class="row">
-											<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-												<div class="review-content-section">
-													<div class="card-block">
-														<div class="text-muted f-w-400">
-															<p>Chưa có đánh giá.</p>
-														</div>
-														<div class="m-t-10">
-															<div class="txt-primary f-18 f-w-600">
-																<p>Đánh giá của bạn</p>
-															</div>
-															<div class="stars stars-example-css detail-stars">
-																<div class="review-rating">
-																	<fieldset class="rating">
-																		<input type="radio" id="star5" name="rating" value="5">
-																		<label class="full" for="star5"></label> <input
-																			type="radio" id="star4half" name="rating"
-																			value="4 and a half"> <label class="half"
-																			for="star4half"></label> <input type="radio"
-																			id="star4" name="rating" value="4"> <label
-																			class="full" for="star4"></label> <input type="radio"
-																			id="star3half" name="rating" value="3 and a half">
-																		<label class="half" for="star3half"></label> <input
-																			type="radio" id="star3" name="rating" value="3">
-																		<label class="full" for="star3"></label> <input
-																			type="radio" id="star2half" name="rating"
-																			value="2 and a half"> <label class="half"
-																			for="star2half"></label> <input type="radio"
-																			id="star2" name="rating" value="2"> <label
-																			class="full" for="star2"></label> <input type="radio"
-																			id="star1half" name="rating" value="1 and a half">
-																		<label class="half" for="star1half"></label> <input
-																			type="radio" id="star1" name="rating" value="1">
-																		<label class="full" for="star1"></label> <input
-																			type="radio" id="starhalf" name="rating" value="half">
-																		<label class="half" for="starhalf"></label>
-																	</fieldset>
-																</div>
-																<div class="clear"></div>
-															</div>
-														</div>
-														<div class="input-group mg-b-15 mg-t-15">
-															<span class="input-group-addon"><i
-																class="icon nalika-user" aria-hidden="true"></i></span> <input
-																type="text" class="form-control" placeholder="User Name">
-														</div>
-														<div class="input-group mg-b-15">
-															<span class="input-group-addon"><i
-																class="icon nalika-user" aria-hidden="true"></i></span> <input
-																type="text" class="form-control" placeholder="Last Name">
-														</div>
-														<div class="input-group mg-b-15">
-															<span class="input-group-addon"><i
-																class="icon nalika-mail" aria-hidden="true"></i></span> <input
-																type="text" class="form-control" placeholder="Email">
-														</div>
-														<div class="form-group review-pro-edt mg-b-0-pt">
-															<button type="submit"
-																class="btn btn-ctl-bt waves-effect waves-light">
-																Submit</button>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
 								</div>
 							</div>
 						</div>
@@ -321,16 +99,24 @@
 				</div>
 			</div>
 		</div>
-		<div class="footer-copyright-area">
-			<div class="container-fluid">
-				<div class="row">
-					<div class="col-lg-12">
-						<div class="footer-copy-right"></div>
-					</div>
-				</div>
-			</div>
-		</div>
 	</div>
+	<script type="text/javascript">
+	function uploadFile() {
+		  var preview = document.querySelector('img');
+		  var file    = document.querySelector('input[type=file]').files[0];
+		  var reader  = new FileReader();
+
+		  reader.onloadend = function () {
+		    preview.src = reader.result;
+		  }
+
+		  if (file) {
+		    reader.readAsDataURL(file);
+		  } else {
+		    preview.src = "";
+		  }
+		}
+</script>
 	<!--FOOTER -->
 
 	<div th:insert="~{admin/footer :: footer_admin}"></div>

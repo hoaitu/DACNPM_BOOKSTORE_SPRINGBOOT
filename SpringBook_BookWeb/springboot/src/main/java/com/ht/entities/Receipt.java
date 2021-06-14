@@ -24,7 +24,7 @@ public class Receipt implements Serializable {
 	private String receiptPhone;
 	private String receiptAddress;
 	private Timestamp receiptDate;
-	private boolean receiptStatus;
+	private String receiptStatus;
 	private double total;
 	@OneToMany(fetch = FetchType.LAZY)
 	@JoinColumn(name = "receiptItemId")
@@ -86,12 +86,16 @@ public class Receipt implements Serializable {
 		this.receiptDate = receiptDate;
 	}
 
-	public boolean isReceiptStatus() {
+	public String isReceiptStatus() {
 		return receiptStatus;
 	}
 
-	public void setReceiptStatus(boolean receiptStatus) {
+	public void setReceiptStatus(String receiptStatus) {
 		this.receiptStatus = receiptStatus;
+	}
+
+	public String getReceiptStatus() {
+		return receiptStatus;
 	}
 
 	public List<ReceiptItem> getListReceiptItem() {

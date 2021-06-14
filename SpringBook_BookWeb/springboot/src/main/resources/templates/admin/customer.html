@@ -50,35 +50,33 @@ h3 {
 									<th>Level</th>
 									<th>Thao tác</th>
 								</tr>
-								<!-- <c:forEach items="${listAllUser}" var="users"> -->
 								<div th:each="users : ${listAllUser}">
-								<tr>
-									<td></td>
-									<td><p th:text="${users.username }"></p></td>
-									<td><p th:text="${users.email }"></p></td>
-									<td><p th:text="${users.phone }"></p></td>
-									<td><p th:text="${users.address }"></p></td>
-									<td><p th:text="${users.gender }"></p></td>
-									<td>
-										<!-- <c:if test="${users.level==2 }">
-												<p>Admin</p>
-											</c:if> <c:if test="${users.level==1 }"> -->
-										<p>User</p> <!-- </c:if> -->
-									</td>
-									<td><a th:href="@{/admin/editCustomter/}+${users.idUser}">
-											<button data-toggle="tooltip" title="Edit"
-												class="pd-setting-ed">
-												<i class="fa fa-pencil-square-o" aria-hidden="true"> </i>
-											</button>
-									</a> <a onclick="return confirm('Bạn có chắc muốn xóa')"
-										th:href="@{/admin/deleteUser/}+${users.idUser}">
-											<button data-toggle="tooltip" title="Trash"
-												class="pd-setting-ed">
-												<i class="fa fa-trash-o" aria-hidden="true"> </i>
-											</button>
-									</a></td>
-								</tr>
-								<!-- </c:forEach> -->
+									<tr>
+										<td><p th:text="${users.idUser }"></p></td>
+										<td><p th:text="${users.username }"></p></td>
+										<td><p th:text="${users.email }"></p></td>
+										<td><p th:text="${users.phone }"></p></td>
+										<td><p th:text="${users.address }"></p></td>
+										<td><p th:text="${users.gender }"></p></td>
+										<td>
+											<div th:switch="${users.level }">
+												<p th:case="1">User</p>
+												<p th:case="2">Admin</p>
+											</div>
+										</td>
+										<td><a th:href="@{/admin/editCustomter/}+${users.idUser}">
+												<button data-toggle="tooltip" title="Edit"
+													class="pd-setting-ed">
+													<i class="fa fa-pencil-square-o" aria-hidden="true"> </i>
+												</button>
+										</a> <a onclick="return confirm('Bạn có chắc muốn xóa')"
+											th:href="@{/admin/deleteUser/}+${users.idUser}">
+												<button data-toggle="tooltip" title="Trash"
+													class="pd-setting-ed">
+													<i class="fa fa-trash-o" aria-hidden="true"> </i>
+												</button>
+										</a></td>
+									</tr>
 								</div>
 
 							</table>

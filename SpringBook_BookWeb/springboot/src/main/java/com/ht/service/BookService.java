@@ -1,6 +1,7 @@
 package com.ht.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -27,6 +28,10 @@ public class BookService {
 	public Sach findById(long ids) {
 		return bookRepository.findByName(ids);
 	}
+
+	public Optional<Sach> findByID(long ids) {
+		return bookRepository.findById(ids);
+	}
 //	Tìm kím
 
 //	public List<String> findBook(String name) {
@@ -47,12 +52,12 @@ public class BookService {
 	}
 
 	/// THEM MOI SACH
-	public void createBook(Sach sach) {
-		bookRepository.saveAndFlush(sach);
+	public Sach createBook(Sach sach) {
+		return bookRepository.saveAndFlush(sach);
 	}
 
 	/// CHINH SUA SACH
-	public void update(Sach sach) {
+	public Sach update(Sach sach) {
 		Sach book = bookRepository.findByName(sach.getMaSach());
 		book.setHinhAnh(sach.getHinhAnh());
 		book.setGia(sach.getGia());
@@ -63,7 +68,7 @@ public class BookService {
 		book.setTheloaisach(sach.getTheloaisach());
 		book.setKhuyenMai(sach.getKhuyenMai());
 		book.setSoLuong(sach.getSoLuong());
-		bookRepository.saveAndFlush(book);
+		return bookRepository.saveAndFlush(book);
 	}
 
 	///// XOA SACH

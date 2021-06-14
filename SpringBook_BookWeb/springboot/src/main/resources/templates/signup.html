@@ -6,11 +6,11 @@
 </head>
 <body>
 
-	<!-- NÆ I Gáº®N LINK VÃO -->
+	<!-- NÃÂ I GÃ¡ÂºÂ®N LINK VÃÂO -->
 	<div th:insert="~{link :: links}"></div>
 	<!-- Add your site or application content here -->
 	<!--Header Area Start-->
-	<!-- NÆ I Gáº®N HEADER -->
+	<!-- NÃÂ I GÃ¡ÂºÂ®N HEADER -->
 	<div th:insert="~{header :: header_in}"></div>
 	<!-- Mobile Menu End -->
 
@@ -21,10 +21,10 @@
 			<div class="row">
 				<div class="col-md-12">
 					<div class="breadcrumbs">
-						<h2>ÄÄng kÃ­</h2>
+						<h2>Đăng ký</h2>
 						<ul class="breadcrumbs-list">
-							<li><a title="Return to Home" href="/">Trang chá»§</a></li>
-							<li>ÄÄng kÃ­</li>
+							<li><a title="Return to Home" href="/">Trang chủ</a></li>
+							<li>Đăng ký</li>
 						</ul>
 					</div>
 				</div>
@@ -53,12 +53,12 @@
                             }
                         %> -->
 
-						<h2 class="heading-title">Táº¡o tÃ i khoáº£n má»i</h2>
+						<h2 class="heading-title">Tạo tài khoản mới</h2>
 						<p id="result"></p>
 						<p class="form-row">
 							*User Name: <input style="outline: none;" type="email"
 								name="email" id="email" size="40"
-								placeholder="Äá»a chá» email" th:field="*{username}" required>
+								placeholder="ÃÂÃ¡Â»Âa chÃ¡Â»Â email" th:field="*{username}" required>
 						<div id="error-name" class="error"></div>
 						<p th:if="${#fields.hasErrors('username')}"
 							th:errors="*{username}"></p>
@@ -72,21 +72,21 @@
 
 						<p class="form-row">
 							*Password: <input style="outline: none;" type="password"
-								name="password" placeholder="Máº­t kháº©u" id="txtPassword"
+								name="password" placeholder="MÃ¡ÂºÂ­t khÃ¡ÂºÂ©u" id="txtPassword"
 								th:field="*{password}" pattern=".{6,}"
 								title="8 characters minimum" required />
 						</p>
 
 						<p class="form-row">
 							*RePassword: <input style="outline: none;" type="password"
-								name="cfpassword" placeholder="Nháº­p láº¡i máº­t kháº©u"
+								name="cfpassword" placeholder="NhÃ¡ÂºÂ­p lÃ¡ÂºÂ¡i mÃ¡ÂºÂ­t khÃ¡ÂºÂ©u"
 								id="txtConfirmPassword" required />
 						</p>
 
 
 						Gender: <select name="gender" class="form-control">
 							<option value="Nam">Nam</option>
-							<option value="Nữ">Nu</option>
+							<option value="Nữ¯">Nu</option>
 							<option value="Khác">Khac</option>
 
 						</select></br>
@@ -114,7 +114,7 @@
 
 							<button name="submitcreate" id="submitcreate" type="submit"
 								class="btn-default" style="color: red;">
-								<span> <i class="fa fa-user left"></i> Hủy
+								<span> <i class="fa fa-user left"></i> Huỷ
 								</span>
 							</button>
 
@@ -126,7 +126,7 @@
 	</div>
 
 
-	<!-- 	/**Chức năng nhập lại pass  + nhập đúng form email dùng Java Script*/ -->
+	<!-- 	/**Chá»©c nÄng nháº­p láº¡i pass  + nháº­p ÄÃºng form email dÃ¹ng Java Script*/ -->
 
 	<script type="text/javascript">
 		function Validate() {
@@ -164,7 +164,7 @@
 	<!-- Footer Area Start -->
 
 	<!-- Footer Area Start -->
-	<!-- NÆ I Gáº®N FOOTER -->
+	<!-- NÃÂ I GÃ¡ÂºÂ®N FOOTER -->
 	<div th:insert="~{footer :: footer_in}"></div>
 </body>
 </html>

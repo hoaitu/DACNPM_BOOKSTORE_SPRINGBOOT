@@ -24,25 +24,6 @@ public class SingupController {
 	@Autowired
 	private CustomerValidation customerValidation;
 
-	/** 07/06/2021 */
-
-//	@RequestMapping(value = "/signup1")
-//	public ModelAndView signup(Model model) {
-//		ModelAndView mav = new ModelAndView("signup");
-//		model.addAttribute("user", new User());
-//		return mav;
-//	}
-
-//	@RequestMapping(value = "/signup", method = RequestMethod.POST)
-//	public ModelAndView signup(@ModelAttribute("user") User user, Model model) {
-//		ModelAndView mav = new ModelAndView("login");
-////		if (result.hasErrors()) {
-////			return mav = new ModelAndView("signup");
-////		}
-//		userService.create(user);
-//
-//		return mav;
-//	}
 
 	@RequestMapping(value = "/signup", method = RequestMethod.GET)
 	public ModelAndView signup(Model model) {
@@ -54,7 +35,6 @@ public class SingupController {
 	@RequestMapping(value = "/signup", method = RequestMethod.POST)
 	public ModelAndView signup(@ModelAttribute("user") @Valid User user, Errors errors, BindingResult result,
 			Model model) {
-//		ValidationUtils.invokeValidator(customerValidation, user, errors);
 
 		ModelAndView mav = null;
 		if (result.hasErrors()) {

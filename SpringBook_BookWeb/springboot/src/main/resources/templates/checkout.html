@@ -64,13 +64,17 @@
 										<div class="row">
 											<div class="col-md-6">
 												<p class="form-row">
-													<span>Your Name</span> <input th:field="*{receiptName}" />
+													<span>Your Name</span> <input
+														th:value="${#request.userPrincipal.name}"
+														name="receiptName" />
 
 												</p>
 											</div>
 											<div class="col-md-6">
 												<p class="form-row">
-													<span>Your Email</span> <input th:field="*{receiptMail}" />
+													<span>Your Email</span> <input
+														th:value="${#request.userPrincipal.name}"
+														name="receiptMail" />
 												</p>
 											</div>
 											<div class="col-md-6">
@@ -199,25 +203,25 @@
 													</thead>
 													<!-- <c:forEach var="map" items="${sessionScope.myCartItems}"> -->
 													<div th:each="map : ${session.myCartItems}">
-													<tbody>
+														<tbody>
 
-														<tr>
-															<td><a href="#"><span
-																	th:text="${map.value.product.tenSach }"></span></a></td>
+															<tr>
+																<td><a href="#"><span
+																		th:text="${map.value.product.tenSach }"></span></a></td>
 
-															<td><span class="cart-price"><span
-																	class="check-price"><span
-																		th:text="${map.value.product.gia }"></span></span></span></td>
+																<td><span class="cart-price"><span
+																		class="check-price"><span
+																			th:text="${map.value.product.gia }"></span></span></span></td>
 
-															<td><span id="1"><span
-																	th:text="${map.value.quantity }"></span> </span></td>
+																<td><span id="1"><span
+																		th:text="${map.value.quantity }"></span> </span></td>
 
-															<!-- sub total starts here -->
-															<td><span class="cart-price"><span
-																	class="check-price"><span
-																		th:text="${map.value.product.gia}"></span></span></span></td>
-														</tr>
-													</tbody>
+																<!-- sub total starts here -->
+																<td><span class="cart-price"><span
+																		class="check-price"><span
+																			th:text="${map.value.product.gia}"></span></span></span></td>
+															</tr>
+														</tbody>
 													</div>
 													<tfoot>
 														<tr>

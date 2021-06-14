@@ -24,6 +24,7 @@ import com.ht.service.BookService;
 import com.ht.service.ReceiptItemService;
 import com.ht.service.ReceiptService;
 
+////-------------TRANG-------------
 @Controller
 @RequestMapping(value = "cart")
 public class ControllerCart {
@@ -35,6 +36,7 @@ public class ControllerCart {
 	@Autowired
 	private ReceiptItemService receiptItemService;
 
+//////////THEM SAN PHAM VAO GIO HANG
 	@RequestMapping(value = "add/{productId}", method = RequestMethod.GET)
 	public String viewAdd(ModelMap mm, HttpSession session, @PathVariable("productId") long productId) {
 		HashMap<Long, Cart> cartItems = (HashMap<Long, Cart>) session.getAttribute("myCartItems");
@@ -61,6 +63,7 @@ public class ControllerCart {
 		return "redirect:/shop";
 	}
 
+//////////TANG SO LUONG SAN PHAM TRONG GIO HANG
 	@RequestMapping(value = "sub/{productId}", method = RequestMethod.GET)
 	public String viewUpdate(ModelMap mm, HttpSession session, @PathVariable("productId") long productId) {
 		HashMap<Long, Cart> cartItems = (HashMap<Long, Cart>) session.getAttribute("myCartItems");
@@ -87,6 +90,7 @@ public class ControllerCart {
 		return "redirect:/shopping_cart";
 	}
 
+////////////GIAM SO LUONG TRONG GIO HANG
 	@RequestMapping(value = "subs/{productId}", method = RequestMethod.GET)
 	public String viewUpdates(ModelMap mm, HttpSession session, @PathVariable("productId") long productId) {
 		HashMap<Long, Cart> cartItems = (HashMap<Long, Cart>) session.getAttribute("myCartItems");
@@ -115,6 +119,7 @@ public class ControllerCart {
 		return "redirect:/shopping_cart";
 	}
 
+//////////////XOA SAN PHAM TRONG GIO HANG
 	@RequestMapping(value = "remove/{productId}", method = RequestMethod.GET)
 	public String viewRemove(ModelMap mm, HttpSession session, @PathVariable("productId") long productId) {
 		HashMap<Long, Cart> cartItems = (HashMap<Long, Cart>) session.getAttribute("myCartItems");
@@ -130,6 +135,7 @@ public class ControllerCart {
 		return "redirect:/shopping_cart";
 	}
 
+////////////XOA TOAN BO SAN PHAM TRONG GIO HANG
 	@RequestMapping(value = "removeAll", method = RequestMethod.GET)
 	public String viewRemoveAll(ModelMap mm, HttpSession session) {
 		HashMap<Long, Cart> cartItems = (HashMap<Long, Cart>) session.getAttribute("myCartItems");
@@ -140,6 +146,7 @@ public class ControllerCart {
 		return "redirect:/shopping_cart";
 	}
 
+////////////TONG TIEN
 	public double totalPrice(HashMap<Long, Cart> cartItems) {
 		int count = 0;
 		for (Map.Entry<Long, Cart> list : cartItems.entrySet()) {
@@ -148,6 +155,7 @@ public class ControllerCart {
 		return count;
 	}
 
+/////////////HIEN THI TRANG THANH TOAN
 	@RequestMapping(value = "checkout", method = RequestMethod.GET)
 	public ModelAndView viewCheckout(ModelMap mm) {
 		ModelAndView mav = new ModelAndView("checkout");
@@ -155,6 +163,7 @@ public class ControllerCart {
 		return mav;
 	}
 
+/////////////XU LY THANH TOAN
 	@RequestMapping(value = "checkout", method = RequestMethod.POST)
 	public String viewCheckout(ModelMap mm, HttpSession session, @ModelAttribute("receipt") Receipt receipt) {
 		HashMap<Long, Cart> cartItems = (HashMap<Long, Cart>) session.getAttribute("myCartItems");
@@ -163,7 +172,7 @@ public class ControllerCart {
 		}
 		receipt.setReceiptDate(new Timestamp(new Date().getTime()));
 //		receipt.setReceiptDate(new Timestamp(new Date().getTime()));
-		receipt.setReceiptStatus(true);
+		receipt.setReceiptStatus("Đặt hàng thành công");
 		receipt.setTotal(totalPrice(cartItems));
 		receiptService.create(receipt);
 		for (Map.Entry<Long, Cart> entry : cartItems.entrySet()) {

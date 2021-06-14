@@ -32,6 +32,8 @@ import com.ht.entities.Sach;
 import com.ht.service.BookService;
 import com.ht.service.CategoryService;
 import com.ht.service.PageService;
+import com.ht.service.ReceiptItemService;
+import com.ht.service.ReceiptService;
 import com.ht.service.UserService;
 import com.ht.entities.User;
 //
@@ -53,33 +55,19 @@ public class MainController {
 	private CategoryService category;
 	@Autowired
 	private PageService pageService;
-
-<<<<<<< HEAD
-=======
 	@Autowired
 	private UserService userService;
+	@Autowired
+	private ReceiptService receiptService;
+	@Autowired
+	private ReceiptItemService receiptItemService;
 
-//	@GetMapping(value = { "/", "/index" })
-//	public String homePage(Model model) {
-//		return "index2";
-//	}
-
-//	@RequestMapping(value = { "/", "/index" }, method = RequestMethod.GET)
-//	public String index(Model model) {
-//
-////        model.addAttribute("message", message);
-//
-//		return "index";
-//	}
-
->>>>>>> origin/htu
 	@RequestMapping("/")
 	public ModelAndView home(ModelMap model) {
 		ModelAndView mav = new ModelAndView("index");
 
 		return mav;
 	}
-
 
 //	------------------------------------------------------------
 
@@ -89,17 +77,14 @@ public class MainController {
 		ModelAndView mav = new ModelAndView("shop");
 		model.addAttribute("listbook", book.findByCategory(id));
 		model.addAttribute("listcategory", category.findAll());
-<<<<<<< HEAD
+
+//
+//		return mav;
+//	}
 
 		return mav;
 	}
-=======
->>>>>>> origin/htu
 
-		return mav;
-	}
-
-//////////////
 	@RequestMapping(value = "/search")
 	public @ResponseBody List<Sach> ajaxSearch(HttpServletRequest req, HttpServletResponse res) {
 		List<Sach> getSach = book.findBookByTitle(req.getParameter("tenSach"));
@@ -127,34 +112,12 @@ public class MainController {
 		return mav;
 	}
 
-<<<<<<< HEAD
 	@RequestMapping("/signup")
 	public ModelAndView signup(ModelMap model) {
 		ModelAndView mav = new ModelAndView("signup");
 
 		return mav;
 	}
-=======
-//	@RequestMapping(value = "/logout", method = RequestMethod.GET)
-//	public ModelAndView logout(ModelMap model) {
-//		ModelAndView mav = new ModelAndView("index");
-//
-//		return mav;
-//	}
-
-//	@RequestMapping(value = "/login", method = RequestMethod.GET)
-//    public String loginPage(Model model) {
-// 
-//        return "login";
-//    }
-
-//	@RequestMapping("/signup")
-//	public ModelAndView signup(ModelMap model) {
-//		ModelAndView mav = new ModelAndView("signup");
-//
-//		return mav;
-//	}
->>>>>>> origin/htu
 
 	@RequestMapping("/single-product/{ids}")
 	public ModelAndView single_product(Model model, @PathVariable(value = "ids") int ids) {
@@ -171,10 +134,21 @@ public class MainController {
 		return mav;
 	}
 
-	@RequestMapping("/my-account")
-	public ModelAndView account(ModelMap model) {
+/////////TRANG------THONG TIN TAI KHOAN
+	@RequestMapping("/my-account/{email}")
+	public ModelAndView account(ModelMap model, @PathVariable("email") String email) {
 		ModelAndView mav = new ModelAndView("my-account");
+		model.addAttribute("user", new User());
+		model.addAttribute("users", userService.findByEmail(email));
+		model.addAttribute("receipts", receiptItemService.showReceipt(email));
+		return mav;
+	}
 
+/////////TRANG------THONG TIN TAI KHOAN
+	@PostMapping("/my-account/{email}")
+	public ModelAndView account(ModelMap model, @ModelAttribute("user") User u) {
+		ModelAndView mav = new ModelAndView("my-account");
+		userService.updates(u);
 		return mav;
 	}
 
@@ -232,75 +206,4 @@ public class MainController {
 		return mav;
 	}
 
-<<<<<<< HEAD
-=======
-//	-----------------------------------------------------------------------
-
-//	@RequestMapping("/admin")
-//	public ModelAndView admin(ModelMap model) {
-//		ModelAndView mav = new ModelAndView("admin/index");
-//
-//		return mav;
-//	}
-
-	@RequestMapping(value = "/admin", method = RequestMethod.GET)
-	public ModelAndView adminPage(Model model, Principal principal) {
-		ModelAndView mav = new ModelAndView("admin/index");
-//		User loginedUser = (User) ((Authentication) principal).getPrincipal();
-//
-//		String userInfo = WebUtils.toString(loginedUser);
-//		model.addAttribute("userInfo", userInfo);
-
-		return mav;
-	}
-
-//	-------------------------------------------
-
-	@RequestMapping("/admin/add")
-	public ModelAndView adminAdd(ModelMap model) {
-		ModelAndView mav = new ModelAndView("admin/product-add");
-
-		return mav;
-	}
-
-	@RequestMapping("/admin/edit")
-	public ModelAndView adminEdit(ModelMap model) {
-		ModelAndView mav = new ModelAndView("admin/product-edit");
-
-		return mav;
-	}
-
-	@RequestMapping("/admin/productDetail")
-	public ModelAndView adminProductDetail(ModelMap model) {
-		ModelAndView mav = new ModelAndView("admin/product-detail");
-
-		return mav;
-	}
-
-	@RequestMapping("/admin/productPay")
-	public ModelAndView adminProductPay(ModelMap model) {
-		ModelAndView mav = new ModelAndView("admin/product-payment");
-
-		return mav;
-	}
-
-	///////////////////
-
-	@RequestMapping("/admin/manaUser")
-	public ModelAndView adminUser(ModelMap model) {
-		ModelAndView mav = new ModelAndView("admin/list-user");
-
-		return mav;
-	}
-
-//	[[[[[[[[[[ơ
-
-	@RequestMapping("/test")
-	public ModelAndView testPG(ModelMap model) {
-		ModelAndView mav = new ModelAndView("test");
-
-		return mav;
-	}
-
->>>>>>> origin/htu
 }

@@ -51,10 +51,14 @@ h3 {
 											<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 												<!-- <form:form action="addUser" method="POST"
 													modelAttribute="user" onsubmit="return matchpass()"> -->
-												<form action="" method="POST" th:object="${user}">
-													* Username: <input th:field="*{email}" class="form-control" />
+												<form name="form1" id="form1" th:action="@{/admin/addUser}"
+													th:object="${user}" class="create-account-form"
+													method="post">
+
+													* Username: <input th:field="*{username}"
+														class="form-control" />
 													<!-- <form:errors path="email" cssClass="error" /> -->
-													<br /> * Địa chỉ Email: <input th:field="*{username}"
+													<br /> * Địa chỉ Email: <input th:field="*{email}"
 														class="form-control" />
 													<!-- 	<form:errors path="username" cssClass="error" /> -->
 													<br /> * Mật khẩu: <input type="password"

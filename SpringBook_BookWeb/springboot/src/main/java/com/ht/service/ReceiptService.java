@@ -1,5 +1,9 @@
 package com.ht.service;
 
+import java.sql.Timestamp;
+import java.util.Date;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,6 +14,10 @@ import com.ht.repository.ReceiptRepository;
 public class ReceiptService {
 	@Autowired
 	private ReceiptRepository reRepository;
+
+	public List<Receipt> findAll() {
+		return reRepository.findAll();
+	}
 
 	public void create(Receipt receipt) {
 		reRepository.saveAndFlush(receipt);
@@ -24,6 +32,13 @@ public class ReceiptService {
 		if (r != null) {
 			reRepository.delete(r);
 		}
+	}
 
+	public void update(Receipt receipt) {
+		Receipt re = reRepository.findByID(receipt.getReceiptId());
+		re.setReceiptStatus(receipt.getReceiptStatus());
+		re.setReceiptDate(new Timestamp(new Date().getTime()));
+
+		reRepository.saveAndFlush(re);
 	}
 }

@@ -43,10 +43,10 @@ h3 {
 							<th>Thao tác</th>
 						</tr>
 						<div th:each="category : ${listcategory}">
-							<!-- <c:forEach items="${listcategory}" var="category"> -->
 							<tr>
 								<td><p th:text="${category.maTheLoai }"></p></td>
-								<td><a th:href="@{${category.maTheLoai }}"><p
+								<td><a
+									th:href="@{/admin/listProductType/}+${category.maTheLoai}"><p
 											th:text="${category.tenTheLoai}"></p></a></td>
 								<td><a th:href="@{/admin/editType/}+${category.maTheLoai }">
 										<button data-toggle="tooltip" title="Edit"

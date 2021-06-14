@@ -162,8 +162,7 @@
 															</a>
 														</div>
 														<div style="color: #32b5f3;" class="price-2">
-															<span th:text="${book.gia}"><span>.000
-																	VNÃÂ</span> </span> <span style="color: black;" class="old-price">500.000ÃÂ</span>
+															<span th:text="${book.gia}+'.000 VNĐ'"> </span> <span style="color: black;" class="old-price">500.000 VNĐ</span>
 														</div>
 													</div>
 													<!-- <% } else {%>
@@ -219,8 +218,7 @@
 													</h4>
 													<div class="product-price">
 														<!-- <% if (listSach.get(i).getKhuyenMai() > 0) { %> -->
-														<span class="new-price" th:text="${book.gia}"><span>.000
-														</span></span> <span class="old-price">500.000</span>
+														<span class="new-price" th:text="${book.gia}+'.000 VNĐ'"></span> <span class="old-price">500.000 VNĐ</span>
 														<!-- <%} else {%>
                                                 <span class="new-price"><%=listSach.get(i).getGia()%>.000ÃÂ</span>
                                                 <%}%> -->
