@@ -50,25 +50,26 @@ h3 {
 											<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 												<!-- 	<form method="post" modelAttribute="user" action=""> -->
 												<form action="" method="POST" th:object="${user}">
-													<input type="hidden" th:field="*{idUser}" /> * Username:
-													<input th:field="*{email}" type="text" class="form-control" />
-													<br /> * Địa chỉ Email: <input th:field="*{username}"
-														type="text" class="form-control" /> <br /> * Mật khẩu:
-													<input type="password" th:field="*{password}"
-														class="form-control" /> <br /> * Nhập lại mật khẩu: <input
-														type="password" th:field="*{request}" class="form-control" />
-													<br /> Giới tính: <select th:field="*{gender}"
+													<input type="hidden" th:field="*{idUser}" /> * Username: <input
+														th:field="*{email}" type="text" class="form-control"
+														required /> <br /> * Địa chỉ Email: <input
+														th:field="*{username}" type="text" class="form-control" />
+													<br /> * Mật khẩu: <input type="password"
+														th:field="*{password}" class="form-control" required /> <br />
+													* Nhập lại mật khẩu: <input type="password"
+														th:field="*{request}" class="form-control" /> <br />
+													Giới tính: <select th:field="*{gender}"
 														class="form-control">
 														<option value="Nam">Nam</option>
 														<option value="Nữ">Nu</option>
 														<option value="Khác">Khac</option>
 
 													</select> <br /> * Ngày sinh: <input th:field="*{dateOfBirth}"
-														type="text" class="form-control" /> <br /> * Số điện
-													thoại: <input th:field="*{phone}" class="form-control"
+														type="text" class="form-control" required /> <br /> * Số
+													điện thoại: <input th:field="*{phone}" class="form-control"
 														type="text" /> <br /> * Địa chỉ: <input
-														th:field="*{address}" class="form-control" type="text" />
-													<br />
+														th:field="*{address}" class="form-control" type="text"
+														required /> <br />
 													<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 														<div class="text-center custom-pro-edt-ds">
 															<button type="submit"

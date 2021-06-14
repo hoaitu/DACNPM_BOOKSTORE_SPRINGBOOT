@@ -71,51 +71,53 @@
 												<label>Username </label>
 												<p class="form-row">
 													<input type="text" placeholder="Username *"
-														th:value="${#request.userPrincipal.name}" name="username" />
+														th:value="${#request.userPrincipal.name}" name="username"
+														required />
 												</p>
 												<label>Địa chỉ email </label>
 												<p class="form-row">
 													<input type="text" placeholder="Địa chỉ email *"
-														th:value="${#request.userPrincipal.name}" name="email" />
+														th:value="${#request.userPrincipal.name}" name="email"
+														required />
 												</p>
 
 												<input type="hidden" th:field="*{idUser}" /> <label>Địa
 													chỉ </label>
 												<p class="form-row">
 													<input type="text" placeholder="Địa chỉ *" name="address"
-														th:value="${users.address }" />
+														th:value="${users.address }" required />
 												</p>
 												<label>Số điện thoại </label>
 												<p class="form-row">
 													<input type="text" placeholder="Số điện thoại *"
-														name="phone" th:value="${users.phone }" />
+														name="phone" th:value="${users.phone }" required />
 												</p>
 
 												<label>Giới tính </label>
 												<p class="form-row">
 													<input type="text" name="gender"
-														th:value="${users.gender }" class="form-control" />
+														th:value="${users.gender }" class="form-control" required />
 												</p>
 
 												<label>Ngày sinh </label>
 												<p class="form-row">
 													<input type="text" name="dateOfBirth"
-														th:value="${users.dateOfBirth }" />
+														th:value="${users.dateOfBirth }" required />
 												</p>
 
 												<p>Thay đổi mật khẩu</p>
 												<p class="form-row">
 													<input type="password" name="current-pass"
 														placeholder="Mật khẩu hiện tại"
-														th:value="${users.password }" />
+														th:value="${users.password }" required />
 												</p>
 												<p class="form-row">
 													<input type="password" name="password"
-														placeholder="Mật khẩu mới" />
+														placeholder="Mật khẩu mới" required />
 												</p>
 												<p class="form-row">
 													<input type="password" name="request"
-														placeholder="Nhập lại mật khẩu mới" />
+														placeholder="Nhập lại mật khẩu mới" required />
 												</p>
 
 												<div class="checkbox">
@@ -187,19 +189,19 @@
 													</thead>
 													<!-- <c:forEach items="${receipts}" var="rs"> -->
 													<div th:each="rs : ${receipts}">
-													<tbody>
+														<tbody>
 
-														<tr role="row" class="odd">
-															<td class="sorting_1"><p
-																	th:text="${rs.receipt.receiptId }"></p></td>
-															<td class="sorting_1"><img
-																th:src="@{${rs.product.hinhAnh}}" /></td>
-															<td class="sorting_1"><p
-																	th:text="${rs.product.tenSach }"></p></td>
-															<td><p th:text="${rs.receiptItemQuantity }"></p></td>
-															<td><p th:text="${rs.receiptItemPrice }+ '00VNĐ'"></p></td>
-														</tr>
-													</tbody>
+															<tr role="row" class="odd">
+																<td class="sorting_1"><p
+																		th:text="${rs.receipt.receiptId }"></p></td>
+																<td class="sorting_1"><img
+																	th:src="@{${rs.product.hinhAnh}}" /></td>
+																<td class="sorting_1"><p
+																		th:text="${rs.product.tenSach }"></p></td>
+																<td><p th:text="${rs.receiptItemQuantity }"></p></td>
+																<td><p th:text="${rs.receiptItemPrice }+ '00VNĐ'"></p></td>
+															</tr>
+														</tbody>
 													</div>
 													<!-- </c:forEach> -->
 												</table>

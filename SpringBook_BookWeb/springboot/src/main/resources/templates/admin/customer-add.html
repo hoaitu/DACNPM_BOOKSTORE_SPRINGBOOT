@@ -56,36 +56,23 @@ h3 {
 													method="post">
 
 													* Username: <input th:field="*{username}"
-														class="form-control" />
-													<!-- <form:errors path="email" cssClass="error" /> -->
-													<br /> * Địa chỉ Email: <input th:field="*{email}"
-														class="form-control" />
-													<!-- 	<form:errors path="username" cssClass="error" /> -->
+														class="form-control" required /> <br /> * Địa chỉ Email:
+													<input th:field="*{email}" class="form-control" required />
 													<br /> * Mật khẩu: <input type="password"
-														th:field="*{password}" class="form-control" />
-													<!-- <form:errors path="password" cssClass="error" /> -->
-													<br /> * Nhập lại mật khẩu: <input type="password"
-														th:field="*{request}" class="form-control" />
-													<!-- <form:errors path="request" cssClass="error" /> -->
-													<span id="sessages" style="color: red;"></span> <br /> *
-													Giới tính: <select th:field="*{gender}"
-														class="form-control">
+														th:field="*{password}" class="form-control" required /> <br />
+													* Nhập lại mật khẩu: <input type="password"
+														th:field="*{request}" class="form-control" required /> <span
+														id="sessages" style="color: red;"></span> <br /> * Giới
+													tính: <select th:field="*{gender}" class="form-control">
 														<option value="Nam">Nam</option>
 														<option value="Nữ">Nu</option>
 														<option value="Khác">Khac</option>
 
-													</select>
-													<!-- <form:errors path="gender" cssClass="error" /> -->
-													<br /> * Ngày sinh: <input th:field="*{dateOfBirth}"
-														type="datetime" class="form-control" />
-													<!-- <form:errors path="dateOfBirth" cssClass="error" /> -->
-													<br /> * Số điện thoại: <input th:field="*{phone}"
-														class="form-control" />
-													<!-- 	<form:errors path="phone" cssClass="error" /> -->
-													<br /> * Địa chỉ: <input th:field="*{address}"
-														class="form-control" />
-													<!-- 	<form:errors path="address" cssClass="error" /> -->
-													<br />
+													</select> <br /> * Ngày sinh: <input th:field="*{dateOfBirth}"
+														type="datetime" class="form-control" required /> <br />
+													* Số điện thoại: <input th:field="*{phone}"
+														class="form-control" required /> <br /> * Địa chỉ: <input
+														th:field="*{address}" class="form-control" required /> <br />
 
 													<button type="submit">Lưu</button>
 													<button type="reset">Huỷ bỏ</button>
@@ -102,6 +89,12 @@ h3 {
 			</div>
 		</div>
 	</div>
+
+
+
+
+
+
 	<!--FOOTER -->
 	<script type="text/javascript">
 		function matchpass() {
