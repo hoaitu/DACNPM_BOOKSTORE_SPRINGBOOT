@@ -159,6 +159,40 @@
 															</div>
 														</div>
 													</div>
+<<<<<<< HEAD
+=======
+													<!-- <% if (listSach.get(i).getKhuyenMai() > 0) { %> -->
+													<div
+														style="width: 15%; z-index: 999; position: absolute; top: 0; right: 0;">
+														<img th:src="@{/resource/user/img/sale.png}" alt="" />
+														<p
+															style="font-size: 14px; position: absolute; left: 15%; top: 55%; transform: translate(0, -50%); color: white;">
+															30%</p>
+													</div>
+													<div class="banner-bottom text-center">
+														<div class="banner-bottom-title" style="height: 40px;">
+															<a href="#"> <span th:text="${book.tenSach}">
+															</span>
+															</a>
+														</div>
+														<div style="color: #32b5f3;" class="price-2">
+															<span th:text="${book.gia}+'.000 VNĐ'"> </span> <span style="color: black;" class="old-price">500.000 VNĐ</span>
+														</div>
+													</div>
+													<!-- <% } else {%>
+                                            <div class="banner-bottom text-center">
+                                                <div class="banner-bottom-title" style="height: 40px">
+                                                    <a href=<%= Util.fullPath("singleProductController?idProduct=") + listSach.get(i).getMaSach()%>><%=listSach.get(i).getTenSach()%>
+                                                    </a>
+                                                </div>
+                                                <div style="color: #32b5f3" class="price-2"><%=listSach.get(i).getGia()%>.000<span>ÃÂ</span>
+                                                </div>
+                                            </div>
+                                            <% }%> -->
+												</div>
+											</div>
+										</div>
+>>>>>>> origin/trang2
 
 													<!--  -->
 
@@ -172,10 +206,27 @@
 														style="font-size: 14px; position: absolute; left: 15%; top: 55%; transform: translate(0, -50%); color: white;">
 														30%</p>
 												</div>
+<<<<<<< HEAD
 												<div class="banner-bottom text-center">
 													<div class="banner-bottom-title" style="height: 40px;">
 														<a href="#"> <span th:text="${book.tenSach}"> </span>
 														</a>
+=======
+												<!-- <%}%> -->
+											</div>
+											<div class="col-xs-12 col-sm-7 col-md-8">
+												<div class="deal-product-content">
+													<h4>
+														<a th:href="@{/single-product/} + ${book.maSach}"
+															title="Book Name"><span th:text="${book.tenSach}"></span></a>
+													</h4>
+													<div class="product-price">
+														<!-- <% if (listSach.get(i).getKhuyenMai() > 0) { %> -->
+														<span class="new-price" th:text="${book.gia}+'.000 VNĐ'"></span> <span class="old-price">500.000 VNĐ</span>
+														<!-- <%} else {%>
+                                                <span class="new-price"><%=listSach.get(i).getGia()%>.000ÃÂ</span>
+                                                <%}%> -->
+>>>>>>> origin/trang2
 													</div>
 													<div style="color: #32b5f3;" class="price-2">
 														<span th:text="${book.gia}"><span>.000

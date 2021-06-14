@@ -10,7 +10,7 @@
 	<div class="left-sidebar-pro">
 		<nav id="sidebar" class="">
 			<div class="sidebar-header">
-				<a href="index.html"><img class="main-logo"
+				<a th:href="@{/admin}"><img class="main-logo"
 					th:src="@{/resource/admin/img/logo/logo.png}" alt="" /></a> <strong><img
 					th:src="@{/resource/admin/img/logo/logosn.png}" alt="" /></strong>
 			</div>
@@ -304,9 +304,10 @@
 												<i class="icon nalika-home"></i>
 											</div>
 											<div class="breadcomb-ctn">
-												<h2>Pate-ER FOOD</h2>
+												<h2>BOOK STORE</h2>
 												<p>
-													Chào mừng Pate-ER <span class="bread-ntd">${pageContext.request.userPrincipal.name}</span>
+													Chào mừng <span class="bread-ntd"><span
+														th:utext="${#request.userPrincipal.name}"></span></span>
 												</p>
 											</div>
 										</div>
@@ -318,6 +319,5 @@
 					</div>
 				</div>
 			</div>
-	
 </body>
 </html>

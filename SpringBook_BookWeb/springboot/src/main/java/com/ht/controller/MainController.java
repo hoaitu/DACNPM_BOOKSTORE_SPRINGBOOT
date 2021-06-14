@@ -33,6 +33,8 @@ import com.ht.service.BookService;
 import com.ht.service.CategoryService;
 import com.ht.service.CustomerValidation;
 import com.ht.service.PageService;
+import com.ht.service.ReceiptItemService;
+import com.ht.service.ReceiptService;
 import com.ht.service.UserService;
 import com.ht.entities.User;
 //
@@ -55,9 +57,16 @@ public class MainController {
 	private CategoryService category;
 	@Autowired
 	private PageService pageService;
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/trang2
 	@Autowired
 	private UserService userService;
+	@Autowired
+	private ReceiptService receiptService;
+	@Autowired
+	private ReceiptItemService receiptItemService;
 
 	@RequestMapping("/")
 	public ModelAndView home(ModelMap model) {
@@ -74,10 +83,41 @@ public class MainController {
 		ModelAndView mav = new ModelAndView("shop");
 		model.addAttribute("listbook", book.findByCategory(id));
 		model.addAttribute("listcategory", category.findAll());
+<<<<<<< HEAD
 		return mav;
 	}
 
 //Tu: Show page Login	
+=======
+
+//
+//		return mav;
+//	}
+
+		return mav;
+	}
+
+	@RequestMapping(value = "/search")
+	public @ResponseBody List<Sach> ajaxSearch(HttpServletRequest req, HttpServletResponse res) {
+		List<Sach> getSach = book.findBookByTitle(req.getParameter("tenSach"));
+		for (Sach sach : getSach) {
+			System.out.println(sach + "\n");
+		}
+		return getSach;
+	}
+
+	@RequestMapping(value = "/ajaxSearch", method = RequestMethod.GET)
+	public List<String> getSach(String tenSach) {
+		List<String> getSach = book.findBook(tenSach);
+		for (String sach : getSach) {
+			System.out.println(sach + "\n");
+		}
+		return getSach;
+	}
+
+//	
+
+>>>>>>> origin/trang2
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public ModelAndView login(ModelMap model) {
 		ModelAndView mav = new ModelAndView("login");
@@ -85,6 +125,16 @@ public class MainController {
 		return mav;
 	}
 
+<<<<<<< HEAD
+=======
+	@RequestMapping("/signup")
+	public ModelAndView signup(ModelMap model) {
+		ModelAndView mav = new ModelAndView("signup");
+
+		return mav;
+	}
+
+>>>>>>> origin/trang2
 	@RequestMapping("/single-product/{ids}")
 	public ModelAndView single_product(Model model, @PathVariable(value = "ids") int ids) {
 		ModelAndView mav = new ModelAndView("single-product");
@@ -100,10 +150,21 @@ public class MainController {
 		return mav;
 	}
 
-	@RequestMapping("/my-account")
-	public ModelAndView account(ModelMap model) {
+/////////TRANG------THONG TIN TAI KHOAN
+	@RequestMapping("/my-account/{email}")
+	public ModelAndView account(ModelMap model, @PathVariable("email") String email) {
 		ModelAndView mav = new ModelAndView("my-account");
+		model.addAttribute("user", new User());
+		model.addAttribute("users", userService.findByEmail(email));
+		model.addAttribute("receipts", receiptItemService.showReceipt(email));
+		return mav;
+	}
 
+/////////TRANG------THONG TIN TAI KHOAN
+	@PostMapping("/my-account/{email}")
+	public ModelAndView account(ModelMap model, @ModelAttribute("user") User u) {
+		ModelAndView mav = new ModelAndView("my-account");
+		userService.updates(u);
 		return mav;
 	}
 
@@ -163,6 +224,7 @@ public class MainController {
 		return mav;
 	}
 
+<<<<<<< HEAD
 //TEST: only test
 	@RequestMapping("/test")
 	public ModelAndView testPG(ModelMap model) {
@@ -171,4 +233,6 @@ public class MainController {
 		return mav;
 	}
 
+=======
+>>>>>>> origin/trang2
 }

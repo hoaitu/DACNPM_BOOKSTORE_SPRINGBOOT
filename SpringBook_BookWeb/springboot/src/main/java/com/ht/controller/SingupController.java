@@ -27,6 +27,7 @@ public class SingupController {
 	@Autowired
 	private CustomerValidation customerValidation;
 
+<<<<<<< HEAD
 	/** 07/06/2021 */
 
 	// Tu: Check user exits in DB (page Singup Ajax)
@@ -40,6 +41,8 @@ public class SingupController {
 			return false;
 		}
 	}
+=======
+>>>>>>> origin/trang2
 
 	// Tu: Show page singup
 	@RequestMapping(value = "/signup", method = RequestMethod.GET)

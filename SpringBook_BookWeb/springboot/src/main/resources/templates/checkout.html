@@ -64,13 +64,17 @@
 										<div class="row">
 											<div class="col-md-6">
 												<p class="form-row">
-													<span>Your Name</span> <input th:field="*{receiptName}" />
+													<span>Your Name</span> <input
+														th:value="${#request.userPrincipal.name}"
+														name="receiptName" />
 
 												</p>
 											</div>
 											<div class="col-md-6">
 												<p class="form-row">
-													<span>Your Email</span> <input th:field="*{receiptMail}" />
+													<span>Your Email</span> <input
+														th:value="${#request.userPrincipal.name}"
+														name="receiptMail" />
 												</p>
 											</div>
 											<div class="col-md-6">

@@ -49,25 +49,23 @@ h3 {
 							<!-- <c:forEach items="${listOrders }" var="order"> -->
 							<div th:each="order : ${listOrders}">
 							<tr>
-								<td><a
-									th:href="@{/admin/orderDetail/}+${order.receipt.receiptId }"><span
-										th:text="${order.receipt.receiptId}"></span> </a></td>
+								<td><span th:text="${order.receipt.receiptId}"></span></td>
 								<td><span th:text="${order.receipt.receiptName }"></span></td>
 								<td><span th:text="${order.receipt.receiptPhone }"></span></td>
-								<td>
+								<td><span th:text="${order.receipt.receiptStatus }"></span>
 									<!-- <c:if test="${order.receipt.receiptStatus == true}">
 									Tiếp nhận đơn
 									</c:if> <c:if test="${order.receipt.receiptStatus == false}">
 									Đã giao
-									</c:if> -->1
-								</td>
+									</c:if> --></td>
 								<td><span th:text="${order.receipt.receiptDate }"></span></td>
-								<td><span th:text="${order.receipt.total }"></span></td>
-								<td><a href="">
+								<td><span th:text="${order.receipt.total }+'00 VNĐ'"></span></td>
+								<td><a
+									th:href="@{/admin/orderDetail/}+${order.receipt.receiptId }">
 										<button data-toggle="tooltip" title="Detail"
 											class="pd-setting-ed">Detail</button>
-								</a> <a href=""><button data-toggle="tooltip" title="Edit"
-											class="pd-setting-ed">
+								</a> <a th:href="@{/admin/editOrder/}+${order.receipt.receiptId }"><button
+											data-toggle="tooltip" title="Edit" class="pd-setting-ed">
 											<i class="fa fa-pencil-square-o" aria-hidden="true"></i>
 										</button> </a> <a onclick="return confirm('Bạn có chắc muốn xóa')"
 									th:href="@{/admin/deleteOrder/}+${order.receipt.receiptId }">

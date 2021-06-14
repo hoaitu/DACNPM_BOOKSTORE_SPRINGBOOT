@@ -35,22 +35,22 @@ h3 {
 
 		<div class="payment-order clearfix">
 			<h3>
-				Mã đơn hàng của bạn: <b>${order.receiptId}</b>
+				Mã đơn hàng của bạn: <b th:text="${order.receiptId}"></b>
 			</h3>
 			<p>
-				Tên khách hàng: <b>${order.receiptName }</b>
+				Tên khách hàng: <b th:text="${order.receiptName }"></b>
 			</p>
 			<p>
-				Số điện thoại: <b>${order.receiptPhone }</b>
+				Số điện thoại: <b th:text="${order.receiptPhone }"></b>
 			</p>
 			<p>
-				Địa chỉ giao hàng: <b>${order.receiptAddress}</b>
+				Địa chỉ giao hàng: <b th:text="${order.receiptAddress}"></b>
 			</p>
 			<p>
-				Ngày đặt: <i>${order.receiptDate }</i>
+				Ngày đặt: <i th:text="${order.receiptDate }"></i>
 			</p>
 			<p>
-				Tổng tiền: <b>${order.total }00VNĐ</b>
+				Tổng tiền: <b th:text="${order.total }+'00 VNĐ'"></b>
 			</p>
 		</div>
 
@@ -64,21 +64,21 @@ h3 {
 				<th>Đơn giá</th>
 			</tr>
 			<!-- <c:forEach items="${listdetail }" var="order"> -->
+			<div th:each="order : ${listdetail}">
 			<tr>
 				<td class="text-center"><img alt=""
-					src="<%=request.getContextPath()%>${order.product.hinhAnh}"
-					width="70" height="60" /></td>
-				<td>${order.product.tenSach }</td>
-				<td>${order.receiptItemQuantity }</td>
-				<td>${order.receiptItemPrice }00VNĐ</td>
+					th:src="@{${order.product.hinhAnh}}" width="70" height="60" /></td>
+				<td><p th:text="${order.product.tenSach }"></p></td>
+				<td><p th:text="${order.receiptItemQuantity }"></p></td>
+				<td><p th:text="${order.receiptItemPrice }+'00 VNĐ'"></p></td>
 			</tr>
-		<!-- 	</c:forEach> -->
+			<!-- 	</c:forEach> -->
+			</div>
 		</table>
 		<div class="clearfix col-md-12">
 			<div class="button text-right">
-				<a class="btn btn-default btn-danger"
-					href="<%=request.getContextPath()%>/admin/listOrder">Quay lại
-					quản lý đơn hàng</a>
+				<a class="btn btn-default btn-danger" th:href="@{/admin/listOrder}">Quay
+					lại quản lý đơn hàng</a>
 			</div>
 		</div>
 		<hr class="featurette-divider">
