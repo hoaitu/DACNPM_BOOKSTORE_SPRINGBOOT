@@ -1,5 +1,6 @@
 package com.ht.controller;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,8 +9,10 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.validation.ValidationUtils;
 
@@ -17,7 +20,7 @@ import com.ht.entities.User;
 import com.ht.service.CustomerValidation;
 import com.ht.service.UserService;
 
-@Controller
+@RestController
 public class SingupController {
 	@Autowired
 	private UserService userService;
@@ -26,24 +29,19 @@ public class SingupController {
 
 	/** 07/06/2021 */
 
-//	@RequestMapping(value = "/signup1")
-//	public ModelAndView signup(Model model) {
-//		ModelAndView mav = new ModelAndView("signup");
-//		model.addAttribute("user", new User());
-//		return mav;
-//	}
+	// Tu: Check user exits in DB (page Singup Ajax)
+	@RequestMapping(value = "/checkUserName", method = RequestMethod.GET)
+	public boolean checkUserName(String userName) {
+//			user : khac rong : ==> ko co user nao ton tai tren DB => đăng ký OK : Lien ket vs Xly Ajax in PageL singup
+		User user = userService.findCustomerByUserName(userName);
+		if (user != null) {
+			return true;
+		} else {
+			return false;
+		}
+	}
 
-//	@RequestMapping(value = "/signup", method = RequestMethod.POST)
-//	public ModelAndView signup(@ModelAttribute("user") User user, Model model) {
-//		ModelAndView mav = new ModelAndView("login");
-////		if (result.hasErrors()) {
-////			return mav = new ModelAndView("signup");
-////		}
-//		userService.create(user);
-//
-//		return mav;
-//	}
-
+	// Tu: Show page singup
 	@RequestMapping(value = "/signup", method = RequestMethod.GET)
 	public ModelAndView signup(Model model) {
 		ModelAndView mav = new ModelAndView("signup");
@@ -51,17 +49,26 @@ public class SingupController {
 		return mav;
 	}
 
+//		Tu: method Post : Ajax in Page Singup.html check UserName is Mail(user name la mail) Exits + JavaScrip check is Valid Mail + Password conform + required  
 	@RequestMapping(value = "/signup", method = RequestMethod.POST)
 	public ModelAndView signup(@ModelAttribute("user") @Valid User user, Errors errors, BindingResult result,
 			Model model) {
-//		ValidationUtils.invokeValidator(customerValidation, user, errors);
 
 		ModelAndView mav = null;
+
+//			if have any Err will return Page Singup 
 		if (result.hasErrors()) {
 			return mav = new ModelAndView("signup");
-		}
-		userService.create(user);
+//				if User have Exits in DB will return Page: Singup 
+		} else if (checkUserName(user.getUsername()) == true) {
+//				Return this Page Singup + mess Err
+			model.addAttribute("message", "You have ERROR, Please check form again.");
 
+			return mav = new ModelAndView("signup");
+
+		}
+//			if everything is OK; will create User in DB + Return Page Login
+		userService.create(user);
 		return mav = new ModelAndView("login");
 	}
 

@@ -31,6 +31,7 @@ import com.ht.WebUtils;
 import com.ht.entities.Sach;
 import com.ht.service.BookService;
 import com.ht.service.CategoryService;
+import com.ht.service.CustomerValidation;
 import com.ht.service.PageService;
 import com.ht.service.UserService;
 import com.ht.entities.User;
@@ -38,6 +39,7 @@ import com.ht.entities.User;
 
 import java.security.Principal;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 //import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -66,7 +68,7 @@ public class MainController {
 
 //	------------------------------------------------------------
 
-//	Tú mới cmment 06/06
+//	Tu new cmment 06/06
 	@RequestMapping(value = "/shop/{id}", method = RequestMethod.GET)
 	public ModelAndView shop(Model model, @PathVariable(value = "id") int id) {
 		ModelAndView mav = new ModelAndView("shop");
@@ -75,37 +77,10 @@ public class MainController {
 		return mav;
 	}
 
-//////////////
-	@RequestMapping(value = "/search")
-	public @ResponseBody List<Sach> ajaxSearch(HttpServletRequest req, HttpServletResponse res) {
-		List<Sach> getSach = book.findBookByTitle(req.getParameter("tenSach"));
-		for (Sach sach : getSach) {
-			System.out.println(sach + "\n");
-		}
-		return getSach;
-	}
-
-	@RequestMapping(value = "/ajaxSearch", method = RequestMethod.GET)
-	public List<String> getSach(String tenSach) {
-		List<String> getSach = book.findBook(tenSach);
-		for (String sach : getSach) {
-			System.out.println(sach + "\n");
-		}
-		return getSach;
-	}
-
-//	
-
+//Tu: Show page Login	
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public ModelAndView login(ModelMap model) {
 		ModelAndView mav = new ModelAndView("login");
-
-		return mav;
-	}
-
-	@RequestMapping("/signup")
-	public ModelAndView signup(ModelMap model) {
-		ModelAndView mav = new ModelAndView("signup");
 
 		return mav;
 	}
@@ -143,7 +118,7 @@ public class MainController {
 	 * 2/06/2021 : thêm trang 404
 	 */
 
-//để test
+//to Tu test : no important
 	@RequestMapping(value = "/userInfo", method = RequestMethod.GET)
 	public ModelAndView userInfo(Model model, Principal principal) {
 		ModelAndView mav = new ModelAndView("userInfoPage");
@@ -160,6 +135,7 @@ public class MainController {
 		return mav;
 	}
 
+//Tu: if after Login user want to logout + return Page: logoutSuccessfulPage.html 
 	@RequestMapping(value = "/logoutSuccessful", method = RequestMethod.GET)
 	public ModelAndView logoutSuccessfulPage(Model model) {
 		ModelAndView mav = new ModelAndView("logoutSuccessfulPage");
@@ -167,6 +143,7 @@ public class MainController {
 		return mav;
 	}
 
+//TEST: no important (if don't hvae permission will return page: 404: Sercurity) 
 	@RequestMapping(value = "/403", method = RequestMethod.GET)
 	public ModelAndView accessDenied(Model model, Principal principal) {
 		ModelAndView mav = new ModelAndView("404");
@@ -186,58 +163,7 @@ public class MainController {
 		return mav;
 	}
 
-//	@RequestMapping(value = "/admin", method = RequestMethod.GET)
-//	public ModelAndView adminPage(Model model, Principal principal) {
-//		ModelAndView mav = new ModelAndView("admin/index");
-////		User loginedUser = (User) ((Authentication) principal).getPrincipal();
-////
-////		String userInfo = WebUtils.toString(loginedUser);
-////		model.addAttribute("userInfo", userInfo);
-//
-//		return mav;
-//	}
-//
-////	-------------------------------------------
-//
-//	@RequestMapping("/admin/add")
-//	public ModelAndView adminAdd(ModelMap model) {
-//		ModelAndView mav = new ModelAndView("admin/product-add");
-//
-//		return mav;
-//	}
-//
-//	@RequestMapping("/admin/edit")
-//	public ModelAndView adminEdit(ModelMap model) {
-//		ModelAndView mav = new ModelAndView("admin/product-edit");
-//
-//		return mav;
-//	}
-//
-//	@RequestMapping("/admin/productDetail")
-//	public ModelAndView adminProductDetail(ModelMap model) {
-//		ModelAndView mav = new ModelAndView("admin/product-detail");
-//
-//		return mav;
-//	}
-//
-//	@RequestMapping("/admin/productPay")
-//	public ModelAndView adminProductPay(ModelMap model) {
-//		ModelAndView mav = new ModelAndView("admin/product-payment");
-//
-//		return mav;
-//	}
-//
-//	///////////////////
-//
-//	@RequestMapping("/admin/manaUser")
-//	public ModelAndView adminUser(ModelMap model) {
-//		ModelAndView mav = new ModelAndView("admin/list-user");
-//
-//		return mav;
-//	}
-
-//	[[[[[[[[[[ơ
-
+//TEST: only test
 	@RequestMapping("/test")
 	public ModelAndView testPG(ModelMap model) {
 		ModelAndView mav = new ModelAndView("test");

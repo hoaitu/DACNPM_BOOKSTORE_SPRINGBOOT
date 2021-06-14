@@ -34,7 +34,6 @@
 	</div>
 	<!-- Breadcrumbs Area Start -->
 
-
 	<!-- Shop Area Start -->
 	<div class="shopping-area section-padding">
 		<div class="container">
@@ -71,10 +70,6 @@
 								</div>
 							</aside>
 
-
-
-
-
 						</div>
 					</div>
 				</div>
@@ -90,12 +85,7 @@
 								</ul>
 							</div>
 
-
-
-
-
-
-							<!-- TÃ¬m kiáº¿m  -->
+							<!-- SEARCH -->
 							<div class="search-book">
 								<form name="" class="form-inline">
 									<input class="form-control mr-sm-2" type="text" name="tenSach"
@@ -109,13 +99,7 @@
 								</form>
 							</div>
 
-
-							<!-- Final tÃ¬m kiáº¿m   -->
-
-
-
-
-
+							<!-- END SEARCH -->
 						</div>
 						<div class="tab-content">
 							<div class="row tab-pane fade in active" id="home">
@@ -135,6 +119,7 @@
 														</a>
 
 														<!-- Nếu chưa nhận đc User nào login thì add card sẽ bị đảy qua trang login -->
+														<!-- Tu: Sercurity: if user don't login user can't  visit Card + buy Book + Number in Card will not increse(tang)  -->
 														<div th:if="${#request.userPrincipal==null}">
 															<div class="product-description">
 																<div class="functional-buttons">
@@ -155,9 +140,8 @@
 														</div>
 													</div>
 
-													<!--  -->
 													<!-- Nếu đã nhận đc User nào rồi thì add sẽ đc số trong giỏ hàng sẻ tăng lên  -->
-
+													<!-- Tu: Sercurity: if user login success new can visit Card + buy Book + Number in Card will increse(tang)  -->
 													<div th:if="${#request.userPrincipal !=null}">
 														<div class="product-description">
 															<div class="functional-buttons">
@@ -277,30 +261,8 @@
 
 						<div>&nbsp</div>
 
-						<!-- PhÃ¢n trang -->
 
-
-
-
-						<!-- ////////////////////////////// -->
-
-
-						<!-- <nav aria-label="Page navigation example">
-								<div id="pagination">
-
-									<div class="col-sm-1">
-										<span th:each="i: ${#numbers.sequence(1, totalPage )}">
-											<a th:if="${i != 1}" th:href="@{'/topic/page/' + ${i}}">[[${i}]]</a>
-
-
-											<span th:unless="${i != 1}">[[${i}]] </span> &nbsp; &nbsp;
-										</span>
-									</div>
-
-								</div>
-							</nav> -->
-
-						<!-- //////////////// test -->
+						<!-- Paging using JPA Show total page -->
 
 						<nav aria-label="Page navigation example">
 							<div id="pagination">
@@ -310,13 +272,10 @@
 
 									<button th:unless="${i != 1}" class="paging-item" type="button"
 										id="phantrangid" name="currentPage">[[${i}]]</button>
-
 								</th:block>
 							</div>
 						</nav>
-
-
-
+						<!-- End paging using JPA Show total page -->
 
 					</div>
 
@@ -334,10 +293,7 @@
 
 	<!-- Footer Area Start -->
 
-
-
-
-
+	<!-- TU: Search Ajax  -->
 	<script type="text/javascript">
 		function search() {
 			$
@@ -347,8 +303,7 @@
 						data : 'tenSach=' + $("#autoSearch").val(),
 						success : function(res) {
 							var result = "";
-							/* <img th:src="@{${book.hinhAnh}}" */
-								/* alt="" /> */
+
 							result += "<ul>";
 							$
 									.each(
@@ -381,10 +336,7 @@
 		}
 	</script>
 
-	<!-- PhÃ¢n trang Ajx -->
-
-
-
+	<!-- TU: paging(Phan trang) Ajax ; 1 page will have 12 book + currentPage is number show in page (1 2 3 4 5 ..) -->
 	<script type="text/javascript">
 		$(document)
 				.ready(
@@ -392,7 +344,6 @@
 							$(".paging-item")
 									.click(
 											function() {
-												/* 	var value = $(this).val(); */
 												var sotrang = $(this).text();
 												var spbatdau = (sotrang - 1) * 12;
 												var result = "";
@@ -424,11 +375,11 @@
 																			+ '</div>'
 
 																}
+																/* Show in console */
 																console
 																		.log("Mess laf: "
 																				+ result);
-																/*	$("#search").html(result);*/
-																/* TÃªn trÃ¹ng vs id chá» Äá» hiá»n thá» ra dao diá»n: resuilts  */
+																/* Show in page  */
 																$("#resuilts")
 																		.html(
 																				result);

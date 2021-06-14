@@ -19,6 +19,7 @@ import com.ht.service.BookService;
 import com.ht.service.CategoryService;
 import com.ht.service.PageService;
 
+//Tu
 @Controller
 public class PagingController {
 	@Autowired
@@ -28,6 +29,7 @@ public class PagingController {
 	@Autowired
 	private BookService bookService;
 
+//	Ajax call here Page call: Shop.html
 	@RequestMapping("/shops")
 	@ResponseBody
 	public List<Sach> viewPhanTrang2(Model model, @RequestParam int currentPage) {
@@ -37,6 +39,7 @@ public class PagingController {
 		return listSach;
 	}
 
+//Show page Shop + totalPage From book ; Categary Book
 	@RequestMapping("/shop")
 	public String viewPhanTrang(ModelMap model) {
 		int currentPage = 1;

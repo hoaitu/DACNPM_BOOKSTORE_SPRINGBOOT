@@ -3,17 +3,20 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
+<style>
+.error {
+	color: red;
+}
+</style>
 </head>
 <body>
-
-	<!-- NÆ I Gáº®N LINK VÃO -->
+	<!-- Where tag link + header -->
 	<div th:insert="~{link :: links}"></div>
 	<!-- Add your site or application content here -->
 	<!--Header Area Start-->
-	<!-- NÆ I Gáº®N HEADER -->
+	<!-- Tag HEADER -->
 	<div th:insert="~{header :: header_in}"></div>
 	<!-- Mobile Menu End -->
-
 
 	<!-- Breadcrumbs Area Start -->
 	<div class="breadcrumbs-area">
@@ -33,68 +36,59 @@
 	</div>
 	<!-- Breadcrumbs Area Start -->
 
-
-
 	<!-- Loging Area Start -->
 	<div class="login-account section-padding">
 		<div class="container">
 			<div class="row"
 				style="display: flex; align-items: center; justify-content: center;">
 				<div class="col-md-6 col-sm-6">
+
+					<div th:if="${message != null}">
+						<p class="text-warning">[[${message}]]</p>
+					</div>
+
+
+					<!--TU:  add action: from controller ; Object from Controller-@ModelAttribute  -->
+
 					<form name="form1" id="form1" th:action="@{/signup}"
 						th:object="${user}" class="create-account-form" method="post"
 						onsubmit="matchpass()">
-						<!-- <% ArrayList<String> listMsg = null;
-                            if((listMsg = (ArrayList<String>) request.getAttribute("listMsg"))!=null){
-                            for (int i = 0; i < listMsg.size(); i++) {%>
-                          <h3 style="color: red"><%=listMsg.get(i)%></h3>
-                        <%
-                            }
-                            }
-                        %> -->
 
 						<h2 class="heading-title">Táº¡o tÃ i khoáº£n má»i</h2>
 						<p id="result"></p>
 						<p class="form-row">
-							*User Name: <input style="outline: none;" type="email"
-								name="email" id="email" size="40"
-								placeholder="Äá»a chá» email" th:field="*{username}"
-								required>
-								
-								<!-- 
-								onblur="checkExist()">
-								<span id="isE"></span> -->
-								
-							<!-- 	<button id="id_check_avail">Check Availability</button>
-							<div id="id_res_div"class="error"></div> -->
-								
+							*User Name: <input style="outline: none;" id="cname" type="email"
+								name="userName" size="40" placeholder="Äá»a chá» email"
+								th:field="*{username}" required>
+
+						</p>
+						<!-- TU: Where show log mess if User extis in DB; Ajax under same Page  -->
 						<div id="error-name" class="error"></div>
-						<p th:if="${#fields.hasErrors('username')}"
-							th:errors="*{username}"></p>
+
 
 						</p>
 
 						<p class="form-row">
 							*Email: <input style="outline: none;" type="text"
-								placeholder="UserName" th:field="*{email}" required>
+								placeholder="UserName" name="email" id="idemail"
+								th:field="*{email}" required>
 						</p>
 
 						<p class="form-row">
 							*Password: <input style="outline: none;" type="password"
-								name="password" placeholder="Máº­t kháº©u"
-								id="txtPassword" th:field="*{password}" pattern=".{6,}"
+								name="password" placeholder="Máº­t kháº©u" id="txtPassword"
+								th:field="*{password}" pattern=".{6,}"
 								title="8 characters minimum" required />
 						</p>
 
 						<p class="form-row">
 							*RePassword: <input style="outline: none;" type="password"
-								name="cfpassword"
-								placeholder="Nháº­p láº¡i máº­t kháº©u"
+								name="cfpassword" placeholder="Nháº­p láº¡i máº­t kháº©u"
 								id="txtConfirmPassword" required />
 						</p>
 
 
-						Gender: <select name="gender" class="form-control">
+						Gender: <select name="gender" class="form-control" required>
 							<option value="Nam">Nam</option>
 							<option value="Nữ">Nu</option>
 							<option value="Khác">Khac</option>
@@ -105,17 +99,18 @@
 							Date Of Birtth: <input name="dateOfBirth" type="datetime"
 								class="form-control" placeholder="DD/MM/YYYY" value=""
 								min="1997-01-01" max="2030-12-31"
-								pattern="[0-9]{2}/[0-9]{2}/[0-9]{4}\b" />
+								pattern="[0-9]{2}/[0-9]{2}/[0-9]{4}\b" required />
 						</p>
 						<p class="form-row">
 							Phone: <input th:field="*{phone}" Class="form-control"
-								pattern="([\+84|84|0]+(3|5|7|8|9|1[2|6|8|9]))+([0-9]{8})\b" />
+								pattern="([\+84|84|0]+(3|5|7|8|9|1[2|6|8|9]))+([0-9]{8})\b"
+								required />
 						</p>
 
 						<p class="form-row">
-							Address: <input th:field="*{address}" Class="form-control" />
+							Address: <input th:field="*{address}" Class="form-control"
+								required />
 						<div id="error-address" class="error"></div>
-						<p th:if="${#fields.hasErrors('address')}" th:errors="*{address}"></p>
 						</p>
 
 
@@ -139,16 +134,18 @@
 			</div>
 		</div>
 	</div>
+	222
 
 
 	<!-- 	/**Chức năng nhập lại pass  + nhập đúng form email dùng Java Script*/ -->
+	<!-- TU: Funtion : input RePassWord + Form when write Email is right Using Java Script -->
 
 	<script type="text/javascript">
 		function Validate() {
 			var password = document.getElementById("txtPassword").value;
 			var confirmPassword = document.getElementById("txtConfirmPassword").value;
 
-			var email = document.getElementById('email');
+			var email = document.getElementById('idemail');
 			var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
 
 			if (!filter.test(email.value)) {
@@ -164,35 +161,64 @@
 			return true;
 			alert('OK roi day, Email nay hop le.');
 			alert('OK roi day, Email nay hop le.');
-		}
-
-		
+		};
 	</script>
-	<!-- <script type="text/javascript">
-function checkExist(){
-    var xmlhttp = new XMLHttpRequest();
-    var username = document.forms["form1"]["username"].value;
-    var url = "exist.jsp?username=" + username;
-    xmlhttp.onreadystatechange = function(){
-        if(xmlhttp.readyState == 4 && xmlhttp.status == 200){
-            if(xmlhttp.responseText == "\n\n\n\n\nUser already exists")
-                document.getElementById("isE").style.color = "red";
-            else
-                document.getElementById("isE").style.color = "green";
-            document.getElementById("isE").innerHTML = xmlhttp.responseText;
-        }
-        
-    };
-    try{
-    xmlhttp.open("GET",url,true);
-    xmlhttp.send();
-}catch(e){alert("unable to connect to server");
-}}
-</script> -->
 
+	<!--TU: Ajax; Check Email Exits in DB; if have show mess; userName is name in Input + name in funtion checkUserName() in Controller  -->
+	<script type="text/javascript">
+		$(document)
+				.ready(
+						function() {
+							$("#cname")
+									.blur(
+											function() {
+												var value = $(this).val();
+												console.log("value: " + value);
 
+												$
+														.ajax(
+																{
+																	method : 'GET',
+																	url : 'checkUserName',
+																	dataType : 'text',
+																	cache : false,
+																	data : {
+																		userName : value,
+																	}
+																})
+														.done(
+																function(data) {
+																	console
+																			.log(data)
+																	if (data == "true") {
+																		$(
+																				"#error-name")
+																				.text(
+																						"Tên người dùng này đã tồn tại, xin thử lại tên khác");
+																	} else if (value == '') {
+																		$(
+																				"#error-name")
+																				.text(
+																						"Vui lòng nhập tên người dùng");
+																	} else {
+																		$(
+																				"#error-name")
+																				.text(
+																						"ahii");
+																	}
 
+																	console
+																			.log("data laf: "
+																					+ data);
 
+																	console
+																			.log("value laf: "
+																					+ value);
+																});
+
+											});
+						});
+	</script>
 
 
 	<!-- Loging Area End -->

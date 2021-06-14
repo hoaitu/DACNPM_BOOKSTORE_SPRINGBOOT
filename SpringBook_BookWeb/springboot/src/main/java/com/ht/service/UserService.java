@@ -3,6 +3,7 @@ package com.ht.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 //import org.springframework.security.crypto.password.PasswordEncoder;
 //import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -23,39 +24,21 @@ public class UserService {
 	private UserRepository uRepository;
 	@Autowired
 	private BCryptPasswordEncoder passwordEncoder;
-//	private EncrytedPasswordUtils passwordEncoder;
 
+//	Add user in Admin + Add user in Singup : pass must Encode
 	public void create(User user) {
-//		user.setPassword(passwordEncoder.encode(user.getPassword()));
 		user.setPassword(passwordEncoder.encode(user.getPassword()));
-
 		uRepository.saveAndFlush(user);
-//		uRepository.save(user);
 	}
 
-//	public List<User> findAll() {
-//		return uRepository.findAll();
-//	}
-
-	// User dùng
+	// User use
 	public User findByUsernameAndPassword(String username, String password) {
 		return uRepository.findByUsernameAndPassword(username, password);
 	}
 
-//	public boolean saveUser(User user) {
-//		String password = user.getPassword();
-//		return uRepository.save(user) != null;
-//	}
-
-//	private UserRepository userRepository;
-
 	public List<User> findAll() {
 		return uRepository.findAll();
 	}
-
-//	public void create(User user) {
-//		userRepository.saveAndFlush(user);
-//	}
 
 	public void update(User user) {
 		User u = uRepository.findByUser((user.getIdUser()));
@@ -81,6 +64,9 @@ public class UserService {
 		return uRepository.findByUser(id);
 	}
 
-//	-----------------Phần tú mơi s thêm reset Pass
+//TU: funtion for find userName exits (Mail exits) 13/06/2021
+	public User findCustomerByUserName(String userName) {
+		return uRepository.findByUserName(userName);
+	}
 
 }

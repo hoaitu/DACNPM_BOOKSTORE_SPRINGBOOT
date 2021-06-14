@@ -26,10 +26,7 @@ import com.ht.service.CustomerServices;
 
 import net.bytebuddy.utility.RandomString;
 
-
 // Ngày 10/06/2021
-
-
 @Controller
 public class ForgotPasswordController {
 	@Autowired
@@ -38,14 +35,15 @@ public class ForgotPasswordController {
 	@Autowired
 	private CustomerServices customerService;
 
+//	TU: show page forgot_password_form
 	@GetMapping("/forgot_password")
 	public String showForgotPasswordForm() {
 		return "forgot_password_form";
 
 	}
 
+//	TU: method POST ; receiver Email Check mail have exits in DB Yes or No ; If Yes will hove 1 token send this mail; or Mess Error in Page  (show page forgot_password_form); Call Funtion sendMail Under this Page
 	@PostMapping("/forgot_password")
-//	public String processForgotPassword() {
 	public String processForgotPassword(HttpServletRequest request, Model model) {
 		String email = request.getParameter("email");
 		String token = RandomString.make(30);
@@ -64,12 +62,12 @@ public class ForgotPasswordController {
 
 		return "forgot_password_form";
 	}
-//	}
 
 	public void sendEmail() {
 
 	}
 
+//	TU: user click token will have link go to Page: reset_password_form
 	@GetMapping("/reset_password")
 	public String showResetPasswordForm(@Param(value = "token") String token, Model model) {
 		User customer = customerService.getByResetPasswordToken(token);
@@ -83,6 +81,7 @@ public class ForgotPasswordController {
 		return "reset_password_form";
 	}
 
+//	TU:Method Post ; Show Mess in This page if Err; Show mess in Page: login if change pass Success
 	@PostMapping("/reset_password")
 	public String processResetPassword(HttpServletRequest request, Model model) {
 		String token = request.getParameter("token");
@@ -99,7 +98,6 @@ public class ForgotPasswordController {
 
 			model.addAttribute("message", "You have successfully changed your password.");
 		}
-
 //		return "message";
 //		return "redirect:/login"; : dùng này sẽ ko nhận đc Mess thông báo
 		return "login";

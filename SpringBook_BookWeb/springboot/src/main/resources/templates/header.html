@@ -59,7 +59,7 @@
 
 
 
-						<!-- ĐỔI NGÔN NGỮ -->
+						<!-- ĐỔI NGÔN NGỮ: Change langues -->
 						<div id="google_translate_element2" style="display: none">
 							<div class="skiptranslate goog-te-gadget" dir="ltr" style="">
 								<div id=":0.targetLanguage">
@@ -84,34 +84,22 @@
 								th:src="@{/resource/user/img/vn.png}" alt="" class="img-fluid">
 								<br />
 
-
 						</a> <a href="#" style="margin-left: 10px; margin-top: 4px;"
 							title="EN" class="lang-en last"
 							onclick="doGTranslate('vi|en');return false;" hreflang="en"
 							lang="en" role="menuitem"> <!-- EN --> <img
 								th:src="@{/resource/user/img/usa.png}" alt="" class="img-fluid">
-
 						</a>
 						</li>
-
-						<!-- End đổi ngôn ngữ -->
-
-
-
-
-
+						<!-- End đổi ngôn ngữ: End change langues -->
 						<ul>
-
-
-
-
 
 							<li class="user-login"><a> <i class="flaticon-people"></i>
 
 							</a> <!-- ============================================ -->
 
 								<div class="sub-user">
-									<!-- KHI CHÃÂ¯A ÃÂÃÂNG NHÃ¡ÂºÂ¬P VÃÂO -->
+									<!-- When login: If user == null will show Dang ky + Dang Nhap -->
 									<div th:if="${#request.userPrincipal==null}">
 
 										<div class="user-item">
@@ -127,13 +115,8 @@
 											</div>
 										</div>
 									</div>
-
-									<!-- </div> -->
-
 									<!--  -->
-									<!-- <div class="sub-user"> -->
-
-									<!-- KHI ÃÂÃÂ ÃÂÃÂNG NHÃ¡ÂºÂ¬P VÃÂO NHÃ¡ÂºÂ¬N ÃÂC USERNAME -->
+									<!-- When login: If user != null will show UserName + Information user + Logout -->
 									<div th:if="${#request.userPrincipal !=null}">
 
 										<div class="user-item">
@@ -156,25 +139,10 @@
 												th:if="${#request.userPrincipal != null}">
 												<i class="fas fa-user-plus"></i> <a th:href="@{/logout}">Logout
 												</a>
-
-
-												<!-- <form name='logout' th:action="@{/logout}" method='POST'>
-													<input type="hidden" name="${_csrf.parameterName}"
-														value="${_csrf.token}" /> 
-														
-														<input id="submitcreate"
-														type="submit" value="Logout" name="submit" />
-												</form> -->
-
-
-												<!-- <a th:href="@{/logout}">Logout
-												</a> -->
-												<!-- th:if="${#request.userPrincipal != null}" -->
 											</div>
 										</div>
 									</div>
 								</div> <!-- ================================================================== -->
-
 							</li>
 
 							<li class="shoping-cart"><a th:href="@{shopping_cart}">
@@ -189,9 +157,6 @@
 		</div>
 	</div>
 	<!--Header Area End-->
-
-
-
 
 	<!-- Mobile Menu Start -->
 	<div class="mobile-menu-area">
@@ -213,9 +178,7 @@
 	</div>
 	<!-- Mobile Menu End -->
 
-
-
-	<!-- Xử lý ngôn ngữ -->
+	<!-- Xử lý ngôn ngữ: Change Langue JQuery -->
 	<script>
 		function googleTranslateElementInit2() {
 			new google.translate.TranslateElement({
