@@ -4,7 +4,8 @@
 <head>
 <meta charset="utf-8">
 <meta http-equiv="x-ua-compatible" content="ie=edge">
-<title>Dashboard V.1 | Nalika - Material Admin Template</title>
+<!-- Dashboard V.1 | Nalika - Material Admin Template -->
+<title>WRITER Admin</title>
 <meta name="description" content="">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- favicon
@@ -51,18 +52,27 @@ h3 {
 											<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 												<!-- <form:form action="addUser" method="POST"
 													modelAttribute="user" onsubmit="return matchpass()"> -->
+
 												<form action="" method="POST" th:object="${user}">
-													* Username: <input th:field="*{email}" class="form-control" />
+													* Username: <input th:field="*{username}"
+														class="form-control" id="email"required/>
 													<!-- <form:errors path="email" cssClass="error" /> -->
-													<br /> * Địa chỉ Email: <input th:field="*{username}"
-														class="form-control" />
+
+													<br /> * Địa chỉ Email: <input th:field="*{email}"
+														class="form-control" id="email" required />
 													<!-- 	<form:errors path="username" cssClass="error" /> -->
+
 													<br /> * Mật khẩu: <input type="password"
-														th:field="*{password}" class="form-control" />
+														th:field="*{password}" class="form-control"
+														id="txtPassword" pattern=".{6,}"
+														title="8 characters minimum" required />
 													<!-- <form:errors path="password" cssClass="error" /> -->
+
 													<br /> * Nhập lại mật khẩu: <input type="password"
-														th:field="*{request}" class="form-control" />
+														th:field="*{request}" class="form-control" required
+														id="txtConfirmPassword" />
 													<!-- <form:errors path="request" cssClass="error" /> -->
+													
 													<span id="sessages" style="color: red;"></span> <br /> *
 													Giới tính: <select th:field="*{gender}"
 														class="form-control">
@@ -73,17 +83,23 @@ h3 {
 													</select>
 													<!-- <form:errors path="gender" cssClass="error" /> -->
 													<br /> * Ngày sinh: <input th:field="*{dateOfBirth}"
-														type="datetime" class="form-control" />
+														type="datetime" class="form-control"
+														placeholder="DD/MM/YYYY" value="" min="1950-01-01"
+														max="2030-12-31"
+														pattern="((0[1-9]|[12]\d|3[01])/(0[1-9]|1[0-2])/[12]\d{3})" />
+
 													<!-- <form:errors path="dateOfBirth" cssClass="error" /> -->
 													<br /> * Số điện thoại: <input th:field="*{phone}"
-														class="form-control" />
+														class="form-control"
+														pattern="([\+84|84|0]+(3|5|7|8|9|1[2|6|8|9]))+([0-9]{8})\b" />
 													<!-- 	<form:errors path="phone" cssClass="error" /> -->
 													<br /> * Địa chỉ: <input th:field="*{address}"
-														class="form-control" />
+														class="form-control" required />
 													<!-- 	<form:errors path="address" cssClass="error" /> -->
 													<br />
 
-													<button type="submit">Lưu</button>
+													<button type="submit" value="Submit"
+														onclick="return Validate()">Lưu</button>
 													<button type="reset">Huỷ bỏ</button>
 												</form>
 											</div>
@@ -111,6 +127,26 @@ h3 {
 
 				return false;
 			}
+		}
+
+		function Validate() {
+			var password = document.getElementById("txtPassword").value;
+			var confirmPassword = document.getElementById("txtConfirmPassword").value;
+
+			var email = document.getElementById('email');
+			var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+
+			if (!filter.test(email.value)) {
+				alert('Hay nhap dia chi email hop le.\nExample@gmail.com');
+				email.focus;
+				return false;
+			}
+			if (password != confirmPassword) {
+				alert("Passwords do not match.");
+				return false;
+			}
+			return true;
+			alert('OK roi day, Email nay hop le.');
 		}
 	</script>
 
