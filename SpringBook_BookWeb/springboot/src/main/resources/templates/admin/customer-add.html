@@ -4,8 +4,7 @@
 <head>
 <meta charset="utf-8">
 <meta http-equiv="x-ua-compatible" content="ie=edge">
-<!-- Dashboard V.1 | Nalika - Material Admin Template -->
-<title>WRITER Admin</title>
+<title>Dashboard V.1 | Nalika - Material Admin Template</title>
 <meta name="description" content="">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- favicon
@@ -52,32 +51,6 @@ h3 {
 											<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 												<!-- <form:form action="addUser" method="POST"
 													modelAttribute="user" onsubmit="return matchpass()"> -->
-<<<<<<< HEAD
-
-												<form action="" method="POST" th:object="${user}">
-													* Username: <input th:field="*{username}"
-														class="form-control" id="email"required/>
-													<!-- <form:errors path="email" cssClass="error" /> -->
-
-													<br /> * Địa chỉ Email: <input th:field="*{email}"
-														class="form-control" id="email" required />
-													<!-- 	<form:errors path="username" cssClass="error" /> -->
-
-													<br /> * Mật khẩu: <input type="password"
-														th:field="*{password}" class="form-control"
-														id="txtPassword" pattern=".{6,}"
-														title="8 characters minimum" required />
-													<!-- <form:errors path="password" cssClass="error" /> -->
-
-													<br /> * Nhập lại mật khẩu: <input type="password"
-														th:field="*{request}" class="form-control" required
-														id="txtConfirmPassword" />
-													<!-- <form:errors path="request" cssClass="error" /> -->
-													
-													<span id="sessages" style="color: red;"></span> <br /> *
-													Giới tính: <select th:field="*{gender}"
-														class="form-control">
-=======
 												<form name="form1" id="form1" th:action="@{/admin/addUser}"
 													th:object="${user}" class="create-account-form"
 													method="post" onsubmit="return matchpass()">
@@ -92,30 +65,10 @@ h3 {
 														th:field="*{request}" class="form-control" required /> <span
 														id="sessages" style="color: red;"></span> <br /> * Giới
 													tính: <select th:field="*{gender}" class="form-control">
->>>>>>> origin/trang2
 														<option value="Nam">Nam</option>
 														<option value="Nữ">Nu</option>
 														<option value="Khác">Khac</option>
 
-<<<<<<< HEAD
-													</select>
-													<!-- <form:errors path="gender" cssClass="error" /> -->
-													<br /> * Ngày sinh: <input th:field="*{dateOfBirth}"
-														type="datetime" class="form-control"
-														placeholder="DD/MM/YYYY" value="" min="1950-01-01"
-														max="2030-12-31"
-														pattern="((0[1-9]|[12]\d|3[01])/(0[1-9]|1[0-2])/[12]\d{3})" />
-
-													<!-- <form:errors path="dateOfBirth" cssClass="error" /> -->
-													<br /> * Số điện thoại: <input th:field="*{phone}"
-														class="form-control"
-														pattern="([\+84|84|0]+(3|5|7|8|9|1[2|6|8|9]))+([0-9]{8})\b" />
-													<!-- 	<form:errors path="phone" cssClass="error" /> -->
-													<br /> * Địa chỉ: <input th:field="*{address}"
-														class="form-control" required />
-													<!-- 	<form:errors path="address" cssClass="error" /> -->
-													<br />
-=======
 													</select> <br /> * Ngày sinh: <input th:field="*{dateOfBirth}"
 														type="datetime" class="form-control"
 														placeholder="DD/MM/YYYY" value="" min="1950-01-01"
@@ -126,10 +79,8 @@ h3 {
 														pattern="([\+84|84|0]+(3|5|7|8|9|1[2|6|8|9]))+([0-9]{8})\b"
 														required /> <br /> * Địa chỉ: <input
 														th:field="*{address}" class="form-control" required /> <br />
->>>>>>> origin/trang2
 
-													<button type="submit" value="Submit"
-														onclick="return Validate()">Lưu</button>
+													<button type="submit">Lưu</button>
 													<button type="reset">Huỷ bỏ</button>
 												</form>
 											</div>
@@ -165,10 +116,7 @@ h3 {
 			}
 		}
 
-<<<<<<< HEAD
-=======
 
->>>>>>> origin/trang2
 		function Validate() {
 			var password = document.getElementById("txtPassword").value;
 			var confirmPassword = document.getElementById("txtConfirmPassword").value;

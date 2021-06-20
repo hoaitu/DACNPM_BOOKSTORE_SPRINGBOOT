@@ -8,24 +8,14 @@
 	color: red;
 }
 </style>
-=======
 <title>WRITER SignUp</title>
 </head>
 <body>
-<<<<<<< HEAD
 	<!-- Where tag link + header -->
 	<div th:insert="~{link :: links}"></div>
 	<!-- Add your site or application content here -->
 	<!--Header Area Start-->
 	<!-- Tag HEADER -->
-=======
-
-	<!-- NÃÂ I GÃ¡ÂºÂ®N LINK VÃÂO -->
-	<div th:insert="~{link :: links}"></div>
-	<!-- Add your site or application content here -->
-	<!--Header Area Start-->
-	<!-- NÃÂ I GÃ¡ÂºÂ®N HEADER -->
->>>>>>> origin/trang2
 	<div th:insert="~{header :: header_in}"></div>
 	<!-- Mobile Menu End -->
 
@@ -35,10 +25,10 @@
 			<div class="row">
 				<div class="col-md-12">
 					<div class="breadcrumbs">
-						<h2>Đăng ký</h2>
+						<h2>ÄÄng kÃ­</h2>
 						<ul class="breadcrumbs-list">
-							<li><a title="Return to Home" href="/">Trang chủ</a></li>
-							<li>Đăng ký</li>
+							<li><a title="Return to Home" href="/">Trang chá»§</a></li>
+							<li>ÄÄng kÃ­</li>
 						</ul>
 					</div>
 				</div>
@@ -64,7 +54,6 @@
 					<form name="form1" id="form1" th:action="@{/signup}"
 						th:object="${user}" class="create-account-form" method="post"
 						onsubmit="matchpass()">
-<<<<<<< HEAD
 
 						<h2 class="heading-title">Táº¡o tÃ i khoáº£n má»i</h2>
 						<p id="result"></p>
@@ -76,23 +65,6 @@
 						</p>
 						<!-- TU: Where show log mess if User extis in DB; Ajax under same Page  -->
 
-=======
-						<!-- <% ArrayList<String> listMsg = null;
-                            if((listMsg = (ArrayList<String>) request.getAttribute("listMsg"))!=null){
-                            for (int i = 0; i < listMsg.size(); i++) {%>
-                          <h3 style="color: red"><%=listMsg.get(i)%></h3>
-                        <%
-                            }
-                            }
-                        %> -->
-
-						<h2 class="heading-title">Tạo tài khoản mới</h2>
-						<p id="result"></p>
-						<p class="form-row">
-							*User Name: <input style="outline: none;" type="email"
-								name="email" id="email" size="40"
-								placeholder="ÃÂÃ¡Â»Âa chÃ¡Â»Â email" th:field="*{username}" required>
->>>>>>> origin/trang2
 						<div id="error-name" class="error"></div>
 
 
@@ -107,21 +79,21 @@
 
 						<p class="form-row">
 							*Password: <input style="outline: none;" type="password"
-								name="password" placeholder="MÃ¡ÂºÂ­t khÃ¡ÂºÂ©u" id="txtPassword"
+								name="password" placeholder="Máº­t kháº©u" id="txtPassword"
 								th:field="*{password}" pattern=".{6,}"
 								title="8 characters minimum" required />
 						</p>
 
 						<p class="form-row">
 							*RePassword: <input style="outline: none;" type="password"
-								name="cfpassword" placeholder="NhÃ¡ÂºÂ­p lÃ¡ÂºÂ¡i mÃ¡ÂºÂ­t khÃ¡ÂºÂ©u"
+								name="cfpassword" placeholder="Nháº­p láº¡i máº­t kháº©u"
 								id="txtConfirmPassword" required />
 						</p>
 
 
 						Gender: <select name="gender" class="form-control" required>
 							<option value="Nam">Nam</option>
-							<option value="Nữ¯">Nu</option>
+							<option value="Nữ">Nu</option>
 							<option value="Khác">Khac</option>
 
 						</select></br>
@@ -159,7 +131,7 @@
 
 							<button name="submitcreate" id="submitcreate" type="submit"
 								class="btn-default" style="color: red;">
-								<span> <i class="fa fa-user left"></i> Huỷ
+								<span> <i class="fa fa-user left"></i> Hủy
 								</span>
 							</button>
 
@@ -172,24 +144,26 @@
 	222
 
 
-<<<<<<< HEAD
 	<!-- 	/**Chức năng nhập lại pass  + nhập đúng form email dùng Java Script*/ -->
 	<!-- TU: Funtion : input RePassWord + Form when write Email is right Using Java Script -->
-=======
-	<!-- 	/**Chá»©c nÄng nháº­p láº¡i pass  + nháº­p ÄÃºng form email dÃ¹ng Java Script*/ -->
->>>>>>> origin/trang2
 
 	<script type="text/javascript">
 		function Validate() {
-			var email = document.getElementById('email'); 
+			var email = document.getElementById('email');
+			var cname = document.getElementById('cname');
 			var password = document.getElementById("txtPassword").value;
 			var confirmPassword = document.getElementById("txtConfirmPassword").value;
 
-		/* 	var email = document.getElementById('idemail'); */
+			/* 	var email = document.getElementById('idemail'); */
 			var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
 
 			if (!filter.test(email.value)) {
-				alert('Hay nhap dia chi email hop le.\nExample@gmail.com');
+				alert('Email: Hay nhap dia chi email hop le.\nExample@gmail.com');
+				email.focus;
+				return false;
+			}
+			if (!filter.test(cname.value)) {
+				alert('User Name: Hay nhap dia chi email hop le.\nExample@gmail.com');
 				email.focus;
 				return false;
 			}
@@ -201,9 +175,6 @@
 			alert('OK roi day, Email nay hop le.');
 			alert('OK roi day, Email nay hop le.');
 		};
-		}
-
-		
 	</script>
 
 	<!--TU: Ajax; Check Email Exits in DB; if have show mess; userName is name in Input + name in funtion checkUserName() in Controller  -->
@@ -268,11 +239,7 @@
 	<!-- Footer Area Start -->
 
 	<!-- Footer Area Start -->
-<<<<<<< HEAD
 	<!-- NÆ I Gáº®N FOOTER -->
-=======
-	<!-- NÃÂ I GÃ¡ÂºÂ®N FOOTER -->
->>>>>>> origin/trang2
 	<div th:insert="~{footer :: footer_in}"></div>
 </body>
 </html>

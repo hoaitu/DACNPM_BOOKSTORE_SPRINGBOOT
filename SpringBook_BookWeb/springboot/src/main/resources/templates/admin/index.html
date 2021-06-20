@@ -56,13 +56,11 @@
 									<td><p th:text="${book.gia }+'.000 VNĐ'"></p></td>
 									<td><p th:text="${book.ngayXuatBan }"></p></td>
 									<td>
-										<div th:switch="${book.theloaisach }">
-											<p th:case="1">Tiểu Thuyết</p>
-											<p th:case="2">Truyện dài</p>
-											<p th:case="3">Truyện Ngắn</p>
-											<p th:case="4">Truyện Thiếu Nhi</p>
-											<p th:case="5">Khác</p>
-											<p th:case="*">Khác</p>
+										<div th:switch="${book.theloaisach }"
+											th:each="category : ${listcategory}">
+											<p th:case="${category.maTheLoai}"
+												th:text="${category.tenTheLoai}"></p>
+
 										</div>
 
 									</td>

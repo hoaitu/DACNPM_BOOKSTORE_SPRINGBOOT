@@ -57,10 +57,7 @@ public class MainController {
 	private CategoryService category;
 	@Autowired
 	private PageService pageService;
-<<<<<<< HEAD
 
-=======
->>>>>>> origin/trang2
 	@Autowired
 	private UserService userService;
 	@Autowired
@@ -83,59 +80,21 @@ public class MainController {
 		ModelAndView mav = new ModelAndView("shop");
 		model.addAttribute("listbook", book.findByCategory(id));
 		model.addAttribute("listcategory", category.findAll());
-<<<<<<< HEAD
 		return mav;
 	}
 
 //Tu: Show page Login	
-=======
 
-//
-//		return mav;
-//	}
-
-		return mav;
-	}
-
-	@RequestMapping(value = "/search")
-	public @ResponseBody List<Sach> ajaxSearch(HttpServletRequest req, HttpServletResponse res) {
-		List<Sach> getSach = book.findBookByTitle(req.getParameter("tenSach"));
-		for (Sach sach : getSach) {
-			System.out.println(sach + "\n");
-		}
-		return getSach;
-	}
-
-	@RequestMapping(value = "/ajaxSearch", method = RequestMethod.GET)
-	public List<String> getSach(String tenSach) {
-		List<String> getSach = book.findBook(tenSach);
-		for (String sach : getSach) {
-			System.out.println(sach + "\n");
-		}
-		return getSach;
-	}
-
-//	
-
->>>>>>> origin/trang2
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
+
 	public ModelAndView login(ModelMap model) {
 		ModelAndView mav = new ModelAndView("login");
 
 		return mav;
 	}
 
-<<<<<<< HEAD
-=======
-	@RequestMapping("/signup")
-	public ModelAndView signup(ModelMap model) {
-		ModelAndView mav = new ModelAndView("signup");
-
-		return mav;
-	}
-
->>>>>>> origin/trang2
 	@RequestMapping("/single-product/{ids}")
+
 	public ModelAndView single_product(Model model, @PathVariable(value = "ids") int ids) {
 		ModelAndView mav = new ModelAndView("single-product");
 		mav.addObject("books", book.findById(ids));
@@ -224,15 +183,13 @@ public class MainController {
 		return mav;
 	}
 
-<<<<<<< HEAD
 //TEST: only test
 	@RequestMapping("/test")
+
 	public ModelAndView testPG(ModelMap model) {
 		ModelAndView mav = new ModelAndView("test");
 
 		return mav;
 	}
 
-=======
->>>>>>> origin/trang2
 }

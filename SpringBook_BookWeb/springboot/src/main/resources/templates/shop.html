@@ -7,11 +7,11 @@
 </head>
 <body>
 
-	<!-- NÃÂ I GÃ¡ÂºÂ®N LINK VÃÂO -->
+	<!-- NÃÂ I GÃ¡ÂºÂ®N LINK VÃÂO -->
 	<div th:insert="~{link :: links}"></div>
 	<!-- Add your site or application content here -->
 	<!--Header Area Start-->
-	<!-- NÃÂ I GÃ¡ÂºÂ®N HEADER -->
+	<!-- NÃÂ I GÃ¡ÂºÂ®N HEADER -->
 	<div th:insert="~{header :: header_in}"></div>
 	<!-- Mobile Menu End -->
 
@@ -33,6 +33,7 @@
 		</div>
 	</div>
 	<!-- Breadcrumbs Area Start -->
+
 
 	<!-- Shop Area Start -->
 	<div class="shopping-area section-padding">
@@ -70,6 +71,10 @@
 								</div>
 							</aside>
 
+
+
+
+
 						</div>
 					</div>
 				</div>
@@ -85,7 +90,12 @@
 								</ul>
 							</div>
 
-							<!-- SEARCH -->
+
+
+
+
+
+							<!-- TÃ¬m kiáº¿m  -->
 							<div class="search-book">
 								<form name="" class="form-inline">
 									<input class="form-control mr-sm-2" type="text" name="tenSach"
@@ -99,7 +109,13 @@
 								</form>
 							</div>
 
-							<!-- END SEARCH -->
+
+							<!-- Final tÃ¬m kiáº¿m   -->
+
+
+
+
+
 						</div>
 						<div class="tab-content">
 							<div class="row tab-pane fade in active" id="home">
@@ -118,6 +134,9 @@
 															th:src="@{${book.hinhAnh}}" />
 														</a>
 
+														<!--  -->
+
+
 														<!-- Nếu chưa nhận đc User nào login thì add card sẽ bị đảy qua trang login -->
 														<!-- Tu: Sercurity: if user don't login user can't  visit Card + buy Book + Number in Card will not increse(tang)  -->
 														<div th:if="${#request.userPrincipal==null}">
@@ -134,7 +153,6 @@
 																	</a>
 
 																</div>
-																-->
 
 															</div>
 														</div>
@@ -159,8 +177,7 @@
 															</div>
 														</div>
 													</div>
-<<<<<<< HEAD
-=======
+
 													<!-- <% if (listSach.get(i).getKhuyenMai() > 0) { %> -->
 													<div
 														style="width: 15%; z-index: 999; position: absolute; top: 0; right: 0;">
@@ -176,27 +193,35 @@
 															</a>
 														</div>
 														<div style="color: #32b5f3;" class="price-2">
-															<span th:text="${book.gia}+'.000 VNĐ'"> </span> <span style="color: black;" class="old-price">500.000 VNĐ</span>
+															<span th:text="${book.gia}+'.000 VNĐ'"> </span> <span
+																style="color: black;" class="old-price">500.000
+																VNĐ</span>
 														</div>
 													</div>
-													<!-- <% } else {%>
-                                            <div class="banner-bottom text-center">
-                                                <div class="banner-bottom-title" style="height: 40px">
-                                                    <a href=<%= Util.fullPath("singleProductController?idProduct=") + listSach.get(i).getMaSach()%>><%=listSach.get(i).getTenSach()%>
-                                                    </a>
-                                                </div>
-                                                <div style="color: #32b5f3" class="price-2"><%=listSach.get(i).getGia()%>.000<span>ÃÂ</span>
-                                                </div>
-                                            </div>
-                                            <% }%> -->
 												</div>
 											</div>
 										</div>
->>>>>>> origin/trang2
-
-													<!--  -->
 
 
+									</div>
+
+								</div>
+							</div>
+
+							<!-- ////////////////////////////////////////////////////////////////////// -->
+
+
+							<div id="menu1" class="tab-pane fade">
+
+								<div id="single-product" class="row">
+									<div th:each="book : ${listbook}">
+										<div class="single-shop-product">
+											<div class="col-xs-12 col-sm-5 col-md-4">
+												<div class="left-item">
+													<a th:href="@{/single-product/} + ${book.maSach}"
+														title="Book Name"> <img th:src="@{${book.hinhAnh}}"
+														alt="" />
+													</a>
 												</div>
 												<!-- <% if (listSach.get(i).getKhuyenMai() > 0) { %> -->
 												<div
@@ -206,12 +231,6 @@
 														style="font-size: 14px; position: absolute; left: 15%; top: 55%; transform: translate(0, -50%); color: white;">
 														30%</p>
 												</div>
-<<<<<<< HEAD
-												<div class="banner-bottom text-center">
-													<div class="banner-bottom-title" style="height: 40px;">
-														<a href="#"> <span th:text="${book.tenSach}"> </span>
-														</a>
-=======
 												<!-- <%}%> -->
 											</div>
 											<div class="col-xs-12 col-sm-7 col-md-8">
@@ -222,121 +241,53 @@
 													</h4>
 													<div class="product-price">
 														<!-- <% if (listSach.get(i).getKhuyenMai() > 0) { %> -->
-														<span class="new-price" th:text="${book.gia}+'.000 VNĐ'"></span> <span class="old-price">500.000 VNĐ</span>
+														<span class="new-price" th:text="${book.gia}+'.000 VNĐ'"></span>
+														<span class="old-price">500.000 VNĐ</span>
 														<!-- <%} else {%>
                                                 <span class="new-price"><%=listSach.get(i).getGia()%>.000ÃÂ</span>
                                                 <%}%> -->
->>>>>>> origin/trang2
 													</div>
-													<div style="color: #32b5f3;" class="price-2">
-														<span th:text="${book.gia}"><span>.000
-																VNÃÂ</span> </span> <span style="color: black;" class="old-price">500.000ÃÂ</span>
+													<p>Hay cÃ¡Â»Â±c kÃ¡Â»Â³</p>
+													<div class="availability">
+														<span><a th:href="@{/cart/add/}+${book.maSach}">Mua
+																Ngay</a></span>
 													</div>
 												</div>
-												<!-- <% } else {%>
-                                            <div class="banner-bottom text-center">
-                                                <div class="banner-bottom-title" style="height: 40px">
-                                                    <a href=<%= Util.fullPath("singleProductController?idProduct=") + listSach.get(i).getMaSach()%>><%=listSach.get(i).getTenSach()%>
-                                                    </a>
-                                                </div>
-                                                <div style="color: #32b5f3" class="price-2"><%=listSach.get(i).getGia()%>.000<span>ÃÂ</span>
-                                                </div>
-                                            </div>
-                                            <% }%> -->
 											</div>
 										</div>
 									</div>
 
 								</div>
-
 							</div>
-						</div>
 
+							<!-- ///////////////////////////////////////// -->
 
-						<!-- ////////////////////////////////////////////////////////////////////// -->
+							<div>&nbsp</div>
 
+							<!-- TU: paging(Phan trang) Ajax ; 1 page will have 12 book + currentPage is number show in page (1 2 3 4 5 ..) -->
 
-						<!-- Tú đã comment dòng này ngày : 09/06/2021 : cách hiển thị khác của Sphaamr -->
-						<!-- 		<div id="menu1" class="tab-pane fade">
+							<nav aria-label="Page navigation example">
+								<div id="pagination">
+									<th:block th:each="i: ${#numbers.sequence(1, totalPage )}">
+										<button th:if="${i != 1}" class="paging-item active"
+											type="button" name="currentPage">[[${i}]]</button>
 
-							<div id="single-product" class="row">
-								<div th:each="book : ${listbook}">
-									<div class="single-shop-product">
-										<div class="col-xs-12 col-sm-5 col-md-4">
-											<div class="left-item">
-												<a th:href="@{/single-product/} + ${book.maSach}"
-													title="Book Name"> <img th:src="@{${book.hinhAnh}}"
-													alt="" />
-												</a>
-											</div>
-											<% if (listSach.get(i).getKhuyenMai() > 0) { %>
-											<div
-												style="width: 15%; z-index: 999; position: absolute; top: 0; right: 0;">
-												<img th:src="@{/resource/user/img/sale.png}" alt="" />
-												<p
-													style="font-size: 14px; position: absolute; left: 15%; top: 55%; transform: translate(0, -50%); color: white;">
-													30%</p>
-											</div>
-											<%}%>
-										</div>
-										<div class="col-xs-12 col-sm-7 col-md-8">
-											<div class="deal-product-content">
-												<h4>
-													<a th:href="@{/single-product/} + ${book.maSach}"
-														title="Book Name"><span th:text="${book.tenSach}"></span></a>
-												</h4>
-												<div class="product-price">
-													<% if (listSach.get(i).getKhuyenMai() > 0) { %>
-													<span class="new-price" th:text="${book.gia}"><span>.000
-													</span></span> <span class="old-price">500.000</span>
-													<%} else {%>
-                                                <span class="new-price"><%=listSach.get(i).getGia()%>.000ÃÂ</span>
-                                                <%}%>
-												</div>
-												<p>Hay cÃ¡Â»Â±c kÃ¡Â»Â³</p>
-												<div class="availability">
-													<span><a th:href="@{/cart/add/}+${book.maSach}">Mua
-															Ngay</a></span>
-												</div>
-											</div>
-										</div>
-									</div>
+										<button th:unless="${i != 1}" class="paging-item"
+											type="button" id="phantrangid" name="currentPage">[[${i}]]</button>
+
+									</th:block>
 								</div>
+							</nav>
 
-							</div>
 						</div>
- -->
-
-						<!-- ///////////////////////////////////////// -->
-
-
-						<div>&nbsp</div>
-
-
-						<!-- Paging using JPA Show total page -->
-
-						<nav aria-label="Page navigation example">
-							<div id="pagination">
-								<th:block th:each="i: ${#numbers.sequence(1, totalPage )}">
-									<button th:if="${i != 1}" class="paging-item active"
-										type="button" name="currentPage">[[${i}]]</button>
-
-									<button th:unless="${i != 1}" class="paging-item" type="button"
-										id="phantrangid" name="currentPage">[[${i}]]</button>
-								</th:block>
-							</div>
-						</nav>
-						<!-- End paging using JPA Show total page -->
 
 					</div>
-
 				</div>
 			</div>
-		</div>
-		<!-- /**
+			<!-- /**
 			03/06/2021
 		*/ -->
-	</div>
+		</div>
 	</div>
 	<!-- Shop Area End -->
 
@@ -344,7 +295,10 @@
 
 	<!-- Footer Area Start -->
 
-	<!-- TU: Search Ajax  -->
+
+
+
+
 	<script type="text/javascript">
 		function search() {
 			$
@@ -354,7 +308,8 @@
 						data : 'tenSach=' + $("#autoSearch").val(),
 						success : function(res) {
 							var result = "";
-
+							/* <img th:src="@{${book.hinhAnh}}" */
+								/* alt="" /> */
 							result += "<ul>";
 							$
 									.each(
@@ -387,7 +342,8 @@
 		}
 	</script>
 
-	<!-- TU: paging(Phan trang) Ajax ; 1 page will have 12 book + currentPage is number show in page (1 2 3 4 5 ..) -->
+	<!-- Phân trang Ajx -->
+
 	<script type="text/javascript">
 		$(document)
 				.ready(
@@ -395,6 +351,7 @@
 							$(".paging-item")
 									.click(
 											function() {
+												/* 	var value = $(this).val(); */
 												var sotrang = $(this).text();
 												var spbatdau = (sotrang - 1) * 12;
 												var result = "";
@@ -426,11 +383,11 @@
 																			+ '</div>'
 
 																}
-																/* Show in console */
 																console
 																		.log("Mess laf: "
 																				+ result);
-																/* Show in page  */
+																/*	$("#search").html(result);*/
+																/* TÃªn trÃ¹ng vs id chá» Äá» hiá»n thá» ra dao diá»n: resuilts  */
 																$("#resuilts")
 																		.html(
 																				result);
@@ -447,7 +404,7 @@
 
 
 
-	<!-- NÃÂ I GÃ¡ÂºÂ®N FOOTER -->
+	<!-- NÃÂ I GÃ¡ÂºÂ®N FOOTER -->
 	<div th:insert="~{footer :: footer_in}"></div>
 </body>
 </html>

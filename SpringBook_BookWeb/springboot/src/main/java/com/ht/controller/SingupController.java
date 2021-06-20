@@ -16,9 +16,12 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.validation.ValidationUtils;
 
+import com.ht.entities.Role;
 import com.ht.entities.User;
+import com.ht.entities.UsersRoles;
 import com.ht.service.CustomerValidation;
 import com.ht.service.UserService;
+import com.ht.service.RoleService;
 
 @RestController
 public class SingupController {
@@ -27,7 +30,9 @@ public class SingupController {
 	@Autowired
 	private CustomerValidation customerValidation;
 
-<<<<<<< HEAD
+	@Autowired
+	private RoleService roleService;
+
 	/** 07/06/2021 */
 
 	// Tu: Check user exits in DB (page Singup Ajax)
@@ -41,8 +46,6 @@ public class SingupController {
 			return false;
 		}
 	}
-=======
->>>>>>> origin/trang2
 
 	// Tu: Show page singup
 	@RequestMapping(value = "/signup", method = RequestMethod.GET)
@@ -70,8 +73,16 @@ public class SingupController {
 			return mav = new ModelAndView("signup");
 
 		}
-//			if everything is OK; will create User in DB + Return Page Login
+//			if everything is OK; will create User in DB + Return Page Login (AUTO ADD USER + ROLE IN TABLE USER_ROLE)
 		userService.create(user);
+		UsersRoles us = new UsersRoles();
+		Role r = new Role();
+		r.setId(2);
+
+		us.setRole(r);
+		us.setUsers(user);
+		roleService.create(us);
+
 		return mav = new ModelAndView("login");
 	}
 

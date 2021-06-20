@@ -59,6 +59,7 @@ public class AdminController {
 	public ModelAndView listProduct(ModelMap model) {
 		ModelAndView mav = new ModelAndView("admin/index");
 		model.addAttribute("listbook", book.findAll());
+		model.addAttribute("listcategory", category.findAll());
 		return mav;
 	}
 
@@ -68,6 +69,7 @@ public class AdminController {
 		ModelAndView mav = new ModelAndView("admin/product-add");
 		model.addAttribute("books", new SachMuntil());
 		model.addAttribute("listbook", book.findAll());
+		model.addAttribute("listcategory", category.findAll());
 		return mav;
 	}
 

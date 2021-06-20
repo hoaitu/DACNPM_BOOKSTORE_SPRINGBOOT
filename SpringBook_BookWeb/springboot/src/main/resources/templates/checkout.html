@@ -39,7 +39,7 @@
 	</div>
 	<!-- Breadcrumbs Area Start -->
 	<!-- Check Out Area Start -->
-	<form th:action="@{/checkout}" method="POST" th:object="${receipt}">
+	<form method="POST" th:object="${receipt}">
 		<!-- 	<input type="hidden" name="${_csrf.parameterName}"
 			value="${_csrf.token}" /> -->
 		<div class="check-out-area section-padding">
@@ -206,7 +206,11 @@
 														<tbody>
 
 															<tr>
-																<td><a href="#"><span
+																<td><a href="#"> <input type="hidden"
+																		name="nameBook"
+																		th:value="${map.value.product.tenSach }" /> <input
+																		name="price" type="hidden"
+																		th:value="${map.value.product.gia }" /> <span
 																		th:text="${map.value.product.tenSach }"></span></a></td>
 
 																<td><span class="cart-price"><span
@@ -238,8 +242,10 @@
 														<tr>
 															<td colspan="3"><strong>Thành tiền</strong></td>
 
-															<td><strong><span class="check-price"><span
-																		name="total" th:text="${session.myCartTotal}"></span></span></strong></td>
+															<td><strong> <input type="hidden"
+																	name="total" th:value="${session.myCartTotal}" /> <span
+																	class="check-price"><span name="total"
+																		th:text="${session.myCartTotal}"></span></span></strong></td>
 													</tfoot>
 												</table>
 											</div>

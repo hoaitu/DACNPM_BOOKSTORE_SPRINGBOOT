@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.ht.entities.Sach;
@@ -14,10 +15,16 @@ public class BookService {
 	@Autowired
 	private BookRepository bookRepository;
 
+//	Sort sort = Sort.by(
+//		    Sort.Order.asc("name"),
+//		    Sort.Order.desc("numberOfHands"));
+//		return personRepository.findAll(sort);
+
 	/// HIEN THI TAT CA SACH
 	public List<Sach> findAll() {
-//			
-		return bookRepository.findAll();
+//			Sort sort = Sort.by(
+		return bookRepository.findAll(Sort.by(Sort.Direction.DESC, "maSach"));
+// hiển thị DS ra theo ID giảm dần: sách mới ra nhất sẽ hiện lên đầu
 	}
 
 	public List<Sach> findByCategory(long id) {

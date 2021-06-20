@@ -16,33 +16,20 @@ public interface UserRepository extends JpaRepository<User, Long> {
 	@Query(value = "SELECT c FROM User c where  c.username = :username")
 	public User findByUserName(@Param("username") String username);
 
-	/*
-	 * @Query(value = "SELECT u FROM User u WHERE u.email = :email") public abstract
-	 * List<User> findByEmail(@Param("email") String email);
-	 */
-
-	/////////// LAY USER THEO EMAIL DE HIEN THI TRONG TRANG THONG TIN TAI KHOAN
-	@Query(value = "SELECT u FROM User u WHERE u.email = :email")
-<<<<<<< HEAD
-	public abstract List<User> findByEmail2(@Param("email") String email);
-
 //	Tu moi them 09/06; 
 //	 Using reset Pass
-	public User findByEmail(String email);
 
 //	TU: Using reset Pass
 	public User findByResetPasswordToken(String token);
+
 //	------------------
+/////////// LAY USER THEO EMAIL DE HIEN THI TRONG TRANG THONG TIN TAI KHOAN
+//	Tu new rename findByEmail_Admin : 14/06.
+	@Query(value = "SELECT u FROM User u WHERE u.email = :email")
+	public User findByEmail(String email);
 
-	User findByUsernameAndPassword(String username, String password);
-
-//User name : is email
-	User findByUsername(String username);
-
-	@Query(value = "Select u From User u where u.idUser =:ids")
-	public abstract User findByUser(@Param("ids") long id);
-=======
-	public abstract User findByEmail(@Param("email") String email);
+//	public abstract User findByEmail(@Param("email") String email);
+//	public abstract User findByEmail_Admin(@Param("email") String email);
 
 	User findByUsernameAndPassword(String username, String password);
 
@@ -50,7 +37,6 @@ public interface UserRepository extends JpaRepository<User, Long> {
 	@Query(value = "Select u From User u where u.idUser =:ids")
 	public abstract User findByUser(@Param("ids") long id);
 
+	// User name : is email
 	User findByUsername(String username);
->>>>>>> origin/trang2
-
 }

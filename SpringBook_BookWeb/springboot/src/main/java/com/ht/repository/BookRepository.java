@@ -11,6 +11,9 @@ import com.ht.entities.Sach;
 
 @Repository
 public interface BookRepository extends JpaRepository<Sach, Long> {
+	
+	
+	
 	@Query(value = "select b from Sach b  where b.theloaisach =:catId")
 	public abstract List<Sach> findByCategory(@Param("catId") long id);
 

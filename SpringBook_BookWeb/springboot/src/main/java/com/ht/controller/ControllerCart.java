@@ -1,13 +1,20 @@
 package com.ht.controller;
 
+import java.io.UnsupportedEncodingException;
 import java.sql.Timestamp;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.mail.MessagingException;
+import javax.mail.internet.MimeMessage;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -28,6 +35,8 @@ import com.ht.service.ReceiptService;
 @Controller
 @RequestMapping(value = "cart")
 public class ControllerCart {
+	@Autowired
+	private JavaMailSender mailSender;
 
 	@Autowired
 	private BookService bookService;
@@ -165,7 +174,8 @@ public class ControllerCart {
 
 /////////////XU LY THANH TOAN
 	@RequestMapping(value = "checkout", method = RequestMethod.POST)
-	public String viewCheckout(ModelMap mm, HttpSession session, @ModelAttribute("receipt") Receipt receipt) {
+	public String viewCheckout(ModelMap mm, HttpSession session, @ModelAttribute("receipt") Receipt receipt,
+			HttpServletRequest request) throws MessagingException, UnsupportedEncodingException {
 		HashMap<Long, Cart> cartItems = (HashMap<Long, Cart>) session.getAttribute("myCartItems");
 		if (cartItems == null) {
 			cartItems = new HashMap<>();
@@ -189,6 +199,53 @@ public class ControllerCart {
 		session.setAttribute("myCartItems", cartItems);
 		session.setAttribute("myCartTotal", 0);
 		session.setAttribute("myCartNum", 0);
+
+		String name = request.getParameter("receiptName");
+		String mail = request.getParameter("receiptMail");
+		String phone = request.getParameter("receiptPhone");
+		String address = request.getParameter("receiptAddress");
+		String note = request.getParameter("note");
+
+		String nameBook = request.getParameter("nameBook");
+		String price = request.getParameter("price");
+
+		String total = request.getParameter("total");
+		// SimpleMailMessage message = new SimpleMailMessage();
+		// khoi tao mail gui
+		MimeMessage message = mailSender.createMimeMessage();
+		MimeMessageHelper helper = new MimeMessageHelper(message, true);
+		// noi dung mail gui
+		String mailSubject = "Thông tin giao hàng";
+		String mailContent = "<p><b>Người nhận: </b>" + name + "</p>";
+		mailContent += "<p><b>Email: </b>" + mail + "</p>";
+		mailContent += "<p><b>Số điện thoại: </b>" + phone + "</p>";
+		mailContent += "<p><b>Địa chỉ: </b>" + address + "</p>";
+		mailContent += "<p><b>Ghi chú: </b>" + note + "</p>";
+
+		mailContent += "<p><b>Tên sách: </b>" + nameBook + "</p>";
+		mailContent += "<p><b>Giá: </b>" + price + "</p>";
+
+		mailContent += "<p><b>Thanh toán: </b>" + total + "</p>";
+		mailContent += "<p>Đơn hàng đang tiến hành đóng gói để giao đến bạn.<p>"
+				+ "Cảm ơn bạn đã tin tưởng và ủng hộ Writer!</p>";
+		mailContent += "<br><h3>Bạn có thể liên hệ với WRITER về đơn hàng bằng các cách sau:</h3>"
+				+ "<p>	- Gọi đến Hotline (+800) 123 4567 890</p>"
+				+ "<p>	- Gửi mail về địa chỉ: info@bookstore.com</p>" + "<p>Chúc bạn có một ngày mới vui vẻ!</p>";
+
+		mailContent += "<img src='cid:logoImage'/>";
+		// gui tu mai hoaitugl@gmail.com voi ten goi WRITER Order
+		helper.setFrom("hoaitugl@gmail.com", "WRITER Order");
+		// den mail nguoi dung nhap
+		helper.setTo(mail);
+		helper.setSubject(mailSubject);
+		helper.setText(mailContent, true);
+		// dung de gui mail
+		mailSender.send(message);
+
+		ClassPathResource resource = new ClassPathResource("/static/resource/user/img/logo.png");
+		helper.addInline("logoImage", resource);
+		// tra ve trang success
+
 		return "success";
 	}
 }

@@ -59,7 +59,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		// When the user has logged in as XX.
 		// But access a page that requires role YY,
 		// AccessDeniedException will be thrown.
-		http.authorizeRequests().and().exceptionHandling().accessDeniedPage("/403");
+		http.authorizeRequests().and().exceptionHandling().accessDeniedPage("/404");
 
 		// Config for Login Form
 		http.authorizeRequests().and().formLogin()//

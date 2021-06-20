@@ -26,14 +26,14 @@
 								<div class="sub-user">
 									<div class="user-item">
 										<div class="sign-in">
-											<i class="fas fa-user-plus"></i> <a th:href="@{/signup}">ÄÄng
-												kÃ½</a>
+											<i class="fas fa-user-plus"></i> <a th:href="@{/signup}">Đăng
+												ký</a>
 										</div>
 									</div>
 									<div class="user-item">
 										<div class="sign-in">
-											<i class="fas fa-sign-in-alt"></i> <a th:href="@{/login}">ÄÄng
-												nháº­p</a>
+											<i class="fas fa-sign-in-alt"></i> <a th:href="@{/login}">Đăng
+												nhập</a>
 										</div>
 									</div>
 								</div></li>
@@ -47,9 +47,9 @@
 					<div class="mainmenu text-center">
 						<nav>
 							<ul id="nav">
-								<li><a th:href="@{/shop}">SÃCH</a></li>
-								<li><a th:href="@{/shop}">KHUYáº¾N MÃI</a></li>
-								<li><a href="#footer">LIÃN Há»Â</a></li>
+								<li><a th:href="@{/shop}">SÁCH</a></li>
+								<li><a th:href="@{/shop}">KHUYẾN MÃI</a></li>
+								<li><a href="#">LIÊN HỆ</a></li>
 							</ul>
 						</nav>
 					</div>
@@ -99,19 +99,20 @@
 							</a> <!-- ============================================ -->
 
 								<div class="sub-user">
+								
 									<!-- When login: If user == null will show Dang ky + Dang Nhap -->
 									<div th:if="${#request.userPrincipal==null}">
 
 										<div class="user-item">
 											<div class="sign-in">
-												<i class="fas fa-user-plus"></i> <a th:href="@{/signup}">ÄÄng
-													kÃ½</a>
+												<i class="fas fa-user-plus"></i> <a th:href="@{/signup}">Đăng
+													ký</a>
 											</div>
 										</div>
 										<div class="user-item">
 											<div class="sign-in">
-												<i class="fas fa-sign-in-alt"></i> <a th:href="@{/login}">ÄÄng
-													nháº­p</a>
+												<i class="fas fa-sign-in-alt"></i> <a th:href="@{/login}">Đăng
+													nhập</a>
 											</div>
 										</div>
 									</div>
@@ -128,14 +129,10 @@
 
 										<div class="user-item">
 											<div class="sign-in">
-<<<<<<< HEAD
-												<i class="fas fa-user-plus"></i> <a href="#">ThÃ´ng tin
-													tÃ i khoáº£n</a>
-=======
+
 												<i class="fas fa-user-plus"></i> <a
 													th:href="@{/my-account/}+${#request.userPrincipal.name}">Thông
 													tin tài khoản</a>
->>>>>>> origin/trang2
 											</div>
 										</div>
 
@@ -172,9 +169,9 @@
 					<div class="mobile-menu">
 						<nav id="dropdown">
 							<ul>
-								<li><a th:href="@{/shop/}">SÃCH</a></li>
-								<li><a th:href="@{/shop/} ">KHUYáº¾N MÃI</a></li>
-								<li><a href="#footer">LIÃN Há»Â</a></li>
+								<li><a th:href="@{/shop/}">SÁCH</a></li>
+								<li><a th:href="@{/shop/} ">KHUYẾN MÃI</a></li>
+								<li><a href="#footer">LIÊN HỆ</a></li>
 							</ul>
 						</nav>
 					</div>

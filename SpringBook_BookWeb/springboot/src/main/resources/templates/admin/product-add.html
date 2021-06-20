@@ -52,12 +52,6 @@
 											<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 												<!-- <form:form action="addProduct" method="POST"
 													modelAttribute="books" enctype="multipart/form-data"> -->
-<<<<<<< HEAD
-												<form  method="POST"
-													th:object="${books}">
-													<br /> Hình ảnh: <input th:field="*{hinhAnh}"
-														class="form-control" required/>
-=======
 												<form method="POST" th:object="${books}"
 													enctype="multipart/form-data">
 													<br /> Hình ảnh:
@@ -70,18 +64,17 @@
 													<p>
 														<img alt="Logo Preview" id="thumbnail" height="150" />
 													</p>
->>>>>>> origin/trang2
 													<!-- <form:errors path="hinhAnh" cssClass="error" /> -->
 
 													<br /> Tên sách: <input th:field="*{tenSach}"
 														class="form-control" required />
 													<!-- <form:errors path="tenSach" cssClass="error" /> -->
-													<br /> Thể loại: <input th:field="*{theloaisach}"
-<<<<<<< HEAD
-														class="form-control" required/>
-=======
-														class="form-control" required />
->>>>>>> origin/trang2
+													<br /> Thể loại: <select th:field="*{theloaisach}"
+														class="form-control" required>
+														<option th:each="category : ${listcategory}"
+															th:value="${category.maTheLoai}"
+															th:text="${category.tenTheLoai}"></option>
+													</select>
 													<!-- <form:errors path="theloaisach" cssClass="error" /> -->
 
 													<br /> Giá: <input th:field="*{gia}" type="datetime"
@@ -100,11 +93,7 @@
 														class="form-control" required />
 													<!-- <form:errors path="ngayXuatBan" cssClass="error" /> -->
 													<br /> Số lượng: <input th:field="*{soLuong}"
-<<<<<<< HEAD
-														class="form-control" required/>
-=======
 														class="form-control" required />
->>>>>>> origin/trang2
 													<!-- <form:errors path="soLuong" cssClass="error" /> -->
 													<br /> <br />
 													<button type="submit">Lưu</button>
@@ -122,22 +111,22 @@
 	</div>
 	<!--FOOTER -->
 	<script type="text/javascript">
-	function uploadFile() {
-		  var preview = document.querySelector('img');
-		  var file    = document.querySelector('input[type=file]').files[0];
-		  var reader  = new FileReader();
+		function uploadFile() {
+			var preview = document.querySelector('img');
+			var file = document.querySelector('input[type=file]').files[0];
+			var reader = new FileReader();
 
-		  reader.onloadend = function () {
-		    preview.src = reader.result;
-		  }
+			reader.onloadend = function() {
+				preview.src = reader.result;
+			}
 
-		  if (file) {
-		    reader.readAsDataURL(file);
-		  } else {
-		    preview.src = "";
-		  }
+			if (file) {
+				reader.readAsDataURL(file);
+			} else {
+				preview.src = "";
+			}
 		}
-</script>
+	</script>
 
 	<div th:insert="~{admin/footer :: footer_admin}"></div>
 

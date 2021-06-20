@@ -3,6 +3,7 @@ package com.ht.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.ht.entities.Theloaisach;
@@ -15,7 +16,7 @@ public class CategoryService {
 
 ////HIEN THI DANH SACH TAT CA THE LOAI
 	public List<Theloaisach> findAll() {
-		return categoryRepository.findAll();
+		return categoryRepository.findAll(Sort.by(Sort.Direction.DESC, "maTheLoai"));
 	}
 
 //////TIM VA XOA THE LOAI THEO ID
