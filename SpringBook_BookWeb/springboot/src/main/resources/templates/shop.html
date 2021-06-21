@@ -2,16 +2,16 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Writer BookStore</title>
 
 </head>
 <body>
 
-	<!-- NÃÂ I GÃ¡ÂºÂ®N LINK VÃÂO -->
+	<!-- NÃÂÃ I GÃÂ¡ÃÂºÃÂ®N LINK VÃÂÃÂO -->
 	<div th:insert="~{link :: links}"></div>
 	<!-- Add your site or application content here -->
 	<!--Header Area Start-->
-	<!-- NÃÂ I GÃ¡ÂºÂ®N HEADER -->
+	<!-- NÃÂÃ I GÃÂ¡ÃÂºÃÂ®N HEADER -->
 	<div th:insert="~{header :: header_in}"></div>
 	<!-- Mobile Menu End -->
 
@@ -22,10 +22,10 @@
 			<div class="row">
 				<div class="col-md-12">
 					<div class="breadcrumbs">
-						<h2>Sách</h2>
+						<h2>Sách</h2>
 						<ul class="breadcrumbs-list">
-							<li><a title="Return to Home" href="/">Trang chủ</a></li>
-							<li>Sách</li>
+							<li><a title="Return to Home" href="/">Trang chủ</a></li>
+							<li>Sách</li>
 						</ul>
 					</div>
 				</div>
@@ -43,7 +43,7 @@
 					<div class="shop-widget">
 						<div class="shop-widget-top">
 							<aside class="widget widget-categories">
-								<h2 class="sidebar-title text-center">Danh mục</h2>
+								<h2 class="sidebar-title text-center">Danh mục</h2>
 								<div th:each="category : ${listcategory}">
 									<ul class="sidebar-menu">
 
@@ -56,7 +56,7 @@
 								</div>
 							</aside>
 							<aside class="widget shop-filter">
-								<h2 class="sidebar-title text-center">Giá</h2>
+								<h2 class="sidebar-title text-center">Giá</h2>
 								<div class="info-widget">
 									<div class="price-filter">
 										<div id="slider-range"></div>
@@ -64,7 +64,7 @@
 											<input type="text" id="amount" name="price"
 												placeholder="Add Your Price" />
 											<div class="widget-buttom">
-												<input type="submit" value="TÃÂ¬m KiÃ¡ÂºÂ¿m" />
+												<input type="submit" value="Tìm kiếm theo giá" />
 											</div>
 										</div>
 									</div>
@@ -95,7 +95,7 @@
 
 
 
-							<!-- TÃ¬m kiáº¿m  -->
+							<!-- TÃÂ¬m kiÃ¡ÂºÂ¿m  -->
 							<div class="search-book">
 								<form name="" class="form-inline">
 									<input class="form-control mr-sm-2" type="text" name="tenSach"
@@ -110,7 +110,7 @@
 							</div>
 
 
-							<!-- Final tÃ¬m kiáº¿m   -->
+							<!-- Final tÃÂ¬m kiÃ¡ÂºÂ¿m   -->
 
 
 
@@ -137,15 +137,15 @@
 														<!--  -->
 
 
-														<!-- Nếu chưa nhận đc User nào login thì add card sẽ bị đảy qua trang login -->
+														<!-- Náº¿u chÆ°a nháº­n Äc User nÃ o login thÃ¬ add card sáº½ bá» Äáº£y qua trang login -->
 														<!-- Tu: Sercurity: if user don't login user can't  visit Card + buy Book + Number in Card will not increse(tang)  -->
 														<div th:if="${#request.userPrincipal==null}">
 															<div class="product-description">
 																<div class="functional-buttons">
 
-																	<a title="Thêm vào giỏ hàng" th:href="@{/login}"><i
+																	<a title="ThÃªm vÃ o giá» hÃ ng" th:href="@{/login}"><i
 																		class="fa fa-shopping-cart"></i> </a> <a href="#"
-																		title="Thêm vào danh sách yêu thích"> <i
+																		title="ThÃªm vÃ o danh sÃ¡ch yÃªu thÃ­ch"> <i
 																		class="far fa-heart"></i>
 																	</a> <a href="#" title="Xem nhanh" data-toggle="modal"
 																		data-target="#productModal1"> <i
@@ -158,16 +158,16 @@
 														</div>
 													</div>
 
-													<!-- Nếu đã nhận đc User nào rồi thì add sẽ đc số trong giỏ hàng sẻ tăng lên  -->
+													<!-- Náº¿u ÄÃ£ nháº­n Äc User nÃ o rá»i thÃ¬ add sáº½ Äc sá» trong giá» hÃ ng sáº» tÄng lÃªn  -->
 													<!-- Tu: Sercurity: if user login success new can visit Card + buy Book + Number in Card will increse(tang)  -->
 													<div th:if="${#request.userPrincipal !=null}">
 														<div class="product-description">
 															<div class="functional-buttons">
 
-																<a title="Thêm vào giỏ hàng"
+																<a title="ThÃªm vÃ o giá» hÃ ng"
 																	th:href="@{/cart/add/}+${book.maSach}"><i
 																	class="fa fa-shopping-cart"></i> </a> <a href="#"
-																	title="Thêm vào danh sách yêu thích"> <i
+																	title="ThÃªm vÃ o danh sÃ¡ch yÃªu thÃ­ch"> <i
 																	class="far fa-heart"></i>
 																</a> <a href="#" title="Xem nhanh" data-toggle="modal"
 																	data-target="#productModal1"> <i
@@ -193,9 +193,9 @@
 															</a>
 														</div>
 														<div style="color: #32b5f3;" class="price-2">
-															<span th:text="${book.gia}+'.000 VNĐ'"> </span> <span
+															<span th:text="${book.gia}+'.000 VNÄ'"> </span> <span
 																style="color: black;" class="old-price">500.000
-																VNĐ</span>
+																VNÄ</span>
 														</div>
 													</div>
 												</div>
@@ -241,13 +241,13 @@
 													</h4>
 													<div class="product-price">
 														<!-- <% if (listSach.get(i).getKhuyenMai() > 0) { %> -->
-														<span class="new-price" th:text="${book.gia}+'.000 VNĐ'"></span>
-														<span class="old-price">500.000 VNĐ</span>
+														<span class="new-price" th:text="${book.gia}+'.000 VNÄ'"></span>
+														<span class="old-price">500.000 VNÄ</span>
 														<!-- <%} else {%>
-                                                <span class="new-price"><%=listSach.get(i).getGia()%>.000ÃÂ</span>
+                                                <span class="new-price"><%=listSach.get(i).getGia()%>.000ÃÂÃÂ</span>
                                                 <%}%> -->
 													</div>
-													<p>Hay cÃ¡Â»Â±c kÃ¡Â»Â³</p>
+													<p>Hay cÃÂ¡ÃÂ»ÃÂ±c kÃÂ¡ÃÂ»ÃÂ³</p>
 													<div class="availability">
 														<span><a th:href="@{/cart/add/}+${book.maSach}">Mua
 																Ngay</a></span>
@@ -342,7 +342,7 @@
 		}
 	</script>
 
-	<!-- Phân trang Ajx -->
+	<!-- PhÃ¢n trang Ajx -->
 
 	<script type="text/javascript">
 		$(document)
@@ -387,7 +387,7 @@
 																		.log("Mess laf: "
 																				+ result);
 																/*	$("#search").html(result);*/
-																/* TÃªn trÃ¹ng vs id chá» Äá» hiá»n thá» ra dao diá»n: resuilts  */
+																/* TÃÂªn trÃÂ¹ng vs id chÃ¡Â»Â ÃÂÃ¡Â»Â hiÃ¡Â»Ân thÃ¡Â»Â ra dao diÃ¡Â»Ân: resuilts  */
 																$("#resuilts")
 																		.html(
 																				result);
@@ -404,7 +404,7 @@
 
 
 
-	<!-- NÃÂ I GÃ¡ÂºÂ®N FOOTER -->
+	<!-- NÃÂÃ I GÃÂ¡ÃÂºÃÂ®N FOOTER -->
 	<div th:insert="~{footer :: footer_in}"></div>
 </body>
 </html>

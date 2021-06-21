@@ -180,11 +180,20 @@ public class ControllerCart {
 		if (cartItems == null) {
 			cartItems = new HashMap<>();
 		}
+		receipt.setReceiptAddress(receipt.getReceiptAddress().substring(0, receipt.getReceiptAddress().length()-1));
 		receipt.setReceiptDate(new Timestamp(new Date().getTime()));
 //		receipt.setReceiptDate(new Timestamp(new Date().getTime()));
+		//tran - xu ly cat ki tu cuoi cua chuoi 
+		String receipt_mail = receipt.getReceiptMail().substring(0, receipt.getReceiptMail().length()-1);
+		receipt.setReceiptMail(receipt_mail);
+		receipt.setReceiptName(receipt.getReceiptName().substring(0, receipt.getReceiptName().length()-1));
+		receipt.setReceiptPhone(receipt.getReceiptPhone().substring(0, receipt.getReceiptPhone().length()-1));
 		receipt.setReceiptStatus("Đặt hàng thành công");
 		receipt.setTotal(totalPrice(cartItems));
 		receiptService.create(receipt);
+	
+		
+		
 		for (Map.Entry<Long, Cart> entry : cartItems.entrySet()) {
 			ReceiptItem receiptItem = new ReceiptItem();
 			receiptItem.setReceipt(receipt);
@@ -194,12 +203,14 @@ public class ControllerCart {
 			receiptItem.setReceiptItemQuantity(entry.getValue().getQuantity());
 			receiptItem.setReceiptItemStatus(true);
 			receiptItemService.create(receiptItem);
+			
 		}
 		cartItems = new HashMap<>();
 		session.setAttribute("myCartItems", cartItems);
 		session.setAttribute("myCartTotal", 0);
 		session.setAttribute("myCartNum", 0);
-
+		
+// tran - lay du lieu de gui mail thong tin don hang
 		String name = request.getParameter("receiptName");
 		String mail = request.getParameter("receiptMail");
 		String phone = request.getParameter("receiptPhone");

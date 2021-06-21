@@ -21,6 +21,7 @@ public class ReceiptService {
 
 	public void create(Receipt receipt) {
 		reRepository.saveAndFlush(receipt);
+//		receipt.getReceiptMail().substring(0, receipt.getReceiptMail().length()-1);	
 	}
 
 	public Receipt findid(long id) {

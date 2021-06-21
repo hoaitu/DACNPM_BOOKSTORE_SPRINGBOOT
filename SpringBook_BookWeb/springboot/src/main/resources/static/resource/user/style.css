@@ -974,7 +974,7 @@ body {
 
 .single-testimonial>p::after {
 	color: #868686;
-	content: "ï„�";
+	content: "Ă¯â€�ï¿½";
 	font-family: fontawesome;
 	font-size: 30px;
 	left: -17px;
@@ -1524,7 +1524,7 @@ body {
 	font-weight: 500;
 	text-transform: uppercase;
 	margin: auto;
-	display: block;
+	display: inline-block;
 	outline: none;
 }
 
@@ -1541,7 +1541,7 @@ body {
 .form-row>input {
 	background: #f6f6f6 none repeat scroll 0 0;
 	border: medium none;
-	border-radius: 20px;
+	border-radius: 5px;
 	height: 40px;
 	line-height: 40px;
 	padding-left: 20px;
@@ -1566,7 +1566,7 @@ body {
 }
 
 p.form-row {
-	margin-bottom: 30px;
+	margin-bottom: 20px;
 }
 
 div.form-row {
@@ -2349,7 +2349,7 @@ a.wish-btn {
 }
 
 .comments-advices a.open-comment-form::before {
-	content: "ï�€";
+	content: "Ă¯ï¿½â‚¬";
 }
 
 .comments-advices a::before {
