@@ -97,7 +97,7 @@
 						</p>
 						<div style="text-align: center;">
 							<div style="display: inline-block;">
-								Gender: <select name="gender" class="form-control">
+								Giới tính: <select name="gender" class="form-control">
 									<option value="Nam">Nam</option>
 									<option value="Nữ">Nu</option>
 									<option value="Khác">Khac</option>
@@ -106,7 +106,7 @@
 							<!-- kiem tra co dung dinh dang dd/mm/yyyy min:1950-01-01, max:2030-12-31 (tran) -->
 							<div style="display: inline-block;">
 								<p class="form-row">
-									Date Of Birtth: <input name="dateOfBirth" type="datetime"
+									Ngày sinh: <input name="dateOfBirth" type="datetime"
 										style="width: 100%; height: 35px" class="form-control"
 										placeholder="DD/MM/YYYY" value="" min="1997-01-01"
 										max="2030-12-31" pattern="[0-9]{2}/[0-9]{2}/[0-9]{4}\b"
@@ -135,14 +135,13 @@
 
 						<div class="submit" style="text-align: center;">
 							<button name="submitcreate" id="submitcreate" type="submit"
-								class="btn-default" value="Submit" onclick="return Validate()" />
+								class="btn-default" value="Submit" onclick="return Validate()" >
 							<span> <i class="fa fa-user left"></i> Lưu
 							</span>
 							</button>
 
 							<button name="submitcreate" id="submitcreate" type="submit"
-								class="btn-default"
-								style="background: red none repeat scroll 0 0; border: 1px solid red;">
+								class="btn-default-second">
 								<span> <i class="fa fa-user left"></i> Hủy
 								</span>
 							</button>
