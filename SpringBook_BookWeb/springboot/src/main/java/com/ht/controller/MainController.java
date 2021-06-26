@@ -168,14 +168,14 @@ public class MainController {
 	public ModelAndView accessDenied(Model model, Principal principal) {
 		ModelAndView mav = new ModelAndView("404");
 		if (principal != null) {
-			User loginedUser = (User) ((Authentication) principal).getPrincipal();
+//			User loginedUser = (User) ((Authentication) principal).getPrincipal();
 
 //			String userInfo = WebUtils.toString(loginedUser);
 //
 //			model.addAttribute("userInfo", userInfo);
 
-			String message = "Hi " + principal.getName() //
-					+ "<br> You do not have permission to access this page!";
+//			String message = "Hi " + principal.getName() //
+			String message = "Hi, You do not have permission to access this page!, Thankyou";
 			model.addAttribute("message", message);
 
 		}

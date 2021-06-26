@@ -260,7 +260,7 @@ body {
 	display: none;
 }
 
-.header-right>ul, .subtotal-area span, .sidebar-menu span, .blog-date {
+.header-right>ul, .subtotal-area span, .blog-date {
 	float: right;
 }
 
@@ -974,7 +974,7 @@ body {
 
 .single-testimonial>p::after {
 	color: #868686;
-	content: "ï„�";
+	content: "Ă¯â€�ï¿½";
 	font-family: fontawesome;
 	font-size: 30px;
 	left: -17px;
@@ -1524,7 +1524,22 @@ body {
 	font-weight: 500;
 	text-transform: uppercase;
 	margin: auto;
-	display: block;
+	display: inline-block;
+	outline: none;
+}
+.btn-default-second {
+	background: red none repeat scroll 0 0;
+	border: 1px solid red;
+	border-radius: 20px;
+	color: #ffffff;
+	height: 40px;
+	padding: 0 22px;
+	transition: all 0.3s ease 0s;
+	font-size: 16px;
+	font-weight: 500;
+	text-transform: uppercase;
+	margin: auto;
+	display: inline-block;
 	outline: none;
 }
 
@@ -1533,7 +1548,11 @@ body {
 	border: 1px solid #32b5f3;
 	color: #32b5f3;
 }
-
+.btn-default-second:hover {
+	background: white;
+	border: 1px solid red;
+	color: red;
+}
 .login-info {
 	margin-bottom: 40px;
 }
@@ -1541,7 +1560,7 @@ body {
 .form-row>input {
 	background: #f6f6f6 none repeat scroll 0 0;
 	border: medium none;
-	border-radius: 20px;
+	border-radius: 5px;
 	height: 40px;
 	line-height: 40px;
 	padding-left: 20px;
@@ -1566,7 +1585,7 @@ body {
 }
 
 p.form-row {
-	margin-bottom: 30px;
+	margin-bottom: 20px;
 }
 
 div.form-row {
@@ -1805,12 +1824,20 @@ p.form-row-phone {
 	margin-top: 12px;
 	outline: none;
 }
-
+.input-message .btn-default-second {
+	background: #444444 none repeat scroll 0 0;
+	border: none;
+	margin-top: 12px;
+	outline: none;
+}
 .input-message .btn-default:hover {
 	background: #31b5f2;
 	color: #ffffff;
 }
-
+.input-message .btn-default-second:hover {
+	background: #31b5f2;
+	color: #ffffff;
+}
 .contact-form-right .input-message textarea {
 	width: 100%;
 }
@@ -1859,7 +1886,10 @@ p.form-row-phone {
 	font-weight: 400;
 	outline: none;
 }
-
+.create-account-form .btn-default-second {
+	font-weight: 400;
+	outline: none;
+}
 .lost-password.form-group>a {
 	text-decoration: underline;
 	display: block;
@@ -1910,7 +1940,7 @@ p.form-row-phone {
 
 .sidebar-menu>li {
 	line-height: 1;
-	padding: 19px 0;
+	padding: 15px 0;
 }
 
 .widget-categories {
@@ -2349,7 +2379,7 @@ a.wish-btn {
 }
 
 .comments-advices a.open-comment-form::before {
-	content: "ï�€";
+	content: "Ă¯ï¿½â‚¬";
 }
 
 .comments-advices a::before {
