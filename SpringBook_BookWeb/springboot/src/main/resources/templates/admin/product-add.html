@@ -69,8 +69,12 @@
 													<br /> Tên sách: <input th:field="*{tenSach}"
 														class="form-control" required />
 													<!-- <form:errors path="tenSach" cssClass="error" /> -->
-													<br /> Thể loại: <input th:field="*{theloaisach}"
-														class="form-control" required />
+													<br /> Thể loại: <select th:field="*{theloaisach}"
+														class="form-control" required>
+														<option th:each="category : ${listcategory}"
+															th:value="${category.maTheLoai}"
+															th:text="${category.tenTheLoai}"></option>
+													</select>
 													<!-- <form:errors path="theloaisach" cssClass="error" /> -->
 
 													<br /> Giá: <input th:field="*{gia}" type="datetime"
@@ -107,22 +111,22 @@
 	</div>
 	<!--FOOTER -->
 	<script type="text/javascript">
-	function uploadFile() {
-		  var preview = document.querySelector('img');
-		  var file    = document.querySelector('input[type=file]').files[0];
-		  var reader  = new FileReader();
+		function uploadFile() {
+			var preview = document.querySelector('img');
+			var file = document.querySelector('input[type=file]').files[0];
+			var reader = new FileReader();
 
-		  reader.onloadend = function () {
-		    preview.src = reader.result;
-		  }
+			reader.onloadend = function() {
+				preview.src = reader.result;
+			}
 
-		  if (file) {
-		    reader.readAsDataURL(file);
-		  } else {
-		    preview.src = "";
-		  }
+			if (file) {
+				reader.readAsDataURL(file);
+			} else {
+				preview.src = "";
+			}
 		}
-</script>
+	</script>
 
 	<div th:insert="~{admin/footer :: footer_admin}"></div>
 

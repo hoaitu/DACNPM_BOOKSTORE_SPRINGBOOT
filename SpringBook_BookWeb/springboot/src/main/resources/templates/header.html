@@ -43,26 +43,64 @@
 						</ul>
 					</div>
 				</div>
-				<div class="col-md-9 col-sm-12 hidden-xs">
+				<div class="col-md-7 col-sm-12 hidden-xs">
 					<div class="mainmenu text-center">
 						<nav>
 							<ul id="nav">
 								<li><a th:href="@{/shop}">SÁCH</a></li>
 								<li><a th:href="@{/shop}">KHUYẾN MÃI</a></li>
-								<li><a href="#footer">LIÊN HỆ</a></li>
+								<li><a href="#">LIÊN HỆ</a></li>
 							</ul>
 						</nav>
 					</div>
 				</div>
-				<div class="col-md-1 hidden-sm">
+				<div class="col-md-3 hidden-sm">
 					<div class="header-right">
+
+
+
+						<!-- ĐỔI NGÔN NGỮ: Change langues -->
+						<div id="google_translate_element2" style="display: none">
+							<div class="skiptranslate goog-te-gadget" dir="ltr" style="">
+								<div id=":0.targetLanguage">
+									<select class="goog-te-combo"
+										aria-label="Tiện ích con dịch ngôn ngữ"><option
+											value="">Chọn Ngôn ngữ</option>
+									</select>
+								</div>
+								Được hỗ trợ bởi <span style="white-space: nowrap"><a
+									class="goog-logo-link" href="https://translate.google.com"
+									target="_blank"><img
+										src="https://www.gstatic.com/images/branding/googlelogo/1x/googlelogo_color_42x16dp.png"
+										width="37px" height="14px" style="padding-right: 3px"
+										alt="Google Dịch">Dịch</a></span>
+							</div>
+						</div>
+
+						<li class="menu-item" style="display: flex; position: absolute;">
+							<a href="#" title="VI" class="lang-vi first"
+							onclick="doGTranslate('vi|vi');return false;" hreflang="vi"
+							lang="vi" role="menuitem"> <!-- VI --> <img
+								th:src="@{/resource/user/img/vn.png}" alt="" class="img-fluid">
+								<br />
+
+						</a> <a href="#" style="margin-left: 10px; margin-top: 4px;"
+							title="EN" class="lang-en last"
+							onclick="doGTranslate('vi|en');return false;" hreflang="en"
+							lang="en" role="menuitem"> <!-- EN --> <img
+								th:src="@{/resource/user/img/usa.png}" alt="" class="img-fluid">
+						</a>
+						</li>
+						<!-- End đổi ngôn ngữ: End change langues -->
 						<ul>
+
 							<li class="user-login"><a> <i class="flaticon-people"></i>
 
 							</a> <!-- ============================================ -->
 
 								<div class="sub-user">
-									<!-- KHI CHÆ¯A ÄÄNG NHáº¬P VÃO -->
+								
+									<!-- When login: If user == null will show Dang ky + Dang Nhap -->
 									<div th:if="${#request.userPrincipal==null}">
 
 										<div class="user-item">
@@ -78,15 +116,8 @@
 											</div>
 										</div>
 									</div>
-
-									<!-- </div> -->
-
 									<!--  -->
-
-
-									<!-- <div class="sub-user"> -->
-
-									<!-- KHI ÄÃ ÄÄNG NHáº¬P VÃO NHáº¬N ÄC USERNAME -->
+									<!-- When login: If user != null will show UserName + Information user + Logout -->
 									<div th:if="${#request.userPrincipal !=null}">
 
 										<div class="user-item">
@@ -98,42 +129,23 @@
 
 										<div class="user-item">
 											<div class="sign-in">
+
 												<i class="fas fa-user-plus"></i> <a
 													th:href="@{/my-account/}+${#request.userPrincipal.name}">Thông
 													tin tài khoản</a>
 											</div>
 										</div>
 
-
 										<div class="user-item">
-
-
-
-
 
 											<div class="sign-in"
 												th:if="${#request.userPrincipal != null}">
 												<i class="fas fa-user-plus"></i> <a th:href="@{/logout}">Logout
 												</a>
-
-
-												<!-- <form name='logout' th:action="@{/logout}" method='POST'>
-													<input type="hidden" name="${_csrf.parameterName}"
-														value="${_csrf.token}" /> 
-														
-														<input id="submitcreate"
-														type="submit" value="Logout" name="submit" />
-												</form> -->
-
-
-												<!-- <a th:href="@{/logout}">Logout
-												</a> -->
-												<!-- th:if="${#request.userPrincipal != null}" -->
 											</div>
 										</div>
 									</div>
 								</div> <!-- ================================================================== -->
-
 							</li>
 
 							<li class="shoping-cart"><a th:href="@{shopping_cart}">
@@ -149,9 +161,6 @@
 	</div>
 	<!--Header Area End-->
 
-
-
-
 	<!-- Mobile Menu Start -->
 	<div class="mobile-menu-area">
 		<div class="container">
@@ -161,8 +170,8 @@
 						<nav id="dropdown">
 							<ul>
 								<li><a th:href="@{/shop/}">SÁCH</a></li>
-								<li><a th:href="@{/shop/} ">KHUYẾN MÃI</a></li>
-								<li><a href="#footer">LIÊN HỆ</a></li>
+								<li><a th:href="@{/shop/} ">KHUYẾN MÃI</a></li>
+								<li><a href="#footer">LIÊN HỆ</a></li>
 							</ul>
 						</nav>
 					</div>
@@ -171,6 +180,60 @@
 		</div>
 	</div>
 	<!-- Mobile Menu End -->
+
+	<!-- Xử lý ngôn ngữ: Change Langue JQuery -->
+	<script>
+		function googleTranslateElementInit2() {
+			new google.translate.TranslateElement({
+				pageLanguage : 'vi',
+				autoDisplay : false
+			}, 'google_translate_element2');
+			var removePopup = document.getElementById('goog-gt-tt');
+			removePopup.parentNode.removeChild(removePopup);
+		}
+	</script>
+	<script type="text/javascript"
+		src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit2"></script>
+	<script type="text/javascript">
+		function GTranslateFireEvent(element, event) {
+			try {
+				if (document.createEventObject) {
+					var evt = document.createEventObject();
+					element.fireEvent('on' + event, evt)
+				} else {
+					var evt = document.createEvent('HTMLEvents');
+					evt.initEvent(event, true, true);
+					element.dispatchEvent(evt)
+				}
+			} catch (e) {
+			}
+		}
+
+		function doGTranslate(lang_pair) {
+			if (lang_pair.value)
+				lang_pair = lang_pair.value;
+			if (lang_pair == '')
+				return;
+			var lang = lang_pair.split('|')[1];
+			var teCombo;
+			var sel = document.getElementsByTagName('select');
+			for (var i = 0; sel.length > i; i++) {
+				if (sel[i].className == 'goog-te-combo')
+					teCombo = sel[i];
+			}
+			if (document.getElementById('google_translate_element2') == null
+					|| document.getElementById('google_translate_element2').innerHTML.length == 0
+					|| teCombo.length == 0 || teCombo.innerHTML.length == 0) {
+				setTimeout(function() {
+					doGTranslate(lang_pair)
+				}, 500)
+			} else {
+				teCombo.value = lang;
+				GTranslateFireEvent(teCombo, 'change');
+				GTranslateFireEvent(teCombo, 'change')
+			}
+		}
+	</script>
 
 </body>
 </html>

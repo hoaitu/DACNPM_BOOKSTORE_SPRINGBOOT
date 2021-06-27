@@ -31,6 +31,7 @@ import com.ht.WebUtils;
 import com.ht.entities.Sach;
 import com.ht.service.BookService;
 import com.ht.service.CategoryService;
+import com.ht.service.CustomerValidation;
 import com.ht.service.PageService;
 import com.ht.service.ReceiptItemService;
 import com.ht.service.ReceiptService;
@@ -40,6 +41,7 @@ import com.ht.entities.User;
 
 import java.security.Principal;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 //import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -55,6 +57,7 @@ public class MainController {
 	private CategoryService category;
 	@Autowired
 	private PageService pageService;
+
 	@Autowired
 	private UserService userService;
 	@Autowired
@@ -71,55 +74,27 @@ public class MainController {
 
 //	------------------------------------------------------------
 
-//	Tú mới cmment 06/06
+//	Tu new cmment 06/06
 	@RequestMapping(value = "/shop/{id}", method = RequestMethod.GET)
 	public ModelAndView shop(Model model, @PathVariable(value = "id") int id) {
 		ModelAndView mav = new ModelAndView("shop");
 		model.addAttribute("listbook", book.findByCategory(id));
 		model.addAttribute("listcategory", category.findAll());
-
-//
-//		return mav;
-//	}
-
 		return mav;
 	}
 
-	@RequestMapping(value = "/search")
-	public @ResponseBody List<Sach> ajaxSearch(HttpServletRequest req, HttpServletResponse res) {
-		List<Sach> getSach = book.findBookByTitle(req.getParameter("tenSach"));
-		for (Sach sach : getSach) {
-			System.out.println(sach + "\n");
-		}
-		return getSach;
-	}
-
-	@RequestMapping(value = "/ajaxSearch", method = RequestMethod.GET)
-	public List<String> getSach(String tenSach) {
-		List<String> getSach = book.findBook(tenSach);
-		for (String sach : getSach) {
-			System.out.println(sach + "\n");
-		}
-		return getSach;
-	}
-
-//	
+//Tu: Show page Login	
 
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
+
 	public ModelAndView login(ModelMap model) {
 		ModelAndView mav = new ModelAndView("login");
 
 		return mav;
 	}
 
-	@RequestMapping("/signup")
-	public ModelAndView signup(ModelMap model) {
-		ModelAndView mav = new ModelAndView("signup");
-
-		return mav;
-	}
-
 	@RequestMapping("/single-product/{ids}")
+
 	public ModelAndView single_product(Model model, @PathVariable(value = "ids") int ids) {
 		ModelAndView mav = new ModelAndView("single-product");
 		mav.addObject("books", book.findById(ids));
@@ -163,7 +138,7 @@ public class MainController {
 	 * 2/06/2021 : thêm trang 404
 	 */
 
-//để test
+//to Tu test : no important
 	@RequestMapping(value = "/userInfo", method = RequestMethod.GET)
 	public ModelAndView userInfo(Model model, Principal principal) {
 		ModelAndView mav = new ModelAndView("userInfoPage");
@@ -180,6 +155,7 @@ public class MainController {
 		return mav;
 	}
 
+//Tu: if after Login user want to logout + return Page: logoutSuccessfulPage.html 
 	@RequestMapping(value = "/logoutSuccessful", method = RequestMethod.GET)
 	public ModelAndView logoutSuccessfulPage(Model model) {
 		ModelAndView mav = new ModelAndView("logoutSuccessfulPage");
@@ -187,21 +163,31 @@ public class MainController {
 		return mav;
 	}
 
+//TEST: no important (if don't hvae permission will return page: 404: Sercurity) 
 	@RequestMapping(value = "/403", method = RequestMethod.GET)
 	public ModelAndView accessDenied(Model model, Principal principal) {
 		ModelAndView mav = new ModelAndView("404");
 		if (principal != null) {
-			User loginedUser = (User) ((Authentication) principal).getPrincipal();
+//			User loginedUser = (User) ((Authentication) principal).getPrincipal();
 
 //			String userInfo = WebUtils.toString(loginedUser);
 //
 //			model.addAttribute("userInfo", userInfo);
 
-			String message = "Hi " + principal.getName() //
-					+ "<br> You do not have permission to access this page!";
+//			String message = "Hi " + principal.getName() //
+			String message = "Hi, You do not have permission to access this page!, Thankyou";
 			model.addAttribute("message", message);
 
 		}
+
+		return mav;
+	}
+
+//TEST: only test
+	@RequestMapping("/test")
+
+	public ModelAndView testPG(ModelMap model) {
+		ModelAndView mav = new ModelAndView("test");
 
 		return mav;
 	}

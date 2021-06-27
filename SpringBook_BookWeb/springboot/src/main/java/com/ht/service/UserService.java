@@ -3,33 +3,55 @@ package com.ht.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+//import org.springframework.security.crypto.password.PasswordEncoder;
+//import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+//import org.springframework.security.crypto.password.Pbkdf2PasswordEncoder;
+import org.springframework.stereotype.Service;
+//import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.transaction.annotation.Transactional;
+
+//import com.ht.config.EncrytedPasswordUtils;
+
 import org.springframework.stereotype.Service;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import com.ht.entities.User;
 import com.ht.repository.UserRepository;
+
 /////////TRANG 14/6
 @Service
+@Transactional
 public class UserService {
 	@Autowired
-	private UserRepository userRepository;
+	private UserRepository uRepository;
 	@Autowired
 	private BCryptPasswordEncoder passwordEncoder;
 
-////////////HIEN THI DANH SACH USER
-	public List<User> findAll() {
-		return userRepository.findAll();
-	}
-
+//	Add user in Admin + Add user in Singup : pass must Encode
 ///////////THEM TAI KHOAN
+
 	public void create(User user) {
 		user.setPassword(passwordEncoder.encode(user.getPassword()));
-		userRepository.saveAndFlush(user);
+		uRepository.saveAndFlush(user);
+	}
+
+	// User use
+	public User findByUsernameAndPassword(String username, String password) {
+		return uRepository.findByUsernameAndPassword(username, password);
+	}
+
+////////////HIEN THI DANH SACH USER
+	public List<User> findAll() {
+		return uRepository.findAll(Sort.by(Sort.Direction.DESC, "idUser"));
+
 	}
 
 //////////CAP NHAT TRONG ADMIN
 	public void update(User user) {
-		User u = userRepository.findByUser((user.getIdUser()));
+		User u = uRepository.findByUser((user.getIdUser()));
 		u.setUsername(user.getUsername());
 		u.setEmail(user.getEmail());
 		u.setPassword(passwordEncoder.encode(user.getPassword()));
@@ -38,12 +60,12 @@ public class UserService {
 		u.setDateOfBirth(user.getDateOfBirth());
 		u.setGender(user.getGender());
 		u.setPhone(user.getPhone());
-		userRepository.saveAndFlush(u);
+		uRepository.saveAndFlush(u);
 	}
 
 ////////////CAP NHAT TRONG TRANG MY-ACCOUT.HTML
 	public void updates(User user) {
-		User u = userRepository.findByEmail(user.getEmail());
+		User u = uRepository.findByEmail(user.getEmail());
 		u.setUsername(user.getUsername());
 		u.setEmail(user.getEmail());
 		u.setPassword(passwordEncoder.encode(user.getPassword()));
@@ -52,37 +74,28 @@ public class UserService {
 		u.setDateOfBirth(user.getDateOfBirth());
 		u.setGender(user.getGender());
 		u.setPhone(user.getPhone());
-		userRepository.saveAndFlush(u);
+		uRepository.saveAndFlush(u);
 	}
 
 ////////XOA TAI KHOAN
 	public void delete(Long idUser) {
-		User u = userRepository.findByUser(idUser);
+		User u = uRepository.findByUser(idUser);
 		if (u != null) {
-			userRepository.delete(u);
+			uRepository.delete(u);
 		}
 	}
 
 	public User findById(Long id) {
-		return userRepository.findByUser(id);
+		return uRepository.findByUser(id);
 	}
 
-	public List<User> findAlls() {
-		return userRepository.findAll();
-	}
-
-	// User dùng
-	public User findByUsernameAndPassword(String username, String password) {
-		return userRepository.findByUsernameAndPassword(username, password);
+//TU: funtion for find userName exits (Mail exits) 13/06/2021
+	public User findCustomerByUserName(String userName) {
+		return uRepository.findByUserName(userName);
 	}
 
 	public User findByEmail(String email) {
-		return userRepository.findByEmail(email);
+		return uRepository.findByEmail(email);
 	}
-
-//	public boolean saveUser(User user) {
-//		String password = user.getPassword();
-//		return uRepository.save(user) != null;
-//	}
 
 }

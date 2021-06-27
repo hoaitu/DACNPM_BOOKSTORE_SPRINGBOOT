@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta http-equiv="x-ua-compatible" content="ie=edge" />
-<title>Home One || Witter Multipage Responsive Template</title>
+<title>Login Witter</title>
 <meta name="description" content="" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 
@@ -42,6 +42,10 @@
 			<div class="row"
 				style="display: flex; align-items: center; justify-content: center;">
 				<div class="col-md-6 col-sm-6">
+					<div th:if="${message != null}">
+						<p class="text-warning">[[${message}]]</p>
+					</div>
+
 
 					<!-- /login?error=true -->
 					<div th:if="${#request.getParameter('error') == 'true'}"
@@ -52,9 +56,6 @@
 							Static summary </span>
 
 					</div>
-
-					<!-- <form action="" class="create-account-form" method="post"> -->
-
 
 					<form name='f' th:action="@{/j_spring_security_check}"
 						method='POST'>
@@ -68,7 +69,7 @@
                     </p> -->
 						<p class="form-row">
 							<input style="outline: none;" type="email" name="username"
-								placeholder="Địa chỉ email" />
+								placeholder="Địa chỉ email" />	
 							<!-- value="hoaitugl123@gmail.com" -->
 						</p>
 						<p class="form-row">
@@ -78,7 +79,9 @@
 							<!-- value="123456789" -->
 						</p>
 						<p class="lost-password form-group">
-							<a href="#" rel="nofollow">Quên mật khẩu ?</a>
+
+							<a th:href="@{/forgot_password}" rel="nofollow">Quên mật khẩu
+								?</a>
 						</p>
 						<div class="submit">
 							<button name="submit" id="submitcreate" type="submit"

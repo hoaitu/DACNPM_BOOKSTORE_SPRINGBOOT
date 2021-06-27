@@ -19,6 +19,7 @@ import com.ht.service.BookService;
 import com.ht.service.CategoryService;
 import com.ht.service.PageService;
 
+//Tu
 @Controller
 public class PagingController {
 	@Autowired
@@ -27,14 +28,6 @@ public class PagingController {
 	private CategoryService category;
 	@Autowired
 	private BookService bookService;
-
-//	@RequestMapping(value = "/shop/{id}", method = RequestMethod.GET)
-//	public ModelAndView shop(Model model, @PathVariable(value = "id") int id) {
-//		ModelAndView mav = new ModelAndView("home/shop");
-//		model.addAttribute("listcategory", category.findAll());
-//		model.addAttribute("listSach", bookService.findByCategory(id));
-//		return mav;
-//	}
 
 	@RequestMapping("/shops")
 	@ResponseBody
@@ -45,6 +38,7 @@ public class PagingController {
 		return listSach;
 	}
 
+//Show page Shop + totalPage From book ; Categary Book
 	@RequestMapping("/shop")
 	public String viewPhanTrang(ModelMap model) {
 		int currentPage = 1;

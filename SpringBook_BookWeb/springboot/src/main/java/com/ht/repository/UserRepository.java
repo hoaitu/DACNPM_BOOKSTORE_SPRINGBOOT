@@ -12,17 +12,24 @@ import com.ht.entities.User;
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
 
-	@Query("SELECT c FROM User c where  c.username= :username")
+//	TU: Used for Check Email User have Exits in DB in Page Regester(dang ky)
+	@Query(value = "SELECT c FROM User c where  c.username = :username")
 	public User findByUserName(@Param("username") String username);
 
-	/*
-	 * @Query(value = "SELECT u FROM User u WHERE u.email = :email") public abstract
-	 * List<User> findByEmail(@Param("email") String email);
-	 */
+//	Tu moi them 09/06; 
+//	 Using reset Pass
 
-	/////////// LAY USER THEO EMAIL DE HIEN THI TRONG TRANG THONG TIN TAI KHOAN
+//	TU: Using reset Pass
+	public User findByResetPasswordToken(String token);
+
+//	------------------
+/////////// LAY USER THEO EMAIL DE HIEN THI TRONG TRANG THONG TIN TAI KHOAN
+//	Tu new rename findByEmail_Admin : 14/06.
 	@Query(value = "SELECT u FROM User u WHERE u.email = :email")
-	public abstract User findByEmail(@Param("email") String email);
+	public User findByEmail(String email);
+
+//	public abstract User findByEmail(@Param("email") String email);
+//	public abstract User findByEmail_Admin(@Param("email") String email);
 
 	User findByUsernameAndPassword(String username, String password);
 
@@ -30,6 +37,6 @@ public interface UserRepository extends JpaRepository<User, Long> {
 	@Query(value = "Select u From User u where u.idUser =:ids")
 	public abstract User findByUser(@Param("ids") long id);
 
+	// User name : is email
 	User findByUsername(String username);
-
 }

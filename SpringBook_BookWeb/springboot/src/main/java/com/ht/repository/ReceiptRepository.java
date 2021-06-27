@@ -10,4 +10,5 @@ import com.ht.entities.Sach;
 public interface ReceiptRepository extends JpaRepository<Receipt, Long> {
 	@Query(value = "SELECT c FROM Receipt c WHERE c.receiptId =:ids")
 	public abstract Receipt findByID(@Param("ids") long ids);
+	
 }

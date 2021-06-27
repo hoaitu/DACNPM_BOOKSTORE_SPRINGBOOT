@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8">
 <meta http-equiv="x-ua-compatible" content="ie=edge">
-<title>Product Edit | Nalika - Material Admin Template</title>
+<title>Product Edit | WRITER Admin</title>
 <meta name="description" content="">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -57,8 +57,14 @@
 														<img alt="Logo Preview" id="thumbnail" height="150" />
 													</p>
 													<br /> Tên sách: <input th:field="*{tenSach}"
-														class="form-control" required /> <br /> Thể loại: <input
-														type="text" th:field="*{theloaisach}" class="form-control" />
+														class="form-control" required /> <br /> Thể loại: <select
+														th:field="*{theloaisach}" class="form-control" required>
+														<option th:each="category : ${listcategory}"
+															th:value="${category.maTheLoai}"
+															th:text="${category.tenTheLoai}"></option>
+													</select>
+													<!--  <br /> Thể loại: <input
+														type="text" th:field="*{theloaisach}" class="form-control" /> -->
 													<br /> Giá: <input th:field="*{gia}" type="text"
 														class="form-control" required /> <br /> Tác giả: <input
 														th:field="*{tenTacGia}" class="form-control" type="text" />
